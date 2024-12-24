@@ -1,0 +1,1565 @@
+The following values were not passed to `accelerate launch` and had defaults used instead:
+	`--num_processes` was set to a value of `2`
+		More than one GPU was found, enabling multi-GPU training.
+		If this was unintended please pass in `--num_processes=1`.
+	`--num_machines` was set to a value of `1`
+	`--mixed_precision` was set to a value of `'no'`
+	`--dynamo_backend` was set to a value of `'no'`
+To avoid this warning pass in values for each of the problematic parameters or run `accelerate config`.
+Detected kernel version 4.4.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+Namespace(config_path='config.json', tokenizer_path='tokenizer.model', size='small', train_mode='mixed', use_augment=False, qa_ratio=4.0, batch_size=4, accum_iter=12, weight_decay=0.1, lr=0.001, min_lr=0.0001, warmup_iters=1000, lr_decay_iters=80000, epochs=50, seed=0, output_dir='output/', print_freq=50, valid_freq=1)
+  0%|          | 0/50 [00:00<?, ?it/s]/home/haoyu_wang/anaconda3/envs/accelerate/lib/python3.11/site-packages/torch/_utils.py:776: UserWarning: TypedStorage is deprecated. It will be removed in the future and UntypedStorage will be the only storage class. This should only matter to you if you are using storages directly.  To access UntypedStorage directly, use tensor.untyped_storage() instead of tensor.storage()
+  return self.fget.__get__(instance, owner)()
+LlamaForCausalLM(
+  (model): LlamaModel(
+    (embed_tokens): Embedding(32000, 768)
+    (layers): ModuleList(
+      (0-11): 12 x LlamaDecoderLayer(
+        (self_attn): LlamaAttention(
+          (q_proj): Linear(in_features=768, out_features=768, bias=False)
+          (k_proj): Linear(in_features=768, out_features=768, bias=False)
+          (v_proj): Linear(in_features=768, out_features=768, bias=False)
+          (o_proj): Linear(in_features=768, out_features=768, bias=False)
+          (rotary_emb): LlamaRotaryEmbedding()
+        )
+        (mlp): LlamaMLP(
+          (gate_proj): Linear(in_features=768, out_features=11008, bias=False)
+          (up_proj): Linear(in_features=768, out_features=11008, bias=False)
+          (down_proj): Linear(in_features=11008, out_features=768, bias=False)
+          (act_fn): SiLU()
+        )
+        (input_layernorm): LlamaRMSNorm((768,), eps=1e-06)
+        (post_attention_layernorm): LlamaRMSNorm((768,), eps=1e-06)
+      )
+    )
+    (norm): LlamaRMSNorm((768,), eps=1e-06)
+    (rotary_emb): LlamaRotaryEmbedding()
+  )
+  (lm_head): Linear(in_features=768, out_features=32000, bias=False)
+)
+AdamW (
+Parameter Group 0
+    amsgrad: False
+    betas: (0.9, 0.999)
+    capturable: False
+    differentiable: False
+    eps: 1e-06
+    foreach: None
+    fused: None
+    lr: 0.001
+    maximize: False
+    weight_decay: 0.0
+
+Parameter Group 1
+    amsgrad: False
+    betas: (0.9, 0.999)
+    capturable: False
+    differentiable: False
+    eps: 1e-06
+    foreach: None
+    fused: None
+    lr: 0.001
+    maximize: False
+    weight_decay: 0.1
+)
+  0%|          | 0/50 [00:00<?, ?it/s]/home/haoyu_wang/anaconda3/envs/accelerate/lib/python3.11/site-packages/torch/_utils.py:776: UserWarning: TypedStorage is deprecated. It will be removed in the future and UntypedStorage will be the only storage class. This should only matter to you if you are using storages directly.  To access UntypedStorage directly, use tensor.untyped_storage() instead of tensor.storage()
+  return self.fget.__get__(instance, owner)()
+  2%|▏         | 1/50 [00:01<01:27,  1.79s/it]  2%|▏         | 1/50 [00:01<01:21,  1.67s/it]  4%|▍         | 2/50 [00:03<01:33,  1.94s/it]  4%|▍         | 2/50 [00:03<01:26,  1.80s/it]  6%|▌         | 3/50 [00:05<01:29,  1.90s/it]  6%|▌         | 3/50 [00:05<01:34,  2.01s/it]  8%|▊         | 4/50 [00:07<01:31,  1.99s/it]  8%|▊         | 4/50 [00:08<01:36,  2.11s/it] 10%|█         | 5/50 [00:09<01:34,  2.10s/it] 10%|█         | 5/50 [00:10<01:39,  2.21s/it] 12%|█▏        | 6/50 [00:12<01:38,  2.23s/it] 12%|█▏        | 6/50 [00:13<01:42,  2.32s/it] 14%|█▍        | 7/50 [00:15<01:40,  2.34s/it] 14%|█▍        | 7/50 [00:15<01:44,  2.43s/it] 16%|█▌        | 8/50 [00:17<01:42,  2.43s/it] 16%|█▌        | 8/50 [00:18<01:49,  2.62s/it] 18%|█▊        | 9/50 [00:20<01:44,  2.54s/it] 18%|█▊        | 9/50 [00:21<01:53,  2.76s/it] 20%|██        | 10/50 [00:23<01:46,  2.66s/it] 20%|██        | 10/50 [00:24<01:54,  2.87s/it] 22%|██▏       | 11/50 [00:26<01:48,  2.77s/it] 22%|██▏       | 11/50 [00:28<01:56,  2.97s/it] 24%|██▍       | 12/50 [00:29<01:49,  2.89s/it] 24%|██▍       | 12/50 [00:31<01:57,  3.10s/it] 26%|██▌       | 13/50 [00:32<01:52,  3.03s/it] 26%|██▌       | 13/50 [00:35<01:59,  3.24s/it] 28%|██▊       | 14/50 [00:36<01:53,  3.15s/it] 28%|██▊       | 14/50 [00:38<02:00,  3.36s/it] 30%|███       | 15/50 [00:39<01:55,  3.29s/it] 30%|███       | 15/50 [00:42<02:01,  3.47s/it] 32%|███▏      | 16/50 [00:43<01:55,  3.40s/it] 32%|███▏      | 16/50 [00:46<02:02,  3.59s/it] 34%|███▍      | 17/50 [00:47<01:56,  3.53s/it] 34%|███▍      | 17/50 [00:50<02:03,  3.74s/it] 36%|███▌      | 18/50 [00:51<01:55,  3.62s/it] 36%|███▌      | 18/50 [00:54<02:03,  3.87s/it] 38%|███▊      | 19/50 [00:55<01:55,  3.73s/it] 38%|███▊      | 19/50 [00:58<02:03,  3.98s/it] 40%|████      | 20/50 [00:59<01:56,  3.88s/it] 40%|████      | 20/50 [01:03<02:03,  4.11s/it] 42%|████▏     | 21/50 [01:03<01:56,  4.02s/it] 42%|████▏     | 21/50 [01:07<02:03,  4.25s/it] 44%|████▍     | 22/50 [01:08<01:56,  4.15s/it] 44%|████▍     | 22/50 [01:12<02:03,  4.39s/it] 46%|████▌     | 23/50 [01:12<01:56,  4.30s/it] 46%|████▌     | 23/50 [01:17<02:02,  4.52s/it] 48%|████▊     | 24/50 [01:17<01:55,  4.42s/it] 48%|████▊     | 24/50 [01:22<02:01,  4.66s/it] 50%|█████     | 25/50 [01:22<01:53,  4.55s/it] 50%|█████     | 25/50 [01:27<01:59,  4.80s/it] 52%|█████▏    | 26/50 [01:27<01:51,  4.66s/it] 52%|█████▏    | 26/50 [01:32<01:57,  4.92s/it] 54%|█████▍    | 27/50 [01:32<01:50,  4.78s/it] 54%|█████▍    | 27/50 [01:37<01:55,  5.02s/it] 56%|█████▌    | 28/50 [01:37<01:47,  4.91s/it] 58%|█████▊    | 29/50 [01:42<01:45,  5.01s/it] 56%|█████▌    | 28/50 [01:43<01:53,  5.16s/it] 60%|██████    | 30/50 [01:48<01:43,  5.20s/it] 58%|█████▊    | 29/50 [01:49<01:51,  5.30s/it] 62%|██████▏   | 31/50 [01:54<01:41,  5.33s/it] 60%|██████    | 30/50 [01:54<01:48,  5.44s/it] 64%|██████▍   | 32/50 [01:59<01:37,  5.44s/it] 62%|██████▏   | 31/50 [02:00<01:45,  5.56s/it] 66%|██████▌   | 33/50 [02:05<01:34,  5.56s/it] 64%|██████▍   | 32/50 [02:06<01:43,  5.77s/it] 68%|██████▊   | 34/50 [02:12<01:32,  5.81s/it] 66%|██████▌   | 33/50 [02:13<01:39,  5.87s/it] 70%|███████   | 35/50 [02:18<01:28,  5.92s/it] 68%|██████▊   | 34/50 [02:19<01:35,  5.97s/it] 72%|███████▏  | 36/50 [02:24<01:24,  6.04s/it] 70%|███████   | 35/50 [02:25<01:31,  6.08s/it] 74%|███████▍  | 37/50 [02:31<01:19,  6.15s/it] 72%|███████▏  | 36/50 [02:32<01:26,  6.21s/it] 76%|███████▌  | 38/50 [02:37<01:15,  6.28s/it] 74%|███████▍  | 37/50 [02:38<01:22,  6.38s/it] 78%|███████▊  | 39/50 [02:44<01:11,  6.47s/it] 76%|███████▌  | 38/50 [02:45<01:17,  6.48s/it] 80%|████████  | 40/50 [02:51<01:06,  6.63s/it] 78%|███████▊  | 39/50 [02:52<01:12,  6.62s/it] 82%|████████▏ | 41/50 [02:58<01:00,  6.75s/it] 80%|████████  | 40/50 [02:59<01:07,  6.77s/it] 84%|████████▍ | 42/50 [03:05<00:54,  6.85s/it] 82%|████████▏ | 41/50 [03:06<01:02,  6.94s/it] 86%|████████▌ | 43/50 [03:12<00:48,  6.95s/it] 84%|████████▍ | 42/50 [03:14<00:56,  7.04s/it] 88%|████████▊ | 44/50 [03:20<00:42,  7.06s/it] 86%|████████▌ | 43/50 [03:22<00:51,  7.31s/it] 90%|█████████ | 45/50 [03:27<00:35,  7.16s/it] 88%|████████▊ | 44/50 [03:29<00:44,  7.37s/it] 92%|█████████▏| 46/50 [03:35<00:29,  7.38s/it] 90%|█████████ | 45/50 [03:37<00:37,  7.49s/it] 94%|█████████▍| 47/50 [03:43<00:22,  7.50s/it] 92%|█████████▏| 46/50 [03:45<00:30,  7.58s/it] 96%|█████████▌| 48/50 [03:51<00:15,  7.60s/it] 94%|█████████▍| 47/50 [03:53<00:23,  7.77s/it] 98%|█████████▊| 49/50 [03:58<00:07,  7.69s/it] 96%|█████████▌| 48/50 [04:01<00:15,  7.84s/it]100%|██████████| 50/50 [04:08<00:00,  8.10s/it]100%|██████████| 50/50 [04:08<00:00,  4.96s/it]
+ 98%|█████████▊| 49/50 [04:09<00:07,  7.96s/it]100%|██████████| 50/50 [04:17<00:00,  8.05s/it]100%|██████████| 50/50 [04:17<00:00,  5.16s/it]
+Loaded training examples torch.Size([5751000, 512])
+Start training
+Train Epoch[0], Iter[49/57510]	 Loss: 0.7336	 MaxEqual: 0.0768	 LR: 0.000048
+Train Epoch[0], Iter[99/57510]	 Loss: 0.6779	 MaxEqual: 0.0866	 LR: 0.000096
+Train Epoch[0], Iter[149/57510]	 Loss: 0.6512	 MaxEqual: 0.0856	 LR: 0.000144
+Train Epoch[0], Iter[199/57510]	 Loss: 0.6430	 MaxEqual: 0.1159	 LR: 0.000192
+Train Epoch[0], Iter[249/57510]	 Loss: 0.6176	 MaxEqual: 0.1859	 LR: 0.000240
+Train Epoch[0], Iter[299/57510]	 Loss: 0.5042	 MaxEqual: 0.2901	 LR: 0.000288
+Train Epoch[0], Iter[349/57510]	 Loss: 0.4546	 MaxEqual: 0.3263	 LR: 0.000348
+Train Epoch[0], Iter[399/57510]	 Loss: 0.4162	 MaxEqual: 0.3567	 LR: 0.000396
+Train Epoch[0], Iter[449/57510]	 Loss: 0.3209	 MaxEqual: 0.4731	 LR: 0.000444
+Train Epoch[0], Iter[499/57510]	 Loss: 0.3734	 MaxEqual: 0.3708	 LR: 0.000492
+Train Epoch[0], Iter[549/57510]	 Loss: 0.3637	 MaxEqual: 0.3880	 LR: 0.000540
+Train Epoch[0], Iter[599/57510]	 Loss: 0.3365	 MaxEqual: 0.3958	 LR: 0.000588
+Train Epoch[0], Iter[649/57510]	 Loss: 0.3174	 MaxEqual: 0.4051	 LR: 0.000648
+Train Epoch[0], Iter[699/57510]	 Loss: 0.4771	 MaxEqual: 0.1835	 LR: 0.000696
+Train Epoch[0], Iter[749/57510]	 Loss: 0.2155	 MaxEqual: 0.5734	 LR: 0.000744
+Train Epoch[0], Iter[799/57510]	 Loss: 0.2811	 MaxEqual: 0.4795	 LR: 0.000792
+Train Epoch[0], Iter[849/57510]	 Loss: 0.2788	 MaxEqual: 0.4834	 LR: 0.000840
+Train Epoch[0], Iter[899/57510]	 Loss: 0.1731	 MaxEqual: 0.6223	 LR: 0.000888
+Train Epoch[0], Iter[949/57510]	 Loss: 0.2515	 MaxEqual: 0.5078	 LR: 0.000948
+Train Epoch[0], Iter[999/57510]	 Loss: 0.2377	 MaxEqual: 0.5225	 LR: 0.000996
+Train Epoch[0], Iter[1049/57510]	 Loss: 0.1439	 MaxEqual: 0.6659	 LR: 0.001000
+Train Epoch[0], Iter[1099/57510]	 Loss: 0.1399	 MaxEqual: 0.6619	 LR: 0.001000
+Train Epoch[0], Iter[1149/57510]	 Loss: 0.3282	 MaxEqual: 0.3537	 LR: 0.001000
+Train Epoch[0], Iter[1199/57510]	 Loss: 0.1909	 MaxEqual: 0.5739	 LR: 0.001000
+Train Epoch[0], Iter[1249/57510]	 Loss: 0.1772	 MaxEqual: 0.6023	 LR: 0.001000
+Train Epoch[0], Iter[1299/57510]	 Loss: 0.1779	 MaxEqual: 0.6091	 LR: 0.001000
+Train Epoch[0], Iter[1349/57510]	 Loss: 0.1151	 MaxEqual: 0.7074	 LR: 0.001000
+Train Epoch[0], Iter[1399/57510]	 Loss: 0.1720	 MaxEqual: 0.6003	 LR: 0.001000
+Train Epoch[0], Iter[1449/57510]	 Loss: 0.1194	 MaxEqual: 0.6962	 LR: 0.001000
+Train Epoch[0], Iter[1499/57510]	 Loss: 0.2161	 MaxEqual: 0.5254	 LR: 0.001000
+Train Epoch[0], Iter[1549/57510]	 Loss: 0.1139	 MaxEqual: 0.7089	 LR: 0.001000
+Train Epoch[0], Iter[1599/57510]	 Loss: 0.1523	 MaxEqual: 0.6336	 LR: 0.001000
+Train Epoch[0], Iter[1649/57510]	 Loss: 0.1555	 MaxEqual: 0.6262	 LR: 0.001000
+Train Epoch[0], Iter[1699/57510]	 Loss: 0.1939	 MaxEqual: 0.5372	 LR: 0.001000
+Train Epoch[0], Iter[1749/57510]	 Loss: 0.1512	 MaxEqual: 0.6375	 LR: 0.001000
+Train Epoch[0], Iter[1799/57510]	 Loss: 0.1448	 MaxEqual: 0.6375	 LR: 0.001000
+Train Epoch[0], Iter[1849/57510]	 Loss: 0.1432	 MaxEqual: 0.6512	 LR: 0.001000
+Train Epoch[0], Iter[1899/57510]	 Loss: 0.1124	 MaxEqual: 0.7094	 LR: 0.001000
+Train Epoch[0], Iter[1949/57510]	 Loss: 0.1059	 MaxEqual: 0.7162	 LR: 0.001000
+Train Epoch[0], Iter[1999/57510]	 Loss: 0.1088	 MaxEqual: 0.7030	 LR: 0.001000
+Train Epoch[0], Iter[2049/57510]	 Loss: 0.1372	 MaxEqual: 0.6624	 LR: 0.001000
+Train Epoch[0], Iter[2099/57510]	 Loss: 0.1368	 MaxEqual: 0.6566	 LR: 0.001000
+Train Epoch[0], Iter[2149/57510]	 Loss: 0.1023	 MaxEqual: 0.7456	 LR: 0.001000
+Train Epoch[0], Iter[2199/57510]	 Loss: 0.1097	 MaxEqual: 0.7285	 LR: 0.000999
+Train Epoch[0], Iter[2249/57510]	 Loss: 0.1061	 MaxEqual: 0.7211	 LR: 0.000999
+Train Epoch[0], Iter[2299/57510]	 Loss: 0.1689	 MaxEqual: 0.5729	 LR: 0.000999
+Train Epoch[0], Iter[2349/57510]	 Loss: 0.1389	 MaxEqual: 0.6394	 LR: 0.000999
+Train Epoch[0], Iter[2399/57510]	 Loss: 0.1723	 MaxEqual: 0.5685	 LR: 0.000999
+Train Epoch[0], Iter[2449/57510]	 Loss: 0.1005	 MaxEqual: 0.7319	 LR: 0.000999
+Train Epoch[0], Iter[2499/57510]	 Loss: 0.1031	 MaxEqual: 0.7290	 LR: 0.000999
+Train Epoch[0], Iter[2549/57510]	 Loss: 0.1609	 MaxEqual: 0.5822	 LR: 0.000999
+Train Epoch[0], Iter[2599/57510]	 Loss: 0.1272	 MaxEqual: 0.6673	 LR: 0.000999
+Train Epoch[0], Iter[2649/57510]	 Loss: 0.1001	 MaxEqual: 0.7314	 LR: 0.000999
+Train Epoch[0], Iter[2699/57510]	 Loss: 0.1017	 MaxEqual: 0.7299	 LR: 0.000999
+Train Epoch[0], Iter[2749/57510]	 Loss: 0.0984	 MaxEqual: 0.7387	 LR: 0.000999
+Train Epoch[0], Iter[2799/57510]	 Loss: 0.1251	 MaxEqual: 0.6502	 LR: 0.000999
+Train Epoch[0], Iter[2849/57510]	 Loss: 0.1352	 MaxEqual: 0.6580	 LR: 0.000999
+Train Epoch[0], Iter[2899/57510]	 Loss: 0.1573	 MaxEqual: 0.5739	 LR: 0.000999
+Train Epoch[0], Iter[2949/57510]	 Loss: 0.1455	 MaxEqual: 0.6155	 LR: 0.000999
+Train Epoch[0], Iter[2999/57510]	 Loss: 0.1011	 MaxEqual: 0.7221	 LR: 0.000999
+Train Epoch[0], Iter[3049/57510]	 Loss: 0.0988	 MaxEqual: 0.7348	 LR: 0.000999
+Train Epoch[0], Iter[3099/57510]	 Loss: 0.1243	 MaxEqual: 0.6722	 LR: 0.000998
+Train Epoch[0], Iter[3149/57510]	 Loss: 0.1513	 MaxEqual: 0.6076	 LR: 0.000998
+Train Epoch[0], Iter[3199/57510]	 Loss: 0.1240	 MaxEqual: 0.6668	 LR: 0.000998
+Train Epoch[0], Iter[3249/57510]	 Loss: 0.0991	 MaxEqual: 0.7319	 LR: 0.000998
+Train Epoch[0], Iter[3299/57510]	 Loss: 0.0968	 MaxEqual: 0.7456	 LR: 0.000998
+Train Epoch[0], Iter[3349/57510]	 Loss: 0.1498	 MaxEqual: 0.6018	 LR: 0.000998
+Train Epoch[0], Iter[3399/57510]	 Loss: 0.1228	 MaxEqual: 0.6766	 LR: 0.000998
+Train Epoch[0], Iter[3449/57510]	 Loss: 0.0994	 MaxEqual: 0.7319	 LR: 0.000998
+Train Epoch[0], Iter[3499/57510]	 Loss: 0.1264	 MaxEqual: 0.6575	 LR: 0.000998
+Train Epoch[0], Iter[3549/57510]	 Loss: 0.1240	 MaxEqual: 0.6795	 LR: 0.000998
+Train Epoch[0], Iter[3599/57510]	 Loss: 0.1200	 MaxEqual: 0.6854	 LR: 0.000998
+Train Epoch[0], Iter[3649/57510]	 Loss: 0.1194	 MaxEqual: 0.6795	 LR: 0.000998
+Train Epoch[0], Iter[3699/57510]	 Loss: 0.1188	 MaxEqual: 0.6859	 LR: 0.000997
+Train Epoch[0], Iter[3749/57510]	 Loss: 0.1179	 MaxEqual: 0.6879	 LR: 0.000997
+Train Epoch[0], Iter[3799/57510]	 Loss: 0.0984	 MaxEqual: 0.7466	 LR: 0.000997
+Train Epoch[0], Iter[3849/57510]	 Loss: 0.1426	 MaxEqual: 0.6238	 LR: 0.000997
+Train Epoch[0], Iter[3899/57510]	 Loss: 0.0916	 MaxEqual: 0.7466	 LR: 0.000997
+Train Epoch[0], Iter[3949/57510]	 Loss: 0.0966	 MaxEqual: 0.7334	 LR: 0.000997
+Train Epoch[0], Iter[3999/57510]	 Loss: 0.1399	 MaxEqual: 0.6194	 LR: 0.000997
+Train Epoch[0], Iter[4049/57510]	 Loss: 0.0978	 MaxEqual: 0.7285	 LR: 0.000997
+Train Epoch[0], Iter[4099/57510]	 Loss: 0.1145	 MaxEqual: 0.6781	 LR: 0.000997
+Train Epoch[0], Iter[4149/57510]	 Loss: 0.0993	 MaxEqual: 0.7363	 LR: 0.000996
+Train Epoch[0], Iter[4199/57510]	 Loss: 0.0932	 MaxEqual: 0.7524	 LR: 0.000996
+Train Epoch[0], Iter[4249/57510]	 Loss: 0.1160	 MaxEqual: 0.7001	 LR: 0.000996
+Train Epoch[0], Iter[4299/57510]	 Loss: 0.1176	 MaxEqual: 0.6712	 LR: 0.000996
+Train Epoch[0], Iter[4349/57510]	 Loss: 0.1217	 MaxEqual: 0.6727	 LR: 0.000996
+Train Epoch[0], Iter[4399/57510]	 Loss: 0.0922	 MaxEqual: 0.7432	 LR: 0.000996
+Train Epoch[0], Iter[4449/57510]	 Loss: 0.1149	 MaxEqual: 0.6825	 LR: 0.000996
+Train Epoch[0], Iter[4499/57510]	 Loss: 0.0915	 MaxEqual: 0.7461	 LR: 0.000996
+Train Epoch[0], Iter[4549/57510]	 Loss: 0.0931	 MaxEqual: 0.7387	 LR: 0.000996
+Train Epoch[0], Iter[4599/57510]	 Loss: 0.1372	 MaxEqual: 0.6409	 LR: 0.000995
+Train Epoch[0], Iter[4649/57510]	 Loss: 0.1153	 MaxEqual: 0.6800	 LR: 0.000995
+Train Epoch[0], Iter[4699/57510]	 Loss: 0.1095	 MaxEqual: 0.6996	 LR: 0.000995
+Train Epoch[0], Iter[4749/57510]	 Loss: 0.0952	 MaxEqual: 0.7402	 LR: 0.000995
+Train Epoch[0], Iter[4799/57510]	 Loss: 0.0975	 MaxEqual: 0.7446	 LR: 0.000995
+Train Epoch[0], Iter[4849/57510]	 Loss: 0.0940	 MaxEqual: 0.7270	 LR: 0.000995
+Train Epoch[0], Iter[4899/57510]	 Loss: 0.0942	 MaxEqual: 0.7304	 LR: 0.000995
+Train Epoch[0], Iter[4949/57510]	 Loss: 0.1074	 MaxEqual: 0.6830	 LR: 0.000994
+Train Epoch[0], Iter[4999/57510]	 Loss: 0.1108	 MaxEqual: 0.6898	 LR: 0.000994
+Train Epoch[0], Iter[5049/57510]	 Loss: 0.1269	 MaxEqual: 0.6703	 LR: 0.000994
+Train Epoch[0], Iter[5099/57510]	 Loss: 0.1083	 MaxEqual: 0.7172	 LR: 0.000994
+Train Epoch[0], Iter[5149/57510]	 Loss: 0.1322	 MaxEqual: 0.6365	 LR: 0.000994
+Train Epoch[0], Iter[5199/57510]	 Loss: 0.1345	 MaxEqual: 0.6336	 LR: 0.000994
+Train Epoch[0], Iter[5249/57510]	 Loss: 0.1075	 MaxEqual: 0.7040	 LR: 0.000994
+Train Epoch[0], Iter[5299/57510]	 Loss: 0.1327	 MaxEqual: 0.6419	 LR: 0.000993
+Train Epoch[0], Iter[5349/57510]	 Loss: 0.0943	 MaxEqual: 0.7343	 LR: 0.000993
+Train Epoch[0], Iter[5399/57510]	 Loss: 0.1137	 MaxEqual: 0.7021	 LR: 0.000993
+Train Epoch[0], Iter[5449/57510]	 Loss: 0.1136	 MaxEqual: 0.6854	 LR: 0.000993
+Train Epoch[0], Iter[5499/57510]	 Loss: 0.1085	 MaxEqual: 0.6977	 LR: 0.000993
+Train Epoch[0], Iter[5549/57510]	 Loss: 0.1125	 MaxEqual: 0.7006	 LR: 0.000993
+Train Epoch[0], Iter[5599/57510]	 Loss: 0.1085	 MaxEqual: 0.6893	 LR: 0.000993
+Train Epoch[0], Iter[5649/57510]	 Loss: 0.0924	 MaxEqual: 0.7471	 LR: 0.000992
+Train Epoch[0], Iter[5699/57510]	 Loss: 0.0966	 MaxEqual: 0.7392	 LR: 0.000992
+Train Epoch[0], Iter[5749/57510]	 Loss: 0.0916	 MaxEqual: 0.7583	 LR: 0.000992
+Train Epoch[0], Iter[5799/57510]	 Loss: 0.1124	 MaxEqual: 0.6991	 LR: 0.000992
+Train Epoch[0], Iter[5849/57510]	 Loss: 0.1071	 MaxEqual: 0.6957	 LR: 0.000992
+Train Epoch[0], Iter[5899/57510]	 Loss: 0.0920	 MaxEqual: 0.7387	 LR: 0.000992
+Train Epoch[0], Iter[5949/57510]	 Loss: 0.1148	 MaxEqual: 0.6854	 LR: 0.000991
+Train Epoch[0], Iter[5999/57510]	 Loss: 0.1075	 MaxEqual: 0.7128	 LR: 0.000991
+Train Epoch[0], Iter[6049/57510]	 Loss: 0.0916	 MaxEqual: 0.7554	 LR: 0.000991
+Train Epoch[0], Iter[6099/57510]	 Loss: 0.1055	 MaxEqual: 0.7114	 LR: 0.000991
+Train Epoch[0], Iter[6149/57510]	 Loss: 0.1096	 MaxEqual: 0.6972	 LR: 0.000991
+Train Epoch[0], Iter[6199/57510]	 Loss: 0.0909	 MaxEqual: 0.7397	 LR: 0.000990
+Train Epoch[0], Iter[6249/57510]	 Loss: 0.1117	 MaxEqual: 0.7035	 LR: 0.000990
+Train Epoch[0], Iter[6299/57510]	 Loss: 0.0917	 MaxEqual: 0.7436	 LR: 0.000990
+Train Epoch[0], Iter[6349/57510]	 Loss: 0.1046	 MaxEqual: 0.7045	 LR: 0.000990
+Train Epoch[0], Iter[6399/57510]	 Loss: 0.1073	 MaxEqual: 0.6952	 LR: 0.000990
+Train Epoch[0], Iter[6449/57510]	 Loss: 0.0933	 MaxEqual: 0.7583	 LR: 0.000989
+Train Epoch[0], Iter[6499/57510]	 Loss: 0.0995	 MaxEqual: 0.7128	 LR: 0.000989
+Train Epoch[0], Iter[6549/57510]	 Loss: 0.1032	 MaxEqual: 0.7285	 LR: 0.000989
+Train Epoch[0], Iter[6599/57510]	 Loss: 0.0908	 MaxEqual: 0.7451	 LR: 0.000989
+Train Epoch[0], Iter[6649/57510]	 Loss: 0.0924	 MaxEqual: 0.7461	 LR: 0.000989
+Train Epoch[0], Iter[6699/57510]	 Loss: 0.1177	 MaxEqual: 0.6722	 LR: 0.000989
+Train Epoch[0], Iter[6749/57510]	 Loss: 0.0986	 MaxEqual: 0.7206	 LR: 0.000988
+Train Epoch[0], Iter[6799/57510]	 Loss: 0.1031	 MaxEqual: 0.7133	 LR: 0.000988
+Train Epoch[0], Iter[6849/57510]	 Loss: 0.0888	 MaxEqual: 0.7520	 LR: 0.000988
+Train Epoch[0], Iter[6899/57510]	 Loss: 0.1158	 MaxEqual: 0.6835	 LR: 0.000988
+Train Epoch[0], Iter[6949/57510]	 Loss: 0.0998	 MaxEqual: 0.7231	 LR: 0.000987
+Train Epoch[0], Iter[6999/57510]	 Loss: 0.1006	 MaxEqual: 0.7211	 LR: 0.000987
+Train Epoch[0], Iter[7049/57510]	 Loss: 0.1077	 MaxEqual: 0.7114	 LR: 0.000987
+Train Epoch[0], Iter[7099/57510]	 Loss: 0.0912	 MaxEqual: 0.7529	 LR: 0.000987
+Train Epoch[0], Iter[7149/57510]	 Loss: 0.1060	 MaxEqual: 0.7138	 LR: 0.000987
+Train Epoch[0], Iter[7199/57510]	 Loss: 0.0989	 MaxEqual: 0.7265	 LR: 0.000986
+Train Epoch[0], Iter[7249/57510]	 Loss: 0.1007	 MaxEqual: 0.7114	 LR: 0.000986
+Train Epoch[0], Iter[7299/57510]	 Loss: 0.0908	 MaxEqual: 0.7363	 LR: 0.000986
+Train Epoch[0], Iter[7349/57510]	 Loss: 0.0883	 MaxEqual: 0.7554	 LR: 0.000986
+Train Epoch[0], Iter[7399/57510]	 Loss: 0.0979	 MaxEqual: 0.7250	 LR: 0.000986
+Train Epoch[0], Iter[7449/57510]	 Loss: 0.1045	 MaxEqual: 0.7236	 LR: 0.000985
+Train Epoch[0], Iter[7499/57510]	 Loss: 0.0886	 MaxEqual: 0.7402	 LR: 0.000985
+Train Epoch[0], Iter[7549/57510]	 Loss: 0.0917	 MaxEqual: 0.7417	 LR: 0.000985
+Train Epoch[0], Iter[7599/57510]	 Loss: 0.0909	 MaxEqual: 0.7573	 LR: 0.000985
+Train Epoch[0], Iter[7649/57510]	 Loss: 0.0897	 MaxEqual: 0.7412	 LR: 0.000984
+Train Epoch[0], Iter[7699/57510]	 Loss: 0.0859	 MaxEqual: 0.7564	 LR: 0.000984
+Train Epoch[0], Iter[7749/57510]	 Loss: 0.0917	 MaxEqual: 0.7412	 LR: 0.000984
+Train Epoch[0], Iter[7799/57510]	 Loss: 0.1004	 MaxEqual: 0.7143	 LR: 0.000984
+Train Epoch[0], Iter[7849/57510]	 Loss: 0.1003	 MaxEqual: 0.7192	 LR: 0.000983
+Train Epoch[0], Iter[7899/57510]	 Loss: 0.0914	 MaxEqual: 0.7432	 LR: 0.000983
+Train Epoch[0], Iter[7949/57510]	 Loss: 0.0877	 MaxEqual: 0.7573	 LR: 0.000983
+Train Epoch[0], Iter[7999/57510]	 Loss: 0.0970	 MaxEqual: 0.7167	 LR: 0.000983
+Train Epoch[0], Iter[8049/57510]	 Loss: 0.0961	 MaxEqual: 0.7324	 LR: 0.000982
+Train Epoch[0], Iter[8099/57510]	 Loss: 0.0970	 MaxEqual: 0.7250	 LR: 0.000982
+Train Epoch[0], Iter[8149/57510]	 Loss: 0.0879	 MaxEqual: 0.7495	 LR: 0.000982
+Train Epoch[0], Iter[8199/57510]	 Loss: 0.0853	 MaxEqual: 0.7603	 LR: 0.000982
+Train Epoch[0], Iter[8249/57510]	 Loss: 0.0971	 MaxEqual: 0.7275	 LR: 0.000981
+Train Epoch[0], Iter[8299/57510]	 Loss: 0.1004	 MaxEqual: 0.7231	 LR: 0.000981
+Train Epoch[0], Iter[8349/57510]	 Loss: 0.0992	 MaxEqual: 0.7236	 LR: 0.000981
+Train Epoch[0], Iter[8399/57510]	 Loss: 0.0948	 MaxEqual: 0.7329	 LR: 0.000981
+Train Epoch[0], Iter[8449/57510]	 Loss: 0.0973	 MaxEqual: 0.7314	 LR: 0.000980
+Train Epoch[0], Iter[8499/57510]	 Loss: 0.1051	 MaxEqual: 0.7118	 LR: 0.000980
+Train Epoch[0], Iter[8549/57510]	 Loss: 0.0911	 MaxEqual: 0.7500	 LR: 0.000980
+Train Epoch[0], Iter[8599/57510]	 Loss: 0.0996	 MaxEqual: 0.7153	 LR: 0.000980
+Train Epoch[0], Iter[8649/57510]	 Loss: 0.1081	 MaxEqual: 0.7050	 LR: 0.000979
+Train Epoch[0], Iter[8699/57510]	 Loss: 0.0888	 MaxEqual: 0.7466	 LR: 0.000979
+Train Epoch[0], Iter[8749/57510]	 Loss: 0.0861	 MaxEqual: 0.7676	 LR: 0.000979
+Train Epoch[0], Iter[8799/57510]	 Loss: 0.0951	 MaxEqual: 0.7265	 LR: 0.000979
+Train Epoch[0], Iter[8849/57510]	 Loss: 0.0950	 MaxEqual: 0.7432	 LR: 0.000978
+Train Epoch[0], Iter[8899/57510]	 Loss: 0.0963	 MaxEqual: 0.7226	 LR: 0.000978
+Train Epoch[0], Iter[8949/57510]	 Loss: 0.0955	 MaxEqual: 0.7329	 LR: 0.000978
+Train Epoch[0], Iter[8999/57510]	 Loss: 0.0856	 MaxEqual: 0.7613	 LR: 0.000977
+Train Epoch[0], Iter[9049/57510]	 Loss: 0.0869	 MaxEqual: 0.7632	 LR: 0.000977
+Train Epoch[0], Iter[9099/57510]	 Loss: 0.0959	 MaxEqual: 0.7432	 LR: 0.000977
+Train Epoch[0], Iter[9149/57510]	 Loss: 0.1028	 MaxEqual: 0.7138	 LR: 0.000977
+Train Epoch[0], Iter[9199/57510]	 Loss: 0.0914	 MaxEqual: 0.7544	 LR: 0.000976
+Train Epoch[0], Iter[9249/57510]	 Loss: 0.0851	 MaxEqual: 0.7490	 LR: 0.000976
+Train Epoch[0], Iter[9299/57510]	 Loss: 0.0851	 MaxEqual: 0.7603	 LR: 0.000976
+Train Epoch[0], Iter[9349/57510]	 Loss: 0.0840	 MaxEqual: 0.7705	 LR: 0.000975
+Train Epoch[0], Iter[9399/57510]	 Loss: 0.0926	 MaxEqual: 0.7329	 LR: 0.000975
+Train Epoch[0], Iter[9449/57510]	 Loss: 0.0831	 MaxEqual: 0.7666	 LR: 0.000975
+Train Epoch[0], Iter[9499/57510]	 Loss: 0.1041	 MaxEqual: 0.7231	 LR: 0.000975
+Train Epoch[0], Iter[9549/57510]	 Loss: 0.0932	 MaxEqual: 0.7343	 LR: 0.000974
+Train Epoch[0], Iter[9599/57510]	 Loss: 0.0825	 MaxEqual: 0.7647	 LR: 0.000974
+Train Epoch[0], Iter[9649/57510]	 Loss: 0.0873	 MaxEqual: 0.7368	 LR: 0.000974
+Train Epoch[0], Iter[9699/57510]	 Loss: 0.0863	 MaxEqual: 0.7534	 LR: 0.000973
+Train Epoch[0], Iter[9749/57510]	 Loss: 0.0936	 MaxEqual: 0.7417	 LR: 0.000973
+Train Epoch[0], Iter[9799/57510]	 Loss: 0.0940	 MaxEqual: 0.7339	 LR: 0.000973
+Train Epoch[0], Iter[9849/57510]	 Loss: 0.0953	 MaxEqual: 0.7471	 LR: 0.000972
+Train Epoch[0], Iter[9899/57510]	 Loss: 0.0905	 MaxEqual: 0.7476	 LR: 0.000972
+Train Epoch[0], Iter[9949/57510]	 Loss: 0.0893	 MaxEqual: 0.7500	 LR: 0.000972
+Train Epoch[0], Iter[9999/57510]	 Loss: 0.0895	 MaxEqual: 0.7407	 LR: 0.000972
+Train Epoch[0], Iter[10049/57510]	 Loss: 0.0806	 MaxEqual: 0.7657	 LR: 0.000971
+Train Epoch[0], Iter[10099/57510]	 Loss: 0.0800	 MaxEqual: 0.7710	 LR: 0.000971
+Train Epoch[0], Iter[10149/57510]	 Loss: 0.0845	 MaxEqual: 0.7661	 LR: 0.000971
+Train Epoch[0], Iter[10199/57510]	 Loss: 0.0808	 MaxEqual: 0.7671	 LR: 0.000970
+Train Epoch[0], Iter[10249/57510]	 Loss: 0.0829	 MaxEqual: 0.7686	 LR: 0.000970
+Train Epoch[0], Iter[10299/57510]	 Loss: 0.0824	 MaxEqual: 0.7686	 LR: 0.000970
+Train Epoch[0], Iter[10349/57510]	 Loss: 0.0956	 MaxEqual: 0.7275	 LR: 0.000969
+Train Epoch[0], Iter[10399/57510]	 Loss: 0.1006	 MaxEqual: 0.7128	 LR: 0.000969
+Train Epoch[0], Iter[10449/57510]	 Loss: 0.0880	 MaxEqual: 0.7476	 LR: 0.000969
+Train Epoch[0], Iter[10499/57510]	 Loss: 0.0997	 MaxEqual: 0.7202	 LR: 0.000968
+Train Epoch[0], Iter[10549/57510]	 Loss: 0.1042	 MaxEqual: 0.7016	 LR: 0.000968
+Train Epoch[0], Iter[10599/57510]	 Loss: 0.0866	 MaxEqual: 0.7632	 LR: 0.000968
+Train Epoch[0], Iter[10649/57510]	 Loss: 0.0917	 MaxEqual: 0.7441	 LR: 0.000967
+Train Epoch[0], Iter[10699/57510]	 Loss: 0.0990	 MaxEqual: 0.7206	 LR: 0.000967
+Train Epoch[0], Iter[10749/57510]	 Loss: 0.0774	 MaxEqual: 0.7774	 LR: 0.000967
+Train Epoch[0], Iter[10799/57510]	 Loss: 0.0816	 MaxEqual: 0.7676	 LR: 0.000966
+Train Epoch[0], Iter[10849/57510]	 Loss: 0.0813	 MaxEqual: 0.7617	 LR: 0.000966
+Train Epoch[0], Iter[10899/57510]	 Loss: 0.0779	 MaxEqual: 0.7784	 LR: 0.000966
+Train Epoch[0], Iter[10949/57510]	 Loss: 0.0855	 MaxEqual: 0.7661	 LR: 0.000965
+Train Epoch[0], Iter[10999/57510]	 Loss: 0.0819	 MaxEqual: 0.7652	 LR: 0.000965
+Train Epoch[0], Iter[11049/57510]	 Loss: 0.0792	 MaxEqual: 0.7647	 LR: 0.000965
+Train Epoch[0], Iter[11099/57510]	 Loss: 0.0788	 MaxEqual: 0.7784	 LR: 0.000964
+Train Epoch[0], Iter[11149/57510]	 Loss: 0.0819	 MaxEqual: 0.7754	 LR: 0.000964
+Train Epoch[0], Iter[11199/57510]	 Loss: 0.0824	 MaxEqual: 0.7715	 LR: 0.000964
+Train Epoch[0], Iter[11249/57510]	 Loss: 0.0865	 MaxEqual: 0.7520	 LR: 0.000963
+Train Epoch[0], Iter[11299/57510]	 Loss: 0.0788	 MaxEqual: 0.7725	 LR: 0.000963
+Train Epoch[0], Iter[11349/57510]	 Loss: 0.0790	 MaxEqual: 0.7740	 LR: 0.000962
+Train Epoch[0], Iter[11399/57510]	 Loss: 0.0743	 MaxEqual: 0.7808	 LR: 0.000962
+Train Epoch[0], Iter[11449/57510]	 Loss: 0.0772	 MaxEqual: 0.7818	 LR: 0.000962
+Train Epoch[0], Iter[11499/57510]	 Loss: 0.0861	 MaxEqual: 0.7383	 LR: 0.000961
+Train Epoch[0], Iter[11549/57510]	 Loss: 0.0843	 MaxEqual: 0.7461	 LR: 0.000961
+Train Epoch[0], Iter[11599/57510]	 Loss: 0.0843	 MaxEqual: 0.7578	 LR: 0.000961
+Train Epoch[0], Iter[11649/57510]	 Loss: 0.0929	 MaxEqual: 0.7383	 LR: 0.000960
+Train Epoch[0], Iter[11699/57510]	 Loss: 0.0872	 MaxEqual: 0.7593	 LR: 0.000960
+Train Epoch[0], Iter[11749/57510]	 Loss: 0.0827	 MaxEqual: 0.7622	 LR: 0.000960
+Train Epoch[0], Iter[11799/57510]	 Loss: 0.0939	 MaxEqual: 0.7397	 LR: 0.000959
+Train Epoch[0], Iter[11849/57510]	 Loss: 0.0868	 MaxEqual: 0.7510	 LR: 0.000959
+Train Epoch[0], Iter[11899/57510]	 Loss: 0.0852	 MaxEqual: 0.7554	 LR: 0.000958
+Train Epoch[0], Iter[11949/57510]	 Loss: 0.0833	 MaxEqual: 0.7520	 LR: 0.000958
+Train Epoch[0], Iter[11999/57510]	 Loss: 0.0855	 MaxEqual: 0.7583	 LR: 0.000958
+Train Epoch[0], Iter[12049/57510]	 Loss: 0.0846	 MaxEqual: 0.7554	 LR: 0.000957
+Train Epoch[0], Iter[12099/57510]	 Loss: 0.0855	 MaxEqual: 0.7490	 LR: 0.000957
+Train Epoch[0], Iter[12149/57510]	 Loss: 0.0768	 MaxEqual: 0.7794	 LR: 0.000957
+Train Epoch[0], Iter[12199/57510]	 Loss: 0.0969	 MaxEqual: 0.7202	 LR: 0.000956
+Train Epoch[0], Iter[12249/57510]	 Loss: 0.0756	 MaxEqual: 0.7789	 LR: 0.000956
+Train Epoch[0], Iter[12299/57510]	 Loss: 0.0846	 MaxEqual: 0.7652	 LR: 0.000955
+Train Epoch[0], Iter[12349/57510]	 Loss: 0.0836	 MaxEqual: 0.7539	 LR: 0.000955
+Train Epoch[0], Iter[12399/57510]	 Loss: 0.0834	 MaxEqual: 0.7622	 LR: 0.000955
+Train Epoch[0], Iter[12449/57510]	 Loss: 0.0751	 MaxEqual: 0.7842	 LR: 0.000954
+Train Epoch[0], Iter[12499/57510]	 Loss: 0.0904	 MaxEqual: 0.7412	 LR: 0.000954
+Train Epoch[0], Iter[12549/57510]	 Loss: 0.0757	 MaxEqual: 0.7838	 LR: 0.000953
+Train Epoch[0], Iter[12599/57510]	 Loss: 0.0751	 MaxEqual: 0.7838	 LR: 0.000953
+Train Epoch[0], Iter[12649/57510]	 Loss: 0.0846	 MaxEqual: 0.7476	 LR: 0.000953
+Train Epoch[0], Iter[12699/57510]	 Loss: 0.0844	 MaxEqual: 0.7446	 LR: 0.000952
+Train Epoch[0], Iter[12749/57510]	 Loss: 0.0739	 MaxEqual: 0.7657	 LR: 0.000952
+Train Epoch[0], Iter[12799/57510]	 Loss: 0.0854	 MaxEqual: 0.7500	 LR: 0.000951
+Train Epoch[0], Iter[12849/57510]	 Loss: 0.0719	 MaxEqual: 0.7882	 LR: 0.000951
+Train Epoch[0], Iter[12899/57510]	 Loss: 0.0800	 MaxEqual: 0.7627	 LR: 0.000951
+Train Epoch[0], Iter[12949/57510]	 Loss: 0.0754	 MaxEqual: 0.7730	 LR: 0.000950
+Train Epoch[0], Iter[12999/57510]	 Loss: 0.0745	 MaxEqual: 0.7754	 LR: 0.000950
+Train Epoch[0], Iter[13049/57510]	 Loss: 0.0833	 MaxEqual: 0.7524	 LR: 0.000949
+Train Epoch[0], Iter[13099/57510]	 Loss: 0.0832	 MaxEqual: 0.7676	 LR: 0.000949
+Train Epoch[0], Iter[13149/57510]	 Loss: 0.0823	 MaxEqual: 0.7588	 LR: 0.000949
+Train Epoch[0], Iter[13199/57510]	 Loss: 0.0790	 MaxEqual: 0.7593	 LR: 0.000948
+Train Epoch[0], Iter[13249/57510]	 Loss: 0.0928	 MaxEqual: 0.7343	 LR: 0.000948
+Train Epoch[0], Iter[13299/57510]	 Loss: 0.0747	 MaxEqual: 0.7838	 LR: 0.000947
+Train Epoch[0], Iter[13349/57510]	 Loss: 0.0739	 MaxEqual: 0.7813	 LR: 0.000947
+Train Epoch[0], Iter[13399/57510]	 Loss: 0.0751	 MaxEqual: 0.7808	 LR: 0.000946
+Train Epoch[0], Iter[13449/57510]	 Loss: 0.0736	 MaxEqual: 0.7872	 LR: 0.000946
+Train Epoch[0], Iter[13499/57510]	 Loss: 0.0727	 MaxEqual: 0.7813	 LR: 0.000946
+Train Epoch[0], Iter[13549/57510]	 Loss: 0.0754	 MaxEqual: 0.7735	 LR: 0.000945
+Train Epoch[0], Iter[13599/57510]	 Loss: 0.0972	 MaxEqual: 0.7153	 LR: 0.000945
+Train Epoch[0], Iter[13649/57510]	 Loss: 0.0808	 MaxEqual: 0.7705	 LR: 0.000944
+Train Epoch[0], Iter[13699/57510]	 Loss: 0.0801	 MaxEqual: 0.7622	 LR: 0.000944
+Train Epoch[0], Iter[13749/57510]	 Loss: 0.0809	 MaxEqual: 0.7652	 LR: 0.000943
+Train Epoch[0], Iter[13799/57510]	 Loss: 0.0845	 MaxEqual: 0.7529	 LR: 0.000943
+Train Epoch[0], Iter[13849/57510]	 Loss: 0.0745	 MaxEqual: 0.7715	 LR: 0.000943
+Train Epoch[0], Iter[13899/57510]	 Loss: 0.0710	 MaxEqual: 0.7847	 LR: 0.000942
+Train Epoch[0], Iter[13949/57510]	 Loss: 0.0913	 MaxEqual: 0.7348	 LR: 0.000942
+Train Epoch[0], Iter[13999/57510]	 Loss: 0.0721	 MaxEqual: 0.7764	 LR: 0.000941
+Train Epoch[0], Iter[14049/57510]	 Loss: 0.0775	 MaxEqual: 0.7671	 LR: 0.000941
+Train Epoch[0], Iter[14099/57510]	 Loss: 0.0714	 MaxEqual: 0.7852	 LR: 0.000940
+Train Epoch[0], Iter[14149/57510]	 Loss: 0.0763	 MaxEqual: 0.7710	 LR: 0.000940
+Train Epoch[0], Iter[14199/57510]	 Loss: 0.0778	 MaxEqual: 0.7588	 LR: 0.000939
+Train Epoch[0], Iter[14249/57510]	 Loss: 0.0829	 MaxEqual: 0.7608	 LR: 0.000939
+Train Epoch[0], Iter[14299/57510]	 Loss: 0.0749	 MaxEqual: 0.7842	 LR: 0.000939
+Train Epoch[0], Iter[14349/57510]	 Loss: 0.0780	 MaxEqual: 0.7730	 LR: 0.000938
+Train Epoch[0], Iter[14399/57510]	 Loss: 0.0838	 MaxEqual: 0.7554	 LR: 0.000938
+Train Epoch[0], Iter[14449/57510]	 Loss: 0.0904	 MaxEqual: 0.7387	 LR: 0.000937
+Train Epoch[0], Iter[14499/57510]	 Loss: 0.0677	 MaxEqual: 0.7965	 LR: 0.000937
+Train Epoch[0], Iter[14549/57510]	 Loss: 0.0762	 MaxEqual: 0.7647	 LR: 0.000936
+Train Epoch[0], Iter[14599/57510]	 Loss: 0.0782	 MaxEqual: 0.7661	 LR: 0.000936
+Train Epoch[0], Iter[14649/57510]	 Loss: 0.0790	 MaxEqual: 0.7681	 LR: 0.000935
+Train Epoch[0], Iter[14699/57510]	 Loss: 0.0690	 MaxEqual: 0.7872	 LR: 0.000935
+Train Epoch[0], Iter[14749/57510]	 Loss: 0.0698	 MaxEqual: 0.7847	 LR: 0.000934
+Train Epoch[0], Iter[14799/57510]	 Loss: 0.0764	 MaxEqual: 0.7652	 LR: 0.000934
+Train Epoch[0], Iter[14849/57510]	 Loss: 0.0755	 MaxEqual: 0.7740	 LR: 0.000934
+Train Epoch[0], Iter[14899/57510]	 Loss: 0.0690	 MaxEqual: 0.7857	 LR: 0.000933
+Train Epoch[0], Iter[14949/57510]	 Loss: 0.0753	 MaxEqual: 0.7691	 LR: 0.000933
+Train Epoch[0], Iter[14999/57510]	 Loss: 0.0676	 MaxEqual: 0.7926	 LR: 0.000932
+Train Epoch[0], Iter[15049/57510]	 Loss: 0.0820	 MaxEqual: 0.7480	 LR: 0.000932
+Train Epoch[0], Iter[15099/57510]	 Loss: 0.0729	 MaxEqual: 0.7842	 LR: 0.000931
+Train Epoch[0], Iter[15149/57510]	 Loss: 0.0884	 MaxEqual: 0.7353	 LR: 0.000931
+Train Epoch[0], Iter[15199/57510]	 Loss: 0.0769	 MaxEqual: 0.7701	 LR: 0.000930
+Train Epoch[0], Iter[15249/57510]	 Loss: 0.0738	 MaxEqual: 0.7759	 LR: 0.000930
+Train Epoch[0], Iter[15299/57510]	 Loss: 0.0664	 MaxEqual: 0.7960	 LR: 0.000929
+Train Epoch[0], Iter[15349/57510]	 Loss: 0.0740	 MaxEqual: 0.7691	 LR: 0.000929
+Train Epoch[0], Iter[15399/57510]	 Loss: 0.0706	 MaxEqual: 0.7784	 LR: 0.000928
+Train Epoch[0], Iter[15449/57510]	 Loss: 0.0718	 MaxEqual: 0.7818	 LR: 0.000928
+Train Epoch[0], Iter[15499/57510]	 Loss: 0.0700	 MaxEqual: 0.7857	 LR: 0.000927
+Train Epoch[0], Iter[15549/57510]	 Loss: 0.0629	 MaxEqual: 0.7970	 LR: 0.000927
+Train Epoch[0], Iter[15599/57510]	 Loss: 0.0743	 MaxEqual: 0.7696	 LR: 0.000926
+Train Epoch[0], Iter[15649/57510]	 Loss: 0.0746	 MaxEqual: 0.7764	 LR: 0.000926
+Train Epoch[0], Iter[15699/57510]	 Loss: 0.0727	 MaxEqual: 0.7691	 LR: 0.000925
+Train Epoch[0], Iter[15749/57510]	 Loss: 0.0739	 MaxEqual: 0.7701	 LR: 0.000925
+Train Epoch[0], Iter[15799/57510]	 Loss: 0.0663	 MaxEqual: 0.7886	 LR: 0.000924
+Train Epoch[0], Iter[15849/57510]	 Loss: 0.0787	 MaxEqual: 0.7578	 LR: 0.000924
+Train Epoch[0], Iter[15899/57510]	 Loss: 0.0726	 MaxEqual: 0.7769	 LR: 0.000923
+Train Epoch[0], Iter[15949/57510]	 Loss: 0.0633	 MaxEqual: 0.8019	 LR: 0.000923
+Train Epoch[0], Iter[15999/57510]	 Loss: 0.0742	 MaxEqual: 0.7666	 LR: 0.000922
+Train Epoch[0], Iter[16049/57510]	 Loss: 0.0724	 MaxEqual: 0.7833	 LR: 0.000922
+Train Epoch[0], Iter[16099/57510]	 Loss: 0.0668	 MaxEqual: 0.7979	 LR: 0.000921
+Train Epoch[0], Iter[16149/57510]	 Loss: 0.0654	 MaxEqual: 0.7950	 LR: 0.000921
+Train Epoch[0], Iter[16199/57510]	 Loss: 0.0812	 MaxEqual: 0.7642	 LR: 0.000920
+Train Epoch[0], Iter[16249/57510]	 Loss: 0.0721	 MaxEqual: 0.7774	 LR: 0.000920
+Train Epoch[0], Iter[16299/57510]	 Loss: 0.0663	 MaxEqual: 0.7891	 LR: 0.000919
+Train Epoch[0], Iter[16349/57510]	 Loss: 0.0607	 MaxEqual: 0.8068	 LR: 0.000919
+Train Epoch[0], Iter[16399/57510]	 Loss: 0.0630	 MaxEqual: 0.7965	 LR: 0.000918
+Train Epoch[0], Iter[16449/57510]	 Loss: 0.0701	 MaxEqual: 0.7798	 LR: 0.000918
+Train Epoch[0], Iter[16499/57510]	 Loss: 0.0647	 MaxEqual: 0.7931	 LR: 0.000917
+Train Epoch[0], Iter[16549/57510]	 Loss: 0.0772	 MaxEqual: 0.7593	 LR: 0.000917
+Train Epoch[0], Iter[16599/57510]	 Loss: 0.0647	 MaxEqual: 0.7994	 LR: 0.000916
+Train Epoch[0], Iter[16649/57510]	 Loss: 0.0630	 MaxEqual: 0.8053	 LR: 0.000916
+Train Epoch[0], Iter[16699/57510]	 Loss: 0.0725	 MaxEqual: 0.7828	 LR: 0.000915
+Train Epoch[0], Iter[16749/57510]	 Loss: 0.0609	 MaxEqual: 0.8033	 LR: 0.000915
+Train Epoch[0], Iter[16799/57510]	 Loss: 0.0680	 MaxEqual: 0.7960	 LR: 0.000914
+Train Epoch[0], Iter[16849/57510]	 Loss: 0.0700	 MaxEqual: 0.7774	 LR: 0.000914
+Train Epoch[0], Iter[16899/57510]	 Loss: 0.0624	 MaxEqual: 0.7950	 LR: 0.000913
+Train Epoch[0], Iter[16949/57510]	 Loss: 0.0704	 MaxEqual: 0.7676	 LR: 0.000913
+Train Epoch[0], Iter[16999/57510]	 Loss: 0.0696	 MaxEqual: 0.7823	 LR: 0.000912
+Train Epoch[0], Iter[17049/57510]	 Loss: 0.0611	 MaxEqual: 0.7960	 LR: 0.000912
+Train Epoch[0], Iter[17099/57510]	 Loss: 0.0713	 MaxEqual: 0.7735	 LR: 0.000911
+Train Epoch[0], Iter[17149/57510]	 Loss: 0.0772	 MaxEqual: 0.7647	 LR: 0.000910
+Train Epoch[0], Iter[17199/57510]	 Loss: 0.0702	 MaxEqual: 0.7720	 LR: 0.000910
+Train Epoch[0], Iter[17249/57510]	 Loss: 0.0621	 MaxEqual: 0.7950	 LR: 0.000909
+Train Epoch[0], Iter[17299/57510]	 Loss: 0.0665	 MaxEqual: 0.7808	 LR: 0.000909
+Train Epoch[0], Iter[17349/57510]	 Loss: 0.0609	 MaxEqual: 0.8053	 LR: 0.000908
+Train Epoch[0], Iter[17399/57510]	 Loss: 0.0670	 MaxEqual: 0.7916	 LR: 0.000908
+Train Epoch[0], Iter[17449/57510]	 Loss: 0.0644	 MaxEqual: 0.7891	 LR: 0.000907
+Train Epoch[0], Iter[17499/57510]	 Loss: 0.0619	 MaxEqual: 0.8082	 LR: 0.000907
+Train Epoch[0], Iter[17549/57510]	 Loss: 0.0722	 MaxEqual: 0.7784	 LR: 0.000906
+Train Epoch[0], Iter[17599/57510]	 Loss: 0.0641	 MaxEqual: 0.7950	 LR: 0.000906
+Train Epoch[0], Iter[17649/57510]	 Loss: 0.0685	 MaxEqual: 0.7872	 LR: 0.000905
+Train Epoch[0], Iter[17699/57510]	 Loss: 0.0552	 MaxEqual: 0.8170	 LR: 0.000904
+Train Epoch[0], Iter[17749/57510]	 Loss: 0.0597	 MaxEqual: 0.8058	 LR: 0.000904
+Train Epoch[0], Iter[17799/57510]	 Loss: 0.0633	 MaxEqual: 0.8063	 LR: 0.000903
+Train Epoch[0], Iter[17849/57510]	 Loss: 0.0577	 MaxEqual: 0.8160	 LR: 0.000903
+Train Epoch[0], Iter[17899/57510]	 Loss: 0.0604	 MaxEqual: 0.8043	 LR: 0.000902
+Train Epoch[0], Iter[17949/57510]	 Loss: 0.0617	 MaxEqual: 0.8112	 LR: 0.000902
+Train Epoch[0], Iter[17999/57510]	 Loss: 0.0605	 MaxEqual: 0.7979	 LR: 0.000901
+Train Epoch[0], Iter[18049/57510]	 Loss: 0.0540	 MaxEqual: 0.8185	 LR: 0.000900
+Train Epoch[0], Iter[18099/57510]	 Loss: 0.0727	 MaxEqual: 0.7798	 LR: 0.000900
+Train Epoch[0], Iter[18149/57510]	 Loss: 0.0540	 MaxEqual: 0.8224	 LR: 0.000899
+Train Epoch[0], Iter[18199/57510]	 Loss: 0.0599	 MaxEqual: 0.8102	 LR: 0.000899
+Train Epoch[0], Iter[18249/57510]	 Loss: 0.0533	 MaxEqual: 0.8293	 LR: 0.000898
+Train Epoch[0], Iter[18299/57510]	 Loss: 0.0557	 MaxEqual: 0.8214	 LR: 0.000898
+Train Epoch[0], Iter[18349/57510]	 Loss: 0.0609	 MaxEqual: 0.8048	 LR: 0.000897
+Train Epoch[0], Iter[18399/57510]	 Loss: 0.0515	 MaxEqual: 0.8283	 LR: 0.000897
+Train Epoch[0], Iter[18449/57510]	 Loss: 0.0512	 MaxEqual: 0.8395	 LR: 0.000896
+Train Epoch[0], Iter[18499/57510]	 Loss: 0.0639	 MaxEqual: 0.7960	 LR: 0.000895
+Train Epoch[0], Iter[18549/57510]	 Loss: 0.0584	 MaxEqual: 0.8258	 LR: 0.000895
+Train Epoch[0], Iter[18599/57510]	 Loss: 0.0597	 MaxEqual: 0.8146	 LR: 0.000894
+Train Epoch[0], Iter[18649/57510]	 Loss: 0.0583	 MaxEqual: 0.8146	 LR: 0.000894
+Train Epoch[0], Iter[18699/57510]	 Loss: 0.0579	 MaxEqual: 0.8175	 LR: 0.000893
+Train Epoch[0], Iter[18749/57510]	 Loss: 0.0491	 MaxEqual: 0.8444	 LR: 0.000893
+Train Epoch[0], Iter[18799/57510]	 Loss: 0.0462	 MaxEqual: 0.8410	 LR: 0.000892
+Train Epoch[0], Iter[18849/57510]	 Loss: 0.0658	 MaxEqual: 0.7975	 LR: 0.000891
+Train Epoch[0], Iter[18899/57510]	 Loss: 0.0489	 MaxEqual: 0.8415	 LR: 0.000891
+Train Epoch[0], Iter[18949/57510]	 Loss: 0.0684	 MaxEqual: 0.7867	 LR: 0.000890
+Train Epoch[0], Iter[18999/57510]	 Loss: 0.0573	 MaxEqual: 0.8175	 LR: 0.000890
+Train Epoch[0], Iter[19049/57510]	 Loss: 0.0575	 MaxEqual: 0.8214	 LR: 0.000889
+Train Epoch[0], Iter[19099/57510]	 Loss: 0.0552	 MaxEqual: 0.8312	 LR: 0.000888
+Train Epoch[0], Iter[19149/57510]	 Loss: 0.0538	 MaxEqual: 0.8312	 LR: 0.000888
+Train Epoch[0], Iter[19199/57510]	 Loss: 0.0524	 MaxEqual: 0.8297	 LR: 0.000887
+Train Epoch[0], Iter[19249/57510]	 Loss: 0.0481	 MaxEqual: 0.8434	 LR: 0.000887
+Train Epoch[0], Iter[19299/57510]	 Loss: 0.0501	 MaxEqual: 0.8386	 LR: 0.000886
+Train Epoch[0], Iter[19349/57510]	 Loss: 0.0478	 MaxEqual: 0.8400	 LR: 0.000885
+Train Epoch[0], Iter[19399/57510]	 Loss: 0.0532	 MaxEqual: 0.8415	 LR: 0.000885
+Train Epoch[0], Iter[19449/57510]	 Loss: 0.0526	 MaxEqual: 0.8351	 LR: 0.000884
+Train Epoch[0], Iter[19499/57510]	 Loss: 0.0656	 MaxEqual: 0.8077	 LR: 0.000884
+Train Epoch[0], Iter[19549/57510]	 Loss: 0.0553	 MaxEqual: 0.8317	 LR: 0.000883
+Train Epoch[0], Iter[19599/57510]	 Loss: 0.0680	 MaxEqual: 0.8014	 LR: 0.000882
+Train Epoch[0], Iter[19649/57510]	 Loss: 0.0579	 MaxEqual: 0.8156	 LR: 0.000882
+Train Epoch[0], Iter[19699/57510]	 Loss: 0.0575	 MaxEqual: 0.8229	 LR: 0.000881
+Train Epoch[0], Iter[19749/57510]	 Loss: 0.0585	 MaxEqual: 0.8156	 LR: 0.000881
+Train Epoch[0], Iter[19799/57510]	 Loss: 0.0716	 MaxEqual: 0.7921	 LR: 0.000880
+Train Epoch[0], Iter[19849/57510]	 Loss: 0.0589	 MaxEqual: 0.8239	 LR: 0.000879
+Train Epoch[0], Iter[19899/57510]	 Loss: 0.0556	 MaxEqual: 0.8337	 LR: 0.000879
+Train Epoch[0], Iter[19949/57510]	 Loss: 0.0642	 MaxEqual: 0.7999	 LR: 0.000878
+Train Epoch[0], Iter[19999/57510]	 Loss: 0.0489	 MaxEqual: 0.8395	 LR: 0.000878
+Train Epoch[0], Iter[20049/57510]	 Loss: 0.0568	 MaxEqual: 0.8200	 LR: 0.000877
+Train Epoch[0], Iter[20099/57510]	 Loss: 0.0497	 MaxEqual: 0.8523	 LR: 0.000876
+Train Epoch[0], Iter[20149/57510]	 Loss: 0.0587	 MaxEqual: 0.8170	 LR: 0.000876
+Train Epoch[0], Iter[20199/57510]	 Loss: 0.0543	 MaxEqual: 0.8317	 LR: 0.000875
+Train Epoch[0], Iter[20249/57510]	 Loss: 0.0546	 MaxEqual: 0.8288	 LR: 0.000875
+Train Epoch[0], Iter[20299/57510]	 Loss: 0.0560	 MaxEqual: 0.8263	 LR: 0.000874
+Train Epoch[0], Iter[20349/57510]	 Loss: 0.0613	 MaxEqual: 0.8102	 LR: 0.000873
+Train Epoch[0], Iter[20399/57510]	 Loss: 0.0458	 MaxEqual: 0.8571	 LR: 0.000873
+Train Epoch[0], Iter[20449/57510]	 Loss: 0.0532	 MaxEqual: 0.8366	 LR: 0.000872
+Train Epoch[0], Iter[20499/57510]	 Loss: 0.0510	 MaxEqual: 0.8434	 LR: 0.000871
+Train Epoch[0], Iter[20549/57510]	 Loss: 0.0512	 MaxEqual: 0.8434	 LR: 0.000871
+Train Epoch[0], Iter[20599/57510]	 Loss: 0.0621	 MaxEqual: 0.8043	 LR: 0.000870
+Train Epoch[0], Iter[20649/57510]	 Loss: 0.0489	 MaxEqual: 0.8449	 LR: 0.000870
+Train Epoch[0], Iter[20699/57510]	 Loss: 0.0563	 MaxEqual: 0.8258	 LR: 0.000869
+Train Epoch[0], Iter[20749/57510]	 Loss: 0.0499	 MaxEqual: 0.8395	 LR: 0.000868
+Train Epoch[0], Iter[20799/57510]	 Loss: 0.0422	 MaxEqual: 0.8645	 LR: 0.000868
+Train Epoch[0], Iter[20849/57510]	 Loss: 0.0435	 MaxEqual: 0.8576	 LR: 0.000867
+Train Epoch[0], Iter[20899/57510]	 Loss: 0.0417	 MaxEqual: 0.8630	 LR: 0.000866
+Train Epoch[0], Iter[20949/57510]	 Loss: 0.0442	 MaxEqual: 0.8620	 LR: 0.000866
+Train Epoch[0], Iter[20999/57510]	 Loss: 0.0562	 MaxEqual: 0.8224	 LR: 0.000865
+Train Epoch[0], Iter[21049/57510]	 Loss: 0.0533	 MaxEqual: 0.8425	 LR: 0.000864
+Train Epoch[0], Iter[21099/57510]	 Loss: 0.0465	 MaxEqual: 0.8591	 LR: 0.000864
+Train Epoch[0], Iter[21149/57510]	 Loss: 0.0413	 MaxEqual: 0.8659	 LR: 0.000863
+Train Epoch[0], Iter[21199/57510]	 Loss: 0.0408	 MaxEqual: 0.8718	 LR: 0.000863
+Train Epoch[0], Iter[21249/57510]	 Loss: 0.0452	 MaxEqual: 0.8635	 LR: 0.000862
+Train Epoch[0], Iter[21299/57510]	 Loss: 0.0424	 MaxEqual: 0.8659	 LR: 0.000861
+Train Epoch[0], Iter[21349/57510]	 Loss: 0.0472	 MaxEqual: 0.8464	 LR: 0.000861
+Train Epoch[0], Iter[21399/57510]	 Loss: 0.0424	 MaxEqual: 0.8674	 LR: 0.000860
+Train Epoch[0], Iter[21449/57510]	 Loss: 0.0402	 MaxEqual: 0.8674	 LR: 0.000859
+Train Epoch[0], Iter[21499/57510]	 Loss: 0.0499	 MaxEqual: 0.8478	 LR: 0.000859
+Train Epoch[0], Iter[21549/57510]	 Loss: 0.0630	 MaxEqual: 0.7999	 LR: 0.000858
+Train Epoch[0], Iter[21599/57510]	 Loss: 0.0456	 MaxEqual: 0.8591	 LR: 0.000857
+Train Epoch[0], Iter[21649/57510]	 Loss: 0.0501	 MaxEqual: 0.8425	 LR: 0.000857
+Train Epoch[0], Iter[21699/57510]	 Loss: 0.0503	 MaxEqual: 0.8410	 LR: 0.000856
+Train Epoch[0], Iter[21749/57510]	 Loss: 0.0454	 MaxEqual: 0.8527	 LR: 0.000855
+Train Epoch[0], Iter[21799/57510]	 Loss: 0.0485	 MaxEqual: 0.8434	 LR: 0.000855
+Train Epoch[0], Iter[21849/57510]	 Loss: 0.0459	 MaxEqual: 0.8620	 LR: 0.000854
+Train Epoch[0], Iter[21899/57510]	 Loss: 0.0393	 MaxEqual: 0.8767	 LR: 0.000853
+Train Epoch[0], Iter[21949/57510]	 Loss: 0.0482	 MaxEqual: 0.8537	 LR: 0.000853
+Train Epoch[0], Iter[21999/57510]	 Loss: 0.0479	 MaxEqual: 0.8557	 LR: 0.000852
+Train Epoch[0], Iter[22049/57510]	 Loss: 0.0612	 MaxEqual: 0.8165	 LR: 0.000851
+Train Epoch[0], Iter[22099/57510]	 Loss: 0.0597	 MaxEqual: 0.8165	 LR: 0.000851
+Train Epoch[0], Iter[22149/57510]	 Loss: 0.0461	 MaxEqual: 0.8523	 LR: 0.000850
+Train Epoch[0], Iter[22199/57510]	 Loss: 0.0392	 MaxEqual: 0.8723	 LR: 0.000849
+Train Epoch[0], Iter[22249/57510]	 Loss: 0.0401	 MaxEqual: 0.8679	 LR: 0.000849
+Train Epoch[0], Iter[22299/57510]	 Loss: 0.0355	 MaxEqual: 0.8894	 LR: 0.000848
+Train Epoch[0], Iter[22349/57510]	 Loss: 0.0370	 MaxEqual: 0.8787	 LR: 0.000847
+Train Epoch[0], Iter[22399/57510]	 Loss: 0.0441	 MaxEqual: 0.8620	 LR: 0.000847
+Train Epoch[0], Iter[22449/57510]	 Loss: 0.0438	 MaxEqual: 0.8498	 LR: 0.000846
+Train Epoch[0], Iter[22499/57510]	 Loss: 0.0434	 MaxEqual: 0.8640	 LR: 0.000845
+Train Epoch[0], Iter[22549/57510]	 Loss: 0.0451	 MaxEqual: 0.8567	 LR: 0.000845
+Train Epoch[0], Iter[22599/57510]	 Loss: 0.0419	 MaxEqual: 0.8620	 LR: 0.000844
+Train Epoch[0], Iter[22649/57510]	 Loss: 0.0358	 MaxEqual: 0.8811	 LR: 0.000843
+Train Epoch[0], Iter[22699/57510]	 Loss: 0.0359	 MaxEqual: 0.8757	 LR: 0.000843
+Train Epoch[0], Iter[22749/57510]	 Loss: 0.0415	 MaxEqual: 0.8664	 LR: 0.000842
+Train Epoch[0], Iter[22799/57510]	 Loss: 0.0423	 MaxEqual: 0.8630	 LR: 0.000841
+Train Epoch[0], Iter[22849/57510]	 Loss: 0.0451	 MaxEqual: 0.8488	 LR: 0.000841
+Train Epoch[0], Iter[22899/57510]	 Loss: 0.0407	 MaxEqual: 0.8728	 LR: 0.000840
+Train Epoch[0], Iter[22949/57510]	 Loss: 0.0428	 MaxEqual: 0.8659	 LR: 0.000839
+Train Epoch[0], Iter[22999/57510]	 Loss: 0.0436	 MaxEqual: 0.8645	 LR: 0.000839
+Train Epoch[0], Iter[23049/57510]	 Loss: 0.0409	 MaxEqual: 0.8708	 LR: 0.000838
+Train Epoch[0], Iter[23099/57510]	 Loss: 0.0406	 MaxEqual: 0.8694	 LR: 0.000837
+Train Epoch[0], Iter[23149/57510]	 Loss: 0.0358	 MaxEqual: 0.8826	 LR: 0.000836
+Train Epoch[0], Iter[23199/57510]	 Loss: 0.0431	 MaxEqual: 0.8625	 LR: 0.000836
+Train Epoch[0], Iter[23249/57510]	 Loss: 0.0389	 MaxEqual: 0.8718	 LR: 0.000835
+Train Epoch[0], Iter[23299/57510]	 Loss: 0.0423	 MaxEqual: 0.8679	 LR: 0.000834
+Train Epoch[0], Iter[23349/57510]	 Loss: 0.0356	 MaxEqual: 0.8806	 LR: 0.000834
+Train Epoch[0], Iter[23399/57510]	 Loss: 0.0523	 MaxEqual: 0.8356	 LR: 0.000833
+Train Epoch[0], Iter[23449/57510]	 Loss: 0.0361	 MaxEqual: 0.8821	 LR: 0.000832
+Train Epoch[0], Iter[23499/57510]	 Loss: 0.0399	 MaxEqual: 0.8694	 LR: 0.000832
+Train Epoch[0], Iter[23549/57510]	 Loss: 0.0429	 MaxEqual: 0.8650	 LR: 0.000831
+Train Epoch[0], Iter[23599/57510]	 Loss: 0.0346	 MaxEqual: 0.8860	 LR: 0.000830
+Train Epoch[0], Iter[23649/57510]	 Loss: 0.0366	 MaxEqual: 0.8806	 LR: 0.000830
+Train Epoch[0], Iter[23699/57510]	 Loss: 0.0424	 MaxEqual: 0.8630	 LR: 0.000829
+Train Epoch[0], Iter[23749/57510]	 Loss: 0.0347	 MaxEqual: 0.8880	 LR: 0.000828
+Train Epoch[0], Iter[23799/57510]	 Loss: 0.0332	 MaxEqual: 0.8938	 LR: 0.000827
+Train Epoch[0], Iter[23849/57510]	 Loss: 0.0363	 MaxEqual: 0.8811	 LR: 0.000827
+Train Epoch[0], Iter[23899/57510]	 Loss: 0.0343	 MaxEqual: 0.8850	 LR: 0.000826
+Train Epoch[0], Iter[23949/57510]	 Loss: 0.0497	 MaxEqual: 0.8513	 LR: 0.000825
+Train Epoch[0], Iter[23999/57510]	 Loss: 0.0395	 MaxEqual: 0.8748	 LR: 0.000825
+Train Epoch[0], Iter[24049/57510]	 Loss: 0.0406	 MaxEqual: 0.8635	 LR: 0.000824
+Train Epoch[0], Iter[24099/57510]	 Loss: 0.0409	 MaxEqual: 0.8733	 LR: 0.000823
+Train Epoch[0], Iter[24149/57510]	 Loss: 0.0337	 MaxEqual: 0.8880	 LR: 0.000822
+Train Epoch[0], Iter[24199/57510]	 Loss: 0.0390	 MaxEqual: 0.8728	 LR: 0.000822
+Train Epoch[0], Iter[24249/57510]	 Loss: 0.0461	 MaxEqual: 0.8508	 LR: 0.000821
+Train Epoch[0], Iter[24299/57510]	 Loss: 0.0412	 MaxEqual: 0.8718	 LR: 0.000820
+Train Epoch[0], Iter[24349/57510]	 Loss: 0.0398	 MaxEqual: 0.8708	 LR: 0.000820
+Train Epoch[0], Iter[24399/57510]	 Loss: 0.0343	 MaxEqual: 0.8865	 LR: 0.000819
+Train Epoch[0], Iter[24449/57510]	 Loss: 0.0345	 MaxEqual: 0.8860	 LR: 0.000818
+Train Epoch[0], Iter[24499/57510]	 Loss: 0.0471	 MaxEqual: 0.8518	 LR: 0.000818
+Train Epoch[0], Iter[24549/57510]	 Loss: 0.0386	 MaxEqual: 0.8767	 LR: 0.000817
+Train Epoch[0], Iter[24599/57510]	 Loss: 0.0336	 MaxEqual: 0.8885	 LR: 0.000816
+Train Epoch[0], Iter[24649/57510]	 Loss: 0.0347	 MaxEqual: 0.8909	 LR: 0.000815
+Train Epoch[0], Iter[24699/57510]	 Loss: 0.0334	 MaxEqual: 0.8870	 LR: 0.000815
+Train Epoch[0], Iter[24749/57510]	 Loss: 0.0351	 MaxEqual: 0.8875	 LR: 0.000814
+Train Epoch[0], Iter[24799/57510]	 Loss: 0.0399	 MaxEqual: 0.8738	 LR: 0.000813
+Train Epoch[0], Iter[24849/57510]	 Loss: 0.0375	 MaxEqual: 0.8806	 LR: 0.000812
+Train Epoch[0], Iter[24899/57510]	 Loss: 0.0398	 MaxEqual: 0.8699	 LR: 0.000812
+Train Epoch[0], Iter[24949/57510]	 Loss: 0.0352	 MaxEqual: 0.8880	 LR: 0.000811
+Train Epoch[0], Iter[24999/57510]	 Loss: 0.0402	 MaxEqual: 0.8787	 LR: 0.000810
+Train Epoch[0], Iter[25049/57510]	 Loss: 0.0474	 MaxEqual: 0.8513	 LR: 0.000809
+Train Epoch[0], Iter[25099/57510]	 Loss: 0.0398	 MaxEqual: 0.8733	 LR: 0.000809
+Train Epoch[0], Iter[25149/57510]	 Loss: 0.0442	 MaxEqual: 0.8606	 LR: 0.000808
+Train Epoch[0], Iter[25199/57510]	 Loss: 0.0394	 MaxEqual: 0.8752	 LR: 0.000807
+Train Epoch[0], Iter[25249/57510]	 Loss: 0.0394	 MaxEqual: 0.8733	 LR: 0.000807
+Train Epoch[0], Iter[25299/57510]	 Loss: 0.0366	 MaxEqual: 0.8831	 LR: 0.000806
+Train Epoch[0], Iter[25349/57510]	 Loss: 0.0445	 MaxEqual: 0.8699	 LR: 0.000805
+Train Epoch[0], Iter[25399/57510]	 Loss: 0.0400	 MaxEqual: 0.8723	 LR: 0.000804
+Train Epoch[0], Iter[25449/57510]	 Loss: 0.0372	 MaxEqual: 0.8860	 LR: 0.000804
+Train Epoch[0], Iter[25499/57510]	 Loss: 0.0437	 MaxEqual: 0.8557	 LR: 0.000803
+Train Epoch[0], Iter[25549/57510]	 Loss: 0.0350	 MaxEqual: 0.8870	 LR: 0.000802
+Train Epoch[0], Iter[25599/57510]	 Loss: 0.0355	 MaxEqual: 0.8889	 LR: 0.000801
+Train Epoch[0], Iter[25649/57510]	 Loss: 0.0350	 MaxEqual: 0.8855	 LR: 0.000801
+Train Epoch[0], Iter[25699/57510]	 Loss: 0.0407	 MaxEqual: 0.8664	 LR: 0.000800
+Train Epoch[0], Iter[25749/57510]	 Loss: 0.0477	 MaxEqual: 0.8537	 LR: 0.000799
+Train Epoch[0], Iter[25799/57510]	 Loss: 0.0347	 MaxEqual: 0.8880	 LR: 0.000799
+Train Epoch[0], Iter[25849/57510]	 Loss: 0.0344	 MaxEqual: 0.8889	 LR: 0.000798
+Train Epoch[0], Iter[25899/57510]	 Loss: 0.0416	 MaxEqual: 0.8748	 LR: 0.000797
+Train Epoch[0], Iter[25949/57510]	 Loss: 0.0435	 MaxEqual: 0.8611	 LR: 0.000796
+Train Epoch[0], Iter[25999/57510]	 Loss: 0.0399	 MaxEqual: 0.8743	 LR: 0.000795
+Train Epoch[0], Iter[26049/57510]	 Loss: 0.0353	 MaxEqual: 0.8880	 LR: 0.000795
+Train Epoch[0], Iter[26099/57510]	 Loss: 0.0353	 MaxEqual: 0.8909	 LR: 0.000794
+Train Epoch[0], Iter[26149/57510]	 Loss: 0.0350	 MaxEqual: 0.8889	 LR: 0.000793
+Train Epoch[0], Iter[26199/57510]	 Loss: 0.0363	 MaxEqual: 0.8796	 LR: 0.000792
+Train Epoch[0], Iter[26249/57510]	 Loss: 0.0355	 MaxEqual: 0.8836	 LR: 0.000792
+Train Epoch[0], Iter[26299/57510]	 Loss: 0.0352	 MaxEqual: 0.8885	 LR: 0.000791
+Train Epoch[0], Iter[26349/57510]	 Loss: 0.0401	 MaxEqual: 0.8713	 LR: 0.000790
+Train Epoch[0], Iter[26399/57510]	 Loss: 0.0340	 MaxEqual: 0.8875	 LR: 0.000789
+Train Epoch[0], Iter[26449/57510]	 Loss: 0.0360	 MaxEqual: 0.8836	 LR: 0.000789
+Train Epoch[0], Iter[26499/57510]	 Loss: 0.0352	 MaxEqual: 0.8836	 LR: 0.000788
+Train Epoch[0], Iter[26549/57510]	 Loss: 0.0346	 MaxEqual: 0.8860	 LR: 0.000787
+Train Epoch[0], Iter[26599/57510]	 Loss: 0.0346	 MaxEqual: 0.8855	 LR: 0.000786
+Train Epoch[0], Iter[26649/57510]	 Loss: 0.0400	 MaxEqual: 0.8733	 LR: 0.000786
+Train Epoch[0], Iter[26699/57510]	 Loss: 0.0351	 MaxEqual: 0.8841	 LR: 0.000785
+Train Epoch[0], Iter[26749/57510]	 Loss: 0.0417	 MaxEqual: 0.8611	 LR: 0.000784
+Train Epoch[0], Iter[26799/57510]	 Loss: 0.0385	 MaxEqual: 0.8723	 LR: 0.000783
+Train Epoch[0], Iter[26849/57510]	 Loss: 0.0347	 MaxEqual: 0.8855	 LR: 0.000783
+Train Epoch[0], Iter[26899/57510]	 Loss: 0.0336	 MaxEqual: 0.8914	 LR: 0.000782
+Train Epoch[0], Iter[26949/57510]	 Loss: 0.0408	 MaxEqual: 0.8752	 LR: 0.000781
+Train Epoch[0], Iter[26999/57510]	 Loss: 0.0368	 MaxEqual: 0.8841	 LR: 0.000780
+Train Epoch[0], Iter[27049/57510]	 Loss: 0.0399	 MaxEqual: 0.8767	 LR: 0.000779
+Train Epoch[0], Iter[27099/57510]	 Loss: 0.0383	 MaxEqual: 0.8723	 LR: 0.000779
+Train Epoch[0], Iter[27149/57510]	 Loss: 0.0356	 MaxEqual: 0.8826	 LR: 0.000778
+Train Epoch[0], Iter[27199/57510]	 Loss: 0.0335	 MaxEqual: 0.8875	 LR: 0.000777
+Train Epoch[0], Iter[27249/57510]	 Loss: 0.0405	 MaxEqual: 0.8713	 LR: 0.000776
+Train Epoch[0], Iter[27299/57510]	 Loss: 0.0364	 MaxEqual: 0.8831	 LR: 0.000776
+Train Epoch[0], Iter[27349/57510]	 Loss: 0.0407	 MaxEqual: 0.8699	 LR: 0.000775
+Train Epoch[0], Iter[27399/57510]	 Loss: 0.0462	 MaxEqual: 0.8562	 LR: 0.000774
+Train Epoch[0], Iter[27449/57510]	 Loss: 0.0401	 MaxEqual: 0.8723	 LR: 0.000773
+Train Epoch[0], Iter[27499/57510]	 Loss: 0.0430	 MaxEqual: 0.8601	 LR: 0.000773
+Train Epoch[0], Iter[27549/57510]	 Loss: 0.0331	 MaxEqual: 0.8919	 LR: 0.000772
+Train Epoch[0], Iter[27599/57510]	 Loss: 0.0342	 MaxEqual: 0.8870	 LR: 0.000771
+Train Epoch[0], Iter[27649/57510]	 Loss: 0.0337	 MaxEqual: 0.8894	 LR: 0.000770
+Train Epoch[0], Iter[27699/57510]	 Loss: 0.0436	 MaxEqual: 0.8630	 LR: 0.000769
+Train Epoch[0], Iter[27749/57510]	 Loss: 0.0350	 MaxEqual: 0.8865	 LR: 0.000769
+Train Epoch[0], Iter[27799/57510]	 Loss: 0.0361	 MaxEqual: 0.8841	 LR: 0.000768
+Train Epoch[0], Iter[27849/57510]	 Loss: 0.0397	 MaxEqual: 0.8713	 LR: 0.000767
+Train Epoch[0], Iter[27899/57510]	 Loss: 0.0336	 MaxEqual: 0.8870	 LR: 0.000766
+Train Epoch[0], Iter[27949/57510]	 Loss: 0.0439	 MaxEqual: 0.8557	 LR: 0.000765
+Train Epoch[0], Iter[27999/57510]	 Loss: 0.0382	 MaxEqual: 0.8757	 LR: 0.000765
+Train Epoch[0], Iter[28049/57510]	 Loss: 0.0448	 MaxEqual: 0.8503	 LR: 0.000764
+Train Epoch[0], Iter[28099/57510]	 Loss: 0.0375	 MaxEqual: 0.8772	 LR: 0.000763
+Train Epoch[0], Iter[28149/57510]	 Loss: 0.0408	 MaxEqual: 0.8713	 LR: 0.000762
+Train Epoch[0], Iter[28199/57510]	 Loss: 0.0344	 MaxEqual: 0.8899	 LR: 0.000762
+Train Epoch[0], Iter[28249/57510]	 Loss: 0.0438	 MaxEqual: 0.8571	 LR: 0.000761
+Train Epoch[0], Iter[28299/57510]	 Loss: 0.0329	 MaxEqual: 0.8919	 LR: 0.000760
+Train Epoch[0], Iter[28349/57510]	 Loss: 0.0339	 MaxEqual: 0.8899	 LR: 0.000759
+Train Epoch[0], Iter[28399/57510]	 Loss: 0.0384	 MaxEqual: 0.8757	 LR: 0.000758
+Train Epoch[0], Iter[28449/57510]	 Loss: 0.0353	 MaxEqual: 0.8801	 LR: 0.000758
+Train Epoch[0], Iter[28499/57510]	 Loss: 0.0388	 MaxEqual: 0.8748	 LR: 0.000757
+Train Epoch[0], Iter[28549/57510]	 Loss: 0.0439	 MaxEqual: 0.8615	 LR: 0.000756
+Train Epoch[0], Iter[28599/57510]	 Loss: 0.0476	 MaxEqual: 0.8601	 LR: 0.000755
+Train Epoch[0], Iter[28649/57510]	 Loss: 0.0336	 MaxEqual: 0.8938	 LR: 0.000754
+Train Epoch[0], Iter[28699/57510]	 Loss: 0.0347	 MaxEqual: 0.8850	 LR: 0.000754
+Train Epoch[0], Iter[28749/57510]	 Loss: 0.0431	 MaxEqual: 0.8527	 LR: 0.000753
+Train Epoch[0], Iter[28799/57510]	 Loss: 0.0437	 MaxEqual: 0.8611	 LR: 0.000752
+Train Epoch[0], Iter[28849/57510]	 Loss: 0.0422	 MaxEqual: 0.8650	 LR: 0.000751
+Train Epoch[0], Iter[28899/57510]	 Loss: 0.0398	 MaxEqual: 0.8615	 LR: 0.000750
+Train Epoch[0], Iter[28949/57510]	 Loss: 0.0435	 MaxEqual: 0.8645	 LR: 0.000750
+Train Epoch[0], Iter[28999/57510]	 Loss: 0.0391	 MaxEqual: 0.8762	 LR: 0.000749
+Train Epoch[0], Iter[29049/57510]	 Loss: 0.0363	 MaxEqual: 0.8772	 LR: 0.000748
+Train Epoch[0], Iter[29099/57510]	 Loss: 0.0437	 MaxEqual: 0.8674	 LR: 0.000747
+Train Epoch[0], Iter[29149/57510]	 Loss: 0.0351	 MaxEqual: 0.8865	 LR: 0.000746
+Train Epoch[0], Iter[29199/57510]	 Loss: 0.0354	 MaxEqual: 0.8841	 LR: 0.000746
+Train Epoch[0], Iter[29249/57510]	 Loss: 0.0468	 MaxEqual: 0.8562	 LR: 0.000745
+Train Epoch[0], Iter[29299/57510]	 Loss: 0.0413	 MaxEqual: 0.8659	 LR: 0.000744
+Train Epoch[0], Iter[29349/57510]	 Loss: 0.0343	 MaxEqual: 0.8885	 LR: 0.000743
+Train Epoch[0], Iter[29399/57510]	 Loss: 0.0400	 MaxEqual: 0.8694	 LR: 0.000742
+Train Epoch[0], Iter[29449/57510]	 Loss: 0.0348	 MaxEqual: 0.8821	 LR: 0.000741
+Train Epoch[0], Iter[29499/57510]	 Loss: 0.0398	 MaxEqual: 0.8713	 LR: 0.000741
+Train Epoch[0], Iter[29549/57510]	 Loss: 0.0338	 MaxEqual: 0.8894	 LR: 0.000740
+Train Epoch[0], Iter[29599/57510]	 Loss: 0.0347	 MaxEqual: 0.8919	 LR: 0.000739
+Train Epoch[0], Iter[29649/57510]	 Loss: 0.0410	 MaxEqual: 0.8718	 LR: 0.000738
+Train Epoch[0], Iter[29699/57510]	 Loss: 0.0468	 MaxEqual: 0.8523	 LR: 0.000738
+Train Epoch[0], Iter[29749/57510]	 Loss: 0.0409	 MaxEqual: 0.8694	 LR: 0.000737
+Train Epoch[0], Iter[29799/57510]	 Loss: 0.0447	 MaxEqual: 0.8611	 LR: 0.000736
+Train Epoch[0], Iter[29849/57510]	 Loss: 0.0357	 MaxEqual: 0.8811	 LR: 0.000735
+Train Epoch[0], Iter[29899/57510]	 Loss: 0.0341	 MaxEqual: 0.8889	 LR: 0.000734
+Train Epoch[0], Iter[29949/57510]	 Loss: 0.0394	 MaxEqual: 0.8757	 LR: 0.000733
+Train Epoch[0], Iter[29999/57510]	 Loss: 0.0353	 MaxEqual: 0.8821	 LR: 0.000733
+Train Epoch[0], Iter[30049/57510]	 Loss: 0.0449	 MaxEqual: 0.8620	 LR: 0.000732
+Train Epoch[0], Iter[30099/57510]	 Loss: 0.0394	 MaxEqual: 0.8728	 LR: 0.000731
+Train Epoch[0], Iter[30149/57510]	 Loss: 0.0403	 MaxEqual: 0.8723	 LR: 0.000730
+Train Epoch[0], Iter[30199/57510]	 Loss: 0.0328	 MaxEqual: 0.8948	 LR: 0.000729
+Train Epoch[0], Iter[30249/57510]	 Loss: 0.0447	 MaxEqual: 0.8581	 LR: 0.000729
+Train Epoch[0], Iter[30299/57510]	 Loss: 0.0424	 MaxEqual: 0.8713	 LR: 0.000728
+Train Epoch[0], Iter[30349/57510]	 Loss: 0.0390	 MaxEqual: 0.8689	 LR: 0.000727
+Train Epoch[0], Iter[30399/57510]	 Loss: 0.0393	 MaxEqual: 0.8738	 LR: 0.000726
+Train Epoch[0], Iter[30449/57510]	 Loss: 0.0374	 MaxEqual: 0.8738	 LR: 0.000725
+Train Epoch[0], Iter[30499/57510]	 Loss: 0.0337	 MaxEqual: 0.8919	 LR: 0.000724
+Train Epoch[0], Iter[30549/57510]	 Loss: 0.0360	 MaxEqual: 0.8821	 LR: 0.000724
+Train Epoch[0], Iter[30599/57510]	 Loss: 0.0343	 MaxEqual: 0.8870	 LR: 0.000723
+Train Epoch[0], Iter[30649/57510]	 Loss: 0.0342	 MaxEqual: 0.8850	 LR: 0.000722
+Train Epoch[0], Iter[30699/57510]	 Loss: 0.0416	 MaxEqual: 0.8713	 LR: 0.000721
+Train Epoch[0], Iter[30749/57510]	 Loss: 0.0386	 MaxEqual: 0.8738	 LR: 0.000720
+Train Epoch[0], Iter[30799/57510]	 Loss: 0.0344	 MaxEqual: 0.8875	 LR: 0.000719
+Train Epoch[0], Iter[30849/57510]	 Loss: 0.0396	 MaxEqual: 0.8699	 LR: 0.000719
+Train Epoch[0], Iter[30899/57510]	 Loss: 0.0347	 MaxEqual: 0.8836	 LR: 0.000718
+Train Epoch[0], Iter[30949/57510]	 Loss: 0.0331	 MaxEqual: 0.8904	 LR: 0.000717
+Train Epoch[0], Iter[30999/57510]	 Loss: 0.0393	 MaxEqual: 0.8718	 LR: 0.000716
+Train Epoch[0], Iter[31049/57510]	 Loss: 0.0359	 MaxEqual: 0.8870	 LR: 0.000715
+Train Epoch[0], Iter[31099/57510]	 Loss: 0.0396	 MaxEqual: 0.8738	 LR: 0.000714
+Train Epoch[0], Iter[31149/57510]	 Loss: 0.0466	 MaxEqual: 0.8498	 LR: 0.000714
+Train Epoch[0], Iter[31199/57510]	 Loss: 0.0436	 MaxEqual: 0.8664	 LR: 0.000713
+Train Epoch[0], Iter[31249/57510]	 Loss: 0.0385	 MaxEqual: 0.8757	 LR: 0.000712
+Train Epoch[0], Iter[31299/57510]	 Loss: 0.0400	 MaxEqual: 0.8748	 LR: 0.000711
+Train Epoch[0], Iter[31349/57510]	 Loss: 0.0426	 MaxEqual: 0.8645	 LR: 0.000710
+Train Epoch[0], Iter[31399/57510]	 Loss: 0.0410	 MaxEqual: 0.8659	 LR: 0.000709
+Train Epoch[0], Iter[31449/57510]	 Loss: 0.0395	 MaxEqual: 0.8738	 LR: 0.000709
+Train Epoch[0], Iter[31499/57510]	 Loss: 0.0441	 MaxEqual: 0.8586	 LR: 0.000708
+Train Epoch[0], Iter[31549/57510]	 Loss: 0.0381	 MaxEqual: 0.8743	 LR: 0.000707
+Train Epoch[0], Iter[31599/57510]	 Loss: 0.0353	 MaxEqual: 0.8806	 LR: 0.000706
+Train Epoch[0], Iter[31649/57510]	 Loss: 0.0404	 MaxEqual: 0.8708	 LR: 0.000705
+Train Epoch[0], Iter[31699/57510]	 Loss: 0.0409	 MaxEqual: 0.8659	 LR: 0.000704
+Train Epoch[0], Iter[31749/57510]	 Loss: 0.0339	 MaxEqual: 0.8938	 LR: 0.000704
+Train Epoch[0], Iter[31799/57510]	 Loss: 0.0409	 MaxEqual: 0.8748	 LR: 0.000703
+Train Epoch[0], Iter[31849/57510]	 Loss: 0.0381	 MaxEqual: 0.8772	 LR: 0.000702
+Train Epoch[0], Iter[31899/57510]	 Loss: 0.0466	 MaxEqual: 0.8537	 LR: 0.000701
+Train Epoch[0], Iter[31949/57510]	 Loss: 0.0331	 MaxEqual: 0.8894	 LR: 0.000700
+Train Epoch[0], Iter[31999/57510]	 Loss: 0.0352	 MaxEqual: 0.8836	 LR: 0.000699
+Train Epoch[0], Iter[32049/57510]	 Loss: 0.0379	 MaxEqual: 0.8777	 LR: 0.000699
+Train Epoch[0], Iter[32099/57510]	 Loss: 0.0338	 MaxEqual: 0.8894	 LR: 0.000698
+Train Epoch[0], Iter[32149/57510]	 Loss: 0.0387	 MaxEqual: 0.8723	 LR: 0.000697
+Train Epoch[0], Iter[32199/57510]	 Loss: 0.0416	 MaxEqual: 0.8684	 LR: 0.000696
+Train Epoch[0], Iter[32249/57510]	 Loss: 0.0343	 MaxEqual: 0.8899	 LR: 0.000695
+Train Epoch[0], Iter[32299/57510]	 Loss: 0.0405	 MaxEqual: 0.8684	 LR: 0.000694
+Train Epoch[0], Iter[32349/57510]	 Loss: 0.0336	 MaxEqual: 0.8904	 LR: 0.000693
+Train Epoch[0], Iter[32399/57510]	 Loss: 0.0383	 MaxEqual: 0.8718	 LR: 0.000693
+Train Epoch[0], Iter[32449/57510]	 Loss: 0.0357	 MaxEqual: 0.8841	 LR: 0.000692
+Train Epoch[0], Iter[32499/57510]	 Loss: 0.0345	 MaxEqual: 0.8841	 LR: 0.000691
+Train Epoch[0], Iter[32549/57510]	 Loss: 0.0397	 MaxEqual: 0.8713	 LR: 0.000690
+Train Epoch[0], Iter[32599/57510]	 Loss: 0.0379	 MaxEqual: 0.8762	 LR: 0.000689
+Train Epoch[0], Iter[32649/57510]	 Loss: 0.0334	 MaxEqual: 0.8899	 LR: 0.000688
+Train Epoch[0], Iter[32699/57510]	 Loss: 0.0428	 MaxEqual: 0.8655	 LR: 0.000688
+Train Epoch[0], Iter[32749/57510]	 Loss: 0.0355	 MaxEqual: 0.8826	 LR: 0.000687
+Train Epoch[0], Iter[32799/57510]	 Loss: 0.0397	 MaxEqual: 0.8684	 LR: 0.000686
+Train Epoch[0], Iter[32849/57510]	 Loss: 0.0345	 MaxEqual: 0.8865	 LR: 0.000685
+Train Epoch[0], Iter[32899/57510]	 Loss: 0.0345	 MaxEqual: 0.8885	 LR: 0.000684
+Train Epoch[0], Iter[32949/57510]	 Loss: 0.0352	 MaxEqual: 0.8894	 LR: 0.000683
+Train Epoch[0], Iter[32999/57510]	 Loss: 0.0350	 MaxEqual: 0.8855	 LR: 0.000682
+Train Epoch[0], Iter[33049/57510]	 Loss: 0.0456	 MaxEqual: 0.8586	 LR: 0.000681
+Train Epoch[0], Iter[33099/57510]	 Loss: 0.0390	 MaxEqual: 0.8728	 LR: 0.000681
+Train Epoch[0], Iter[33149/57510]	 Loss: 0.0344	 MaxEqual: 0.8860	 LR: 0.000680
+Train Epoch[0], Iter[33199/57510]	 Loss: 0.0412	 MaxEqual: 0.8684	 LR: 0.000679
+Train Epoch[0], Iter[33249/57510]	 Loss: 0.0389	 MaxEqual: 0.8738	 LR: 0.000678
+Train Epoch[0], Iter[33299/57510]	 Loss: 0.0400	 MaxEqual: 0.8699	 LR: 0.000677
+Train Epoch[0], Iter[33349/57510]	 Loss: 0.0327	 MaxEqual: 0.8968	 LR: 0.000676
+Train Epoch[0], Iter[33399/57510]	 Loss: 0.0374	 MaxEqual: 0.8777	 LR: 0.000675
+Train Epoch[0], Iter[33449/57510]	 Loss: 0.0349	 MaxEqual: 0.8860	 LR: 0.000675
+Train Epoch[0], Iter[33499/57510]	 Loss: 0.0350	 MaxEqual: 0.8860	 LR: 0.000674
+Train Epoch[0], Iter[33549/57510]	 Loss: 0.0461	 MaxEqual: 0.8527	 LR: 0.000673
+Train Epoch[0], Iter[33599/57510]	 Loss: 0.0334	 MaxEqual: 0.8904	 LR: 0.000672
+Train Epoch[0], Iter[33649/57510]	 Loss: 0.0333	 MaxEqual: 0.8870	 LR: 0.000671
+Train Epoch[0], Iter[33699/57510]	 Loss: 0.0331	 MaxEqual: 0.8855	 LR: 0.000670
+Train Epoch[0], Iter[33749/57510]	 Loss: 0.0329	 MaxEqual: 0.8914	 LR: 0.000669
+Train Epoch[0], Iter[33799/57510]	 Loss: 0.0392	 MaxEqual: 0.8748	 LR: 0.000669
+Train Epoch[0], Iter[33849/57510]	 Loss: 0.0335	 MaxEqual: 0.8880	 LR: 0.000668
+Train Epoch[0], Iter[33899/57510]	 Loss: 0.0402	 MaxEqual: 0.8694	 LR: 0.000667
+Train Epoch[0], Iter[33949/57510]	 Loss: 0.0426	 MaxEqual: 0.8674	 LR: 0.000666
+Train Epoch[0], Iter[33999/57510]	 Loss: 0.0356	 MaxEqual: 0.8845	 LR: 0.000665
+Train Epoch[0], Iter[34049/57510]	 Loss: 0.0434	 MaxEqual: 0.8635	 LR: 0.000664
+Train Epoch[0], Iter[34099/57510]	 Loss: 0.0511	 MaxEqual: 0.8449	 LR: 0.000663
+Train Epoch[0], Iter[34149/57510]	 Loss: 0.0399	 MaxEqual: 0.8767	 LR: 0.000663
+Train Epoch[0], Iter[34199/57510]	 Loss: 0.0334	 MaxEqual: 0.8933	 LR: 0.000662
+Train Epoch[0], Iter[34249/57510]	 Loss: 0.0339	 MaxEqual: 0.8899	 LR: 0.000661
+Train Epoch[0], Iter[34299/57510]	 Loss: 0.0339	 MaxEqual: 0.8816	 LR: 0.000660
+Train Epoch[0], Iter[34349/57510]	 Loss: 0.0430	 MaxEqual: 0.8625	 LR: 0.000659
+Train Epoch[0], Iter[34399/57510]	 Loss: 0.0394	 MaxEqual: 0.8708	 LR: 0.000658
+Train Epoch[0], Iter[34449/57510]	 Loss: 0.0342	 MaxEqual: 0.8894	 LR: 0.000657
+Train Epoch[0], Iter[34499/57510]	 Loss: 0.0395	 MaxEqual: 0.8708	 LR: 0.000657
+Train Epoch[0], Iter[34549/57510]	 Loss: 0.0398	 MaxEqual: 0.8689	 LR: 0.000656
+Train Epoch[0], Iter[34599/57510]	 Loss: 0.0336	 MaxEqual: 0.8880	 LR: 0.000655
+Train Epoch[0], Iter[34649/57510]	 Loss: 0.0357	 MaxEqual: 0.8841	 LR: 0.000654
+Train Epoch[0], Iter[34699/57510]	 Loss: 0.0326	 MaxEqual: 0.8953	 LR: 0.000653
+Train Epoch[0], Iter[34749/57510]	 Loss: 0.0395	 MaxEqual: 0.8708	 LR: 0.000652
+Train Epoch[0], Iter[34799/57510]	 Loss: 0.0376	 MaxEqual: 0.8796	 LR: 0.000651
+Train Epoch[0], Iter[34849/57510]	 Loss: 0.0334	 MaxEqual: 0.8943	 LR: 0.000650
+Train Epoch[0], Iter[34899/57510]	 Loss: 0.0339	 MaxEqual: 0.8855	 LR: 0.000649
+Train Epoch[0], Iter[34949/57510]	 Loss: 0.0401	 MaxEqual: 0.8674	 LR: 0.000649
+Train Epoch[0], Iter[34999/57510]	 Loss: 0.0334	 MaxEqual: 0.8933	 LR: 0.000648
+Train Epoch[0], Iter[35049/57510]	 Loss: 0.0383	 MaxEqual: 0.8738	 LR: 0.000647
+Train Epoch[0], Iter[35099/57510]	 Loss: 0.0384	 MaxEqual: 0.8704	 LR: 0.000646
+Train Epoch[0], Iter[35149/57510]	 Loss: 0.0409	 MaxEqual: 0.8708	 LR: 0.000645
+Train Epoch[0], Iter[35199/57510]	 Loss: 0.0384	 MaxEqual: 0.8723	 LR: 0.000644
+Train Epoch[0], Iter[35249/57510]	 Loss: 0.0441	 MaxEqual: 0.8650	 LR: 0.000643
+Train Epoch[0], Iter[35299/57510]	 Loss: 0.0347	 MaxEqual: 0.8841	 LR: 0.000643
+Train Epoch[0], Iter[35349/57510]	 Loss: 0.0410	 MaxEqual: 0.8625	 LR: 0.000642
+Train Epoch[0], Iter[35399/57510]	 Loss: 0.0375	 MaxEqual: 0.8762	 LR: 0.000641
+Train Epoch[0], Iter[35449/57510]	 Loss: 0.0388	 MaxEqual: 0.8704	 LR: 0.000640
+Train Epoch[0], Iter[35499/57510]	 Loss: 0.0416	 MaxEqual: 0.8659	 LR: 0.000639
+Train Epoch[0], Iter[35549/57510]	 Loss: 0.0436	 MaxEqual: 0.8581	 LR: 0.000638
+Train Epoch[0], Iter[35599/57510]	 Loss: 0.0348	 MaxEqual: 0.8855	 LR: 0.000637
+Train Epoch[0], Iter[35649/57510]	 Loss: 0.0342	 MaxEqual: 0.8855	 LR: 0.000636
+Train Epoch[0], Iter[35699/57510]	 Loss: 0.0380	 MaxEqual: 0.8738	 LR: 0.000636
+Train Epoch[0], Iter[35749/57510]	 Loss: 0.0352	 MaxEqual: 0.8889	 LR: 0.000635
+Train Epoch[0], Iter[35799/57510]	 Loss: 0.0355	 MaxEqual: 0.8845	 LR: 0.000634
+Train Epoch[0], Iter[35849/57510]	 Loss: 0.0347	 MaxEqual: 0.8875	 LR: 0.000633
+Train Epoch[0], Iter[35899/57510]	 Loss: 0.0383	 MaxEqual: 0.8699	 LR: 0.000632
+Train Epoch[0], Iter[35949/57510]	 Loss: 0.0333	 MaxEqual: 0.8909	 LR: 0.000631
+Train Epoch[0], Iter[35999/57510]	 Loss: 0.0372	 MaxEqual: 0.8752	 LR: 0.000630
+Train Epoch[0], Iter[36049/57510]	 Loss: 0.0342	 MaxEqual: 0.8855	 LR: 0.000629
+Train Epoch[0], Iter[36099/57510]	 Loss: 0.0433	 MaxEqual: 0.8630	 LR: 0.000628
+Train Epoch[0], Iter[36149/57510]	 Loss: 0.0440	 MaxEqual: 0.8601	 LR: 0.000628
+Train Epoch[0], Iter[36199/57510]	 Loss: 0.0387	 MaxEqual: 0.8757	 LR: 0.000627
+Train Epoch[0], Iter[36249/57510]	 Loss: 0.0348	 MaxEqual: 0.8821	 LR: 0.000626
+Train Epoch[0], Iter[36299/57510]	 Loss: 0.0338	 MaxEqual: 0.8894	 LR: 0.000625
+Train Epoch[0], Iter[36349/57510]	 Loss: 0.0374	 MaxEqual: 0.8787	 LR: 0.000624
+Train Epoch[0], Iter[36399/57510]	 Loss: 0.0370	 MaxEqual: 0.8816	 LR: 0.000623
+Train Epoch[0], Iter[36449/57510]	 Loss: 0.0359	 MaxEqual: 0.8865	 LR: 0.000622
+Train Epoch[0], Iter[36499/57510]	 Loss: 0.0348	 MaxEqual: 0.8821	 LR: 0.000621
+Train Epoch[0], Iter[36549/57510]	 Loss: 0.0341	 MaxEqual: 0.8850	 LR: 0.000621
+Train Epoch[0], Iter[36599/57510]	 Loss: 0.0330	 MaxEqual: 0.8919	 LR: 0.000620
+Train Epoch[0], Iter[36649/57510]	 Loss: 0.0386	 MaxEqual: 0.8811	 LR: 0.000619
+Train Epoch[0], Iter[36699/57510]	 Loss: 0.0417	 MaxEqual: 0.8640	 LR: 0.000618
+Train Epoch[0], Iter[36749/57510]	 Loss: 0.0395	 MaxEqual: 0.8718	 LR: 0.000617
+Train Epoch[0], Iter[36799/57510]	 Loss: 0.0387	 MaxEqual: 0.8743	 LR: 0.000616
+Train Epoch[0], Iter[36849/57510]	 Loss: 0.0346	 MaxEqual: 0.8850	 LR: 0.000615
+Train Epoch[0], Iter[36899/57510]	 Loss: 0.0378	 MaxEqual: 0.8757	 LR: 0.000614
+Train Epoch[0], Iter[36949/57510]	 Loss: 0.0333	 MaxEqual: 0.8924	 LR: 0.000613
+Train Epoch[0], Iter[36999/57510]	 Loss: 0.0434	 MaxEqual: 0.8601	 LR: 0.000613
+Train Epoch[0], Iter[37049/57510]	 Loss: 0.0384	 MaxEqual: 0.8743	 LR: 0.000612
+Train Epoch[0], Iter[37099/57510]	 Loss: 0.0337	 MaxEqual: 0.8880	 LR: 0.000611
+Train Epoch[0], Iter[37149/57510]	 Loss: 0.0432	 MaxEqual: 0.8596	 LR: 0.000610
+Train Epoch[0], Iter[37199/57510]	 Loss: 0.0418	 MaxEqual: 0.8669	 LR: 0.000609
+Train Epoch[0], Iter[37249/57510]	 Loss: 0.0346	 MaxEqual: 0.8880	 LR: 0.000608
+Train Epoch[0], Iter[37299/57510]	 Loss: 0.0408	 MaxEqual: 0.8635	 LR: 0.000607
+Train Epoch[0], Iter[37349/57510]	 Loss: 0.0389	 MaxEqual: 0.8757	 LR: 0.000606
+Train Epoch[0], Iter[37399/57510]	 Loss: 0.0349	 MaxEqual: 0.8831	 LR: 0.000605
+Train Epoch[0], Iter[37449/57510]	 Loss: 0.0384	 MaxEqual: 0.8767	 LR: 0.000605
+Train Epoch[0], Iter[37499/57510]	 Loss: 0.0360	 MaxEqual: 0.8850	 LR: 0.000604
+Train Epoch[0], Iter[37549/57510]	 Loss: 0.0380	 MaxEqual: 0.8777	 LR: 0.000603
+Train Epoch[0], Iter[37599/57510]	 Loss: 0.0388	 MaxEqual: 0.8738	 LR: 0.000602
+Train Epoch[0], Iter[37649/57510]	 Loss: 0.0333	 MaxEqual: 0.8899	 LR: 0.000601
+Train Epoch[0], Iter[37699/57510]	 Loss: 0.0370	 MaxEqual: 0.8752	 LR: 0.000600
+Train Epoch[0], Iter[37749/57510]	 Loss: 0.0344	 MaxEqual: 0.8845	 LR: 0.000599
+Train Epoch[0], Iter[37799/57510]	 Loss: 0.0429	 MaxEqual: 0.8615	 LR: 0.000598
+Train Epoch[0], Iter[37849/57510]	 Loss: 0.0341	 MaxEqual: 0.8889	 LR: 0.000597
+Train Epoch[0], Iter[37899/57510]	 Loss: 0.0393	 MaxEqual: 0.8762	 LR: 0.000597
+Train Epoch[0], Iter[37949/57510]	 Loss: 0.0394	 MaxEqual: 0.8787	 LR: 0.000596
+Train Epoch[0], Iter[37999/57510]	 Loss: 0.0348	 MaxEqual: 0.8845	 LR: 0.000595
+Train Epoch[0], Iter[38049/57510]	 Loss: 0.0392	 MaxEqual: 0.8767	 LR: 0.000594
+Train Epoch[0], Iter[38099/57510]	 Loss: 0.0409	 MaxEqual: 0.8684	 LR: 0.000593
+Train Epoch[0], Iter[38149/57510]	 Loss: 0.0340	 MaxEqual: 0.8875	 LR: 0.000592
+Train Epoch[0], Iter[38199/57510]	 Loss: 0.0374	 MaxEqual: 0.8875	 LR: 0.000591
+Train Epoch[0], Iter[38249/57510]	 Loss: 0.0369	 MaxEqual: 0.8831	 LR: 0.000590
+Train Epoch[0], Iter[38299/57510]	 Loss: 0.0380	 MaxEqual: 0.8772	 LR: 0.000589
+Train Epoch[0], Iter[38349/57510]	 Loss: 0.0334	 MaxEqual: 0.8899	 LR: 0.000589
+Train Epoch[0], Iter[38399/57510]	 Loss: 0.0380	 MaxEqual: 0.8748	 LR: 0.000588
+Train Epoch[0], Iter[38449/57510]	 Loss: 0.0337	 MaxEqual: 0.8841	 LR: 0.000587
+Train Epoch[0], Iter[38499/57510]	 Loss: 0.0382	 MaxEqual: 0.8762	 LR: 0.000586
+Train Epoch[0], Iter[38549/57510]	 Loss: 0.0490	 MaxEqual: 0.8430	 LR: 0.000585
+Train Epoch[0], Iter[38599/57510]	 Loss: 0.0344	 MaxEqual: 0.8841	 LR: 0.000584
+Train Epoch[0], Iter[38649/57510]	 Loss: 0.0379	 MaxEqual: 0.8772	 LR: 0.000583
+Train Epoch[0], Iter[38699/57510]	 Loss: 0.0341	 MaxEqual: 0.8831	 LR: 0.000582
+Train Epoch[0], Iter[38749/57510]	 Loss: 0.0352	 MaxEqual: 0.8836	 LR: 0.000581
+Train Epoch[0], Iter[38799/57510]	 Loss: 0.0443	 MaxEqual: 0.8601	 LR: 0.000580
+Train Epoch[0], Iter[38849/57510]	 Loss: 0.0380	 MaxEqual: 0.8748	 LR: 0.000580
+Train Epoch[0], Iter[38899/57510]	 Loss: 0.0335	 MaxEqual: 0.8875	 LR: 0.000579
+Train Epoch[0], Iter[38949/57510]	 Loss: 0.0386	 MaxEqual: 0.8748	 LR: 0.000578
+Train Epoch[0], Iter[38999/57510]	 Loss: 0.0337	 MaxEqual: 0.8885	 LR: 0.000577
+Train Epoch[0], Iter[39049/57510]	 Loss: 0.0366	 MaxEqual: 0.8762	 LR: 0.000576
+Train Epoch[0], Iter[39099/57510]	 Loss: 0.0368	 MaxEqual: 0.8787	 LR: 0.000575
+Train Epoch[0], Iter[39149/57510]	 Loss: 0.0328	 MaxEqual: 0.8899	 LR: 0.000574
+Train Epoch[0], Iter[39199/57510]	 Loss: 0.0355	 MaxEqual: 0.8772	 LR: 0.000573
+Train Epoch[0], Iter[39249/57510]	 Loss: 0.0397	 MaxEqual: 0.8723	 LR: 0.000573
+Train Epoch[0], Iter[39299/57510]	 Loss: 0.0381	 MaxEqual: 0.8782	 LR: 0.000572
+Train Epoch[0], Iter[39349/57510]	 Loss: 0.0373	 MaxEqual: 0.8796	 LR: 0.000571
+Train Epoch[0], Iter[39399/57510]	 Loss: 0.0343	 MaxEqual: 0.8836	 LR: 0.000570
+Train Epoch[0], Iter[39449/57510]	 Loss: 0.0383	 MaxEqual: 0.8806	 LR: 0.000569
+Train Epoch[0], Iter[39499/57510]	 Loss: 0.0328	 MaxEqual: 0.8943	 LR: 0.000568
+Train Epoch[0], Iter[39549/57510]	 Loss: 0.0466	 MaxEqual: 0.8498	 LR: 0.000567
+Train Epoch[0], Iter[39599/57510]	 Loss: 0.0385	 MaxEqual: 0.8704	 LR: 0.000566
+Train Epoch[0], Iter[39649/57510]	 Loss: 0.0336	 MaxEqual: 0.8963	 LR: 0.000565
+Train Epoch[0], Iter[39699/57510]	 Loss: 0.0338	 MaxEqual: 0.8889	 LR: 0.000564
+Train Epoch[0], Iter[39749/57510]	 Loss: 0.0365	 MaxEqual: 0.8821	 LR: 0.000564
+Train Epoch[0], Iter[39799/57510]	 Loss: 0.0369	 MaxEqual: 0.8811	 LR: 0.000563
+Train Epoch[0], Iter[39849/57510]	 Loss: 0.0365	 MaxEqual: 0.8801	 LR: 0.000562
+Train Epoch[0], Iter[39899/57510]	 Loss: 0.0344	 MaxEqual: 0.8836	 LR: 0.000561
+Train Epoch[0], Iter[39949/57510]	 Loss: 0.0340	 MaxEqual: 0.8894	 LR: 0.000560
+Train Epoch[0], Iter[39999/57510]	 Loss: 0.0346	 MaxEqual: 0.8885	 LR: 0.000559
+Train Epoch[0], Iter[40049/57510]	 Loss: 0.0347	 MaxEqual: 0.8826	 LR: 0.000558
+Train Epoch[0], Iter[40099/57510]	 Loss: 0.0373	 MaxEqual: 0.8792	 LR: 0.000557
+Train Epoch[0], Iter[40149/57510]	 Loss: 0.0327	 MaxEqual: 0.8909	 LR: 0.000556
+Train Epoch[0], Iter[40199/57510]	 Loss: 0.0349	 MaxEqual: 0.8860	 LR: 0.000556
+Train Epoch[0], Iter[40249/57510]	 Loss: 0.0385	 MaxEqual: 0.8748	 LR: 0.000555
+Train Epoch[0], Iter[40299/57510]	 Loss: 0.0354	 MaxEqual: 0.8801	 LR: 0.000554
+Train Epoch[0], Iter[40349/57510]	 Loss: 0.0373	 MaxEqual: 0.8816	 LR: 0.000553
+Train Epoch[0], Iter[40399/57510]	 Loss: 0.0347	 MaxEqual: 0.8826	 LR: 0.000552
+Train Epoch[0], Iter[40449/57510]	 Loss: 0.0382	 MaxEqual: 0.8684	 LR: 0.000551
+Train Epoch[0], Iter[40499/57510]	 Loss: 0.0394	 MaxEqual: 0.8733	 LR: 0.000550
+Train Epoch[0], Iter[40549/57510]	 Loss: 0.0340	 MaxEqual: 0.8880	 LR: 0.000549
+Train Epoch[0], Iter[40599/57510]	 Loss: 0.0343	 MaxEqual: 0.8865	 LR: 0.000548
+Train Epoch[0], Iter[40649/57510]	 Loss: 0.0441	 MaxEqual: 0.8591	 LR: 0.000547
+Train Epoch[0], Iter[40699/57510]	 Loss: 0.0375	 MaxEqual: 0.8728	 LR: 0.000547
+Train Epoch[0], Iter[40749/57510]	 Loss: 0.0386	 MaxEqual: 0.8748	 LR: 0.000546
+Train Epoch[0], Iter[40799/57510]	 Loss: 0.0340	 MaxEqual: 0.8860	 LR: 0.000545
+Train Epoch[0], Iter[40849/57510]	 Loss: 0.0379	 MaxEqual: 0.8733	 LR: 0.000544
+Train Epoch[0], Iter[40899/57510]	 Loss: 0.0329	 MaxEqual: 0.8938	 LR: 0.000543
+Train Epoch[0], Iter[40949/57510]	 Loss: 0.0334	 MaxEqual: 0.8914	 LR: 0.000542
+Train Epoch[0], Iter[40999/57510]	 Loss: 0.0435	 MaxEqual: 0.8586	 LR: 0.000541
+Train Epoch[0], Iter[41049/57510]	 Loss: 0.0414	 MaxEqual: 0.8645	 LR: 0.000540
+Train Epoch[0], Iter[41099/57510]	 Loss: 0.0475	 MaxEqual: 0.8454	 LR: 0.000539
+Train Epoch[0], Iter[41149/57510]	 Loss: 0.0328	 MaxEqual: 0.8948	 LR: 0.000538
+Train Epoch[0], Iter[41199/57510]	 Loss: 0.0342	 MaxEqual: 0.8870	 LR: 0.000538
+Train Epoch[0], Iter[41249/57510]	 Loss: 0.0344	 MaxEqual: 0.8894	 LR: 0.000537
+Train Epoch[0], Iter[41299/57510]	 Loss: 0.0420	 MaxEqual: 0.8581	 LR: 0.000536
+Train Epoch[0], Iter[41349/57510]	 Loss: 0.0339	 MaxEqual: 0.8914	 LR: 0.000535
+Train Epoch[0], Iter[41399/57510]	 Loss: 0.0385	 MaxEqual: 0.8743	 LR: 0.000534
+Train Epoch[0], Iter[41449/57510]	 Loss: 0.0376	 MaxEqual: 0.8792	 LR: 0.000533
+Train Epoch[0], Iter[41499/57510]	 Loss: 0.0416	 MaxEqual: 0.8664	 LR: 0.000532
+Train Epoch[0], Iter[41549/57510]	 Loss: 0.0376	 MaxEqual: 0.8767	 LR: 0.000531
+Train Epoch[0], Iter[41599/57510]	 Loss: 0.0340	 MaxEqual: 0.8865	 LR: 0.000530
+Train Epoch[0], Iter[41649/57510]	 Loss: 0.0415	 MaxEqual: 0.8684	 LR: 0.000530
+Train Epoch[0], Iter[41699/57510]	 Loss: 0.0337	 MaxEqual: 0.8914	 LR: 0.000529
+Train Epoch[0], Iter[41749/57510]	 Loss: 0.0329	 MaxEqual: 0.8909	 LR: 0.000528
+Train Epoch[0], Iter[41799/57510]	 Loss: 0.0380	 MaxEqual: 0.8748	 LR: 0.000527
+Train Epoch[0], Iter[41849/57510]	 Loss: 0.0374	 MaxEqual: 0.8796	 LR: 0.000526
+Train Epoch[0], Iter[41899/57510]	 Loss: 0.0394	 MaxEqual: 0.8767	 LR: 0.000525
+Train Epoch[0], Iter[41949/57510]	 Loss: 0.0335	 MaxEqual: 0.8914	 LR: 0.000524
+Train Epoch[0], Iter[41999/57510]	 Loss: 0.0342	 MaxEqual: 0.8880	 LR: 0.000523
+Train Epoch[0], Iter[42049/57510]	 Loss: 0.0412	 MaxEqual: 0.8650	 LR: 0.000522
+Train Epoch[0], Iter[42099/57510]	 Loss: 0.0388	 MaxEqual: 0.8733	 LR: 0.000521
+Train Epoch[0], Iter[42149/57510]	 Loss: 0.0344	 MaxEqual: 0.8904	 LR: 0.000521
+Train Epoch[0], Iter[42199/57510]	 Loss: 0.0376	 MaxEqual: 0.8831	 LR: 0.000520
+Train Epoch[0], Iter[42249/57510]	 Loss: 0.0340	 MaxEqual: 0.8909	 LR: 0.000519
+Train Epoch[0], Iter[42299/57510]	 Loss: 0.0345	 MaxEqual: 0.8860	 LR: 0.000518
+Train Epoch[0], Iter[42349/57510]	 Loss: 0.0339	 MaxEqual: 0.8865	 LR: 0.000517
+Train Epoch[0], Iter[42399/57510]	 Loss: 0.0378	 MaxEqual: 0.8806	 LR: 0.000516
+Train Epoch[0], Iter[42449/57510]	 Loss: 0.0379	 MaxEqual: 0.8752	 LR: 0.000515
+Train Epoch[0], Iter[42499/57510]	 Loss: 0.0412	 MaxEqual: 0.8620	 LR: 0.000514
+Train Epoch[0], Iter[42549/57510]	 Loss: 0.0364	 MaxEqual: 0.8801	 LR: 0.000514
+Train Epoch[0], Iter[42599/57510]	 Loss: 0.0382	 MaxEqual: 0.8757	 LR: 0.000513
+Train Epoch[0], Iter[42649/57510]	 Loss: 0.0341	 MaxEqual: 0.8914	 LR: 0.000512
+Train Epoch[0], Iter[42699/57510]	 Loss: 0.0344	 MaxEqual: 0.8880	 LR: 0.000511
+Train Epoch[0], Iter[42749/57510]	 Loss: 0.0426	 MaxEqual: 0.8630	 LR: 0.000510
+Train Epoch[0], Iter[42799/57510]	 Loss: 0.0337	 MaxEqual: 0.8870	 LR: 0.000509
+Train Epoch[0], Iter[42849/57510]	 Loss: 0.0348	 MaxEqual: 0.8841	 LR: 0.000508
+Train Epoch[0], Iter[42899/57510]	 Loss: 0.0333	 MaxEqual: 0.8885	 LR: 0.000507
+Train Epoch[0], Iter[42949/57510]	 Loss: 0.0378	 MaxEqual: 0.8752	 LR: 0.000506
+Train Epoch[0], Iter[42999/57510]	 Loss: 0.0342	 MaxEqual: 0.8855	 LR: 0.000505
+Train Epoch[0], Iter[43049/57510]	 Loss: 0.0402	 MaxEqual: 0.8708	 LR: 0.000505
+Train Epoch[0], Iter[43099/57510]	 Loss: 0.0338	 MaxEqual: 0.8880	 LR: 0.000504
+Train Epoch[0], Iter[43149/57510]	 Loss: 0.0373	 MaxEqual: 0.8831	 LR: 0.000503
+Train Epoch[0], Iter[43199/57510]	 Loss: 0.0345	 MaxEqual: 0.8841	 LR: 0.000502
+Train Epoch[0], Iter[43249/57510]	 Loss: 0.0348	 MaxEqual: 0.8875	 LR: 0.000501
+Train Epoch[0], Iter[43299/57510]	 Loss: 0.0351	 MaxEqual: 0.8811	 LR: 0.000500
+Train Epoch[0], Iter[43349/57510]	 Loss: 0.0402	 MaxEqual: 0.8699	 LR: 0.000499
+Train Epoch[0], Iter[43399/57510]	 Loss: 0.0342	 MaxEqual: 0.8855	 LR: 0.000498
+Train Epoch[0], Iter[43449/57510]	 Loss: 0.0341	 MaxEqual: 0.8875	 LR: 0.000498
+Train Epoch[0], Iter[43499/57510]	 Loss: 0.0429	 MaxEqual: 0.8645	 LR: 0.000497
+Train Epoch[0], Iter[43549/57510]	 Loss: 0.0376	 MaxEqual: 0.8826	 LR: 0.000496
+Train Epoch[0], Iter[43599/57510]	 Loss: 0.0341	 MaxEqual: 0.8885	 LR: 0.000495
+Train Epoch[0], Iter[43649/57510]	 Loss: 0.0325	 MaxEqual: 0.8914	 LR: 0.000494
+Train Epoch[0], Iter[43699/57510]	 Loss: 0.0374	 MaxEqual: 0.8767	 LR: 0.000493
+Train Epoch[0], Iter[43749/57510]	 Loss: 0.0404	 MaxEqual: 0.8664	 LR: 0.000492
+Train Epoch[0], Iter[43799/57510]	 Loss: 0.0383	 MaxEqual: 0.8748	 LR: 0.000491
+Train Epoch[0], Iter[43849/57510]	 Loss: 0.0342	 MaxEqual: 0.8909	 LR: 0.000490
+Train Epoch[0], Iter[43899/57510]	 Loss: 0.0410	 MaxEqual: 0.8723	 LR: 0.000489
+Train Epoch[0], Iter[43949/57510]	 Loss: 0.0372	 MaxEqual: 0.8826	 LR: 0.000489
+Train Epoch[0], Iter[43999/57510]	 Loss: 0.0387	 MaxEqual: 0.8713	 LR: 0.000488
+Train Epoch[0], Iter[44049/57510]	 Loss: 0.0343	 MaxEqual: 0.8899	 LR: 0.000487
+Train Epoch[0], Iter[44099/57510]	 Loss: 0.0370	 MaxEqual: 0.8811	 LR: 0.000486
+Train Epoch[0], Iter[44149/57510]	 Loss: 0.0348	 MaxEqual: 0.8860	 LR: 0.000485
+Train Epoch[0], Iter[44199/57510]	 Loss: 0.0330	 MaxEqual: 0.8894	 LR: 0.000484
+Train Epoch[0], Iter[44249/57510]	 Loss: 0.0384	 MaxEqual: 0.8801	 LR: 0.000483
+Train Epoch[0], Iter[44299/57510]	 Loss: 0.0390	 MaxEqual: 0.8752	 LR: 0.000482
+Train Epoch[0], Iter[44349/57510]	 Loss: 0.0323	 MaxEqual: 0.8953	 LR: 0.000482
+Train Epoch[0], Iter[44399/57510]	 Loss: 0.0344	 MaxEqual: 0.8792	 LR: 0.000481
+Train Epoch[0], Iter[44449/57510]	 Loss: 0.0341	 MaxEqual: 0.8919	 LR: 0.000480
+Train Epoch[0], Iter[44499/57510]	 Loss: 0.0406	 MaxEqual: 0.8669	 LR: 0.000479
+Train Epoch[0], Iter[44549/57510]	 Loss: 0.0336	 MaxEqual: 0.8870	 LR: 0.000478
+Train Epoch[0], Iter[44599/57510]	 Loss: 0.0422	 MaxEqual: 0.8635	 LR: 0.000477
+Train Epoch[0], Iter[44649/57510]	 Loss: 0.0385	 MaxEqual: 0.8738	 LR: 0.000476
+Train Epoch[0], Iter[44699/57510]	 Loss: 0.0343	 MaxEqual: 0.8870	 LR: 0.000475
+Train Epoch[0], Iter[44749/57510]	 Loss: 0.0361	 MaxEqual: 0.8860	 LR: 0.000474
+Train Epoch[0], Iter[44799/57510]	 Loss: 0.0386	 MaxEqual: 0.8767	 LR: 0.000473
+Train Epoch[0], Iter[44849/57510]	 Loss: 0.0395	 MaxEqual: 0.8713	 LR: 0.000473
+Train Epoch[0], Iter[44899/57510]	 Loss: 0.0389	 MaxEqual: 0.8728	 LR: 0.000472
+Train Epoch[0], Iter[44949/57510]	 Loss: 0.0424	 MaxEqual: 0.8601	 LR: 0.000471
+Train Epoch[0], Iter[44999/57510]	 Loss: 0.0385	 MaxEqual: 0.8787	 LR: 0.000470
+Train Epoch[0], Iter[45049/57510]	 Loss: 0.0345	 MaxEqual: 0.8855	 LR: 0.000469
+Train Epoch[0], Iter[45099/57510]	 Loss: 0.0339	 MaxEqual: 0.8929	 LR: 0.000468
+Train Epoch[0], Iter[45149/57510]	 Loss: 0.0386	 MaxEqual: 0.8738	 LR: 0.000467
+Train Epoch[0], Iter[45199/57510]	 Loss: 0.0333	 MaxEqual: 0.8904	 LR: 0.000467
+Train Epoch[0], Iter[45249/57510]	 Loss: 0.0346	 MaxEqual: 0.8865	 LR: 0.000466
+Train Epoch[0], Iter[45299/57510]	 Loss: 0.0333	 MaxEqual: 0.8860	 LR: 0.000465
+Train Epoch[0], Iter[45349/57510]	 Loss: 0.0382	 MaxEqual: 0.8733	 LR: 0.000464
+Train Epoch[0], Iter[45399/57510]	 Loss: 0.0415	 MaxEqual: 0.8655	 LR: 0.000463
+Train Epoch[0], Iter[45449/57510]	 Loss: 0.0337	 MaxEqual: 0.8850	 LR: 0.000462
+Train Epoch[0], Iter[45499/57510]	 Loss: 0.0390	 MaxEqual: 0.8733	 LR: 0.000461
+Train Epoch[0], Iter[45549/57510]	 Loss: 0.0431	 MaxEqual: 0.8547	 LR: 0.000460
+Train Epoch[0], Iter[45599/57510]	 Loss: 0.0341	 MaxEqual: 0.8841	 LR: 0.000460
+Train Epoch[0], Iter[45649/57510]	 Loss: 0.0366	 MaxEqual: 0.8811	 LR: 0.000459
+Train Epoch[0], Iter[45699/57510]	 Loss: 0.0346	 MaxEqual: 0.8899	 LR: 0.000458
+Train Epoch[0], Iter[45749/57510]	 Loss: 0.0335	 MaxEqual: 0.8885	 LR: 0.000457
+Train Epoch[0], Iter[45799/57510]	 Loss: 0.0334	 MaxEqual: 0.8924	 LR: 0.000456
+Train Epoch[0], Iter[45849/57510]	 Loss: 0.0374	 MaxEqual: 0.8757	 LR: 0.000455
+Train Epoch[0], Iter[45899/57510]	 Loss: 0.0398	 MaxEqual: 0.8704	 LR: 0.000454
+Train Epoch[0], Iter[45949/57510]	 Loss: 0.0427	 MaxEqual: 0.8552	 LR: 0.000453
+Train Epoch[0], Iter[45999/57510]	 Loss: 0.0347	 MaxEqual: 0.8889	 LR: 0.000452
+Train Epoch[0], Iter[46049/57510]	 Loss: 0.0350	 MaxEqual: 0.8850	 LR: 0.000452
+Train Epoch[0], Iter[46099/57510]	 Loss: 0.0344	 MaxEqual: 0.8855	 LR: 0.000451
+Train Epoch[0], Iter[46149/57510]	 Loss: 0.0389	 MaxEqual: 0.8713	 LR: 0.000450
+Train Epoch[0], Iter[46199/57510]	 Loss: 0.0329	 MaxEqual: 0.8889	 LR: 0.000449
+Train Epoch[0], Iter[46249/57510]	 Loss: 0.0373	 MaxEqual: 0.8787	 LR: 0.000448
+Train Epoch[0], Iter[46299/57510]	 Loss: 0.0373	 MaxEqual: 0.8782	 LR: 0.000447
+Train Epoch[0], Iter[46349/57510]	 Loss: 0.0346	 MaxEqual: 0.8782	 LR: 0.000446
+Train Epoch[0], Iter[46399/57510]	 Loss: 0.0378	 MaxEqual: 0.8772	 LR: 0.000446
+Train Epoch[0], Iter[46449/57510]	 Loss: 0.0425	 MaxEqual: 0.8606	 LR: 0.000445
+Train Epoch[0], Iter[46499/57510]	 Loss: 0.0378	 MaxEqual: 0.8757	 LR: 0.000444
+Train Epoch[0], Iter[46549/57510]	 Loss: 0.0364	 MaxEqual: 0.8806	 LR: 0.000443
+Train Epoch[0], Iter[46599/57510]	 Loss: 0.0395	 MaxEqual: 0.8659	 LR: 0.000442
+Train Epoch[0], Iter[46649/57510]	 Loss: 0.0365	 MaxEqual: 0.8757	 LR: 0.000441
+Train Epoch[0], Iter[46699/57510]	 Loss: 0.0335	 MaxEqual: 0.8943	 LR: 0.000440
+Train Epoch[0], Iter[46749/57510]	 Loss: 0.0417	 MaxEqual: 0.8640	 LR: 0.000439
+Train Epoch[0], Iter[46799/57510]	 Loss: 0.0452	 MaxEqual: 0.8523	 LR: 0.000439
+Train Epoch[0], Iter[46849/57510]	 Loss: 0.0328	 MaxEqual: 0.8889	 LR: 0.000438
+Train Epoch[0], Iter[46899/57510]	 Loss: 0.0367	 MaxEqual: 0.8811	 LR: 0.000437
+Train Epoch[0], Iter[46949/57510]	 Loss: 0.0348	 MaxEqual: 0.8845	 LR: 0.000436
+Train Epoch[0], Iter[46999/57510]	 Loss: 0.0369	 MaxEqual: 0.8762	 LR: 0.000435
+Train Epoch[0], Iter[47049/57510]	 Loss: 0.0402	 MaxEqual: 0.8708	 LR: 0.000434
+Train Epoch[0], Iter[47099/57510]	 Loss: 0.0374	 MaxEqual: 0.8796	 LR: 0.000433
+Train Epoch[0], Iter[47149/57510]	 Loss: 0.0400	 MaxEqual: 0.8669	 LR: 0.000432
+Train Epoch[0], Iter[47199/57510]	 Loss: 0.0350	 MaxEqual: 0.8831	 LR: 0.000432
+Train Epoch[0], Iter[47249/57510]	 Loss: 0.0344	 MaxEqual: 0.8885	 LR: 0.000431
+Train Epoch[0], Iter[47299/57510]	 Loss: 0.0331	 MaxEqual: 0.8929	 LR: 0.000430
+Train Epoch[0], Iter[47349/57510]	 Loss: 0.0339	 MaxEqual: 0.8899	 LR: 0.000429
+Train Epoch[0], Iter[47399/57510]	 Loss: 0.0386	 MaxEqual: 0.8748	 LR: 0.000428
+Train Epoch[0], Iter[47449/57510]	 Loss: 0.0474	 MaxEqual: 0.8518	 LR: 0.000427
+Train Epoch[0], Iter[47499/57510]	 Loss: 0.0343	 MaxEqual: 0.8909	 LR: 0.000426
+Train Epoch[0], Iter[47549/57510]	 Loss: 0.0405	 MaxEqual: 0.8659	 LR: 0.000426
+Train Epoch[0], Iter[47599/57510]	 Loss: 0.0324	 MaxEqual: 0.8973	 LR: 0.000425
+Train Epoch[0], Iter[47649/57510]	 Loss: 0.0338	 MaxEqual: 0.8885	 LR: 0.000424
+Train Epoch[0], Iter[47699/57510]	 Loss: 0.0383	 MaxEqual: 0.8743	 LR: 0.000423
+Train Epoch[0], Iter[47749/57510]	 Loss: 0.0391	 MaxEqual: 0.8792	 LR: 0.000422
+Train Epoch[0], Iter[47799/57510]	 Loss: 0.0349	 MaxEqual: 0.8836	 LR: 0.000421
+Train Epoch[0], Iter[47849/57510]	 Loss: 0.0431	 MaxEqual: 0.8620	 LR: 0.000420
+Train Epoch[0], Iter[47899/57510]	 Loss: 0.0378	 MaxEqual: 0.8772	 LR: 0.000420
+Train Epoch[0], Iter[47949/57510]	 Loss: 0.0368	 MaxEqual: 0.8767	 LR: 0.000419
+Train Epoch[0], Iter[47999/57510]	 Loss: 0.0376	 MaxEqual: 0.8792	 LR: 0.000418
+Train Epoch[0], Iter[48049/57510]	 Loss: 0.0381	 MaxEqual: 0.8782	 LR: 0.000417
+Train Epoch[0], Iter[48099/57510]	 Loss: 0.0384	 MaxEqual: 0.8684	 LR: 0.000416
+Train Epoch[0], Iter[48149/57510]	 Loss: 0.0346	 MaxEqual: 0.8889	 LR: 0.000415
+Train Epoch[0], Iter[48199/57510]	 Loss: 0.0386	 MaxEqual: 0.8704	 LR: 0.000414
+Train Epoch[0], Iter[48249/57510]	 Loss: 0.0333	 MaxEqual: 0.8889	 LR: 0.000414
+Train Epoch[0], Iter[48299/57510]	 Loss: 0.0339	 MaxEqual: 0.8889	 LR: 0.000413
+Train Epoch[0], Iter[48349/57510]	 Loss: 0.0334	 MaxEqual: 0.8870	 LR: 0.000412
+Train Epoch[0], Iter[48399/57510]	 Loss: 0.0341	 MaxEqual: 0.8894	 LR: 0.000411
+Train Epoch[0], Iter[48449/57510]	 Loss: 0.0372	 MaxEqual: 0.8792	 LR: 0.000410
+Train Epoch[0], Iter[48499/57510]	 Loss: 0.0374	 MaxEqual: 0.8777	 LR: 0.000409
+Train Epoch[0], Iter[48549/57510]	 Loss: 0.0333	 MaxEqual: 0.8909	 LR: 0.000409
+Train Epoch[0], Iter[48599/57510]	 Loss: 0.0375	 MaxEqual: 0.8713	 LR: 0.000408
+Train Epoch[0], Iter[48649/57510]	 Loss: 0.0460	 MaxEqual: 0.8483	 LR: 0.000407
+Train Epoch[0], Iter[48699/57510]	 Loss: 0.0332	 MaxEqual: 0.8933	 LR: 0.000406
+Train Epoch[0], Iter[48749/57510]	 Loss: 0.0351	 MaxEqual: 0.8836	 LR: 0.000405
+Train Epoch[0], Iter[48799/57510]	 Loss: 0.0396	 MaxEqual: 0.8718	 LR: 0.000404
+Train Epoch[0], Iter[48849/57510]	 Loss: 0.0355	 MaxEqual: 0.8850	 LR: 0.000403
+Train Epoch[0], Iter[48899/57510]	 Loss: 0.0375	 MaxEqual: 0.8777	 LR: 0.000403
+Train Epoch[0], Iter[48949/57510]	 Loss: 0.0371	 MaxEqual: 0.8713	 LR: 0.000402
+Train Epoch[0], Iter[48999/57510]	 Loss: 0.0333	 MaxEqual: 0.8919	 LR: 0.000401
+Train Epoch[0], Iter[49049/57510]	 Loss: 0.0363	 MaxEqual: 0.8826	 LR: 0.000400
+Train Epoch[0], Iter[49099/57510]	 Loss: 0.0443	 MaxEqual: 0.8542	 LR: 0.000399
+Train Epoch[0], Iter[49149/57510]	 Loss: 0.0342	 MaxEqual: 0.8885	 LR: 0.000398
+Train Epoch[0], Iter[49199/57510]	 Loss: 0.0410	 MaxEqual: 0.8650	 LR: 0.000398
+Train Epoch[0], Iter[49249/57510]	 Loss: 0.0329	 MaxEqual: 0.8865	 LR: 0.000397
+Train Epoch[0], Iter[49299/57510]	 Loss: 0.0384	 MaxEqual: 0.8796	 LR: 0.000396
+Train Epoch[0], Iter[49349/57510]	 Loss: 0.0370	 MaxEqual: 0.8733	 LR: 0.000395
+Train Epoch[0], Iter[49399/57510]	 Loss: 0.0343	 MaxEqual: 0.8904	 LR: 0.000394
+Train Epoch[0], Iter[49449/57510]	 Loss: 0.0391	 MaxEqual: 0.8713	 LR: 0.000393
+Train Epoch[0], Iter[49499/57510]	 Loss: 0.0340	 MaxEqual: 0.8899	 LR: 0.000393
+Train Epoch[0], Iter[49549/57510]	 Loss: 0.0332	 MaxEqual: 0.8870	 LR: 0.000392
+Train Epoch[0], Iter[49599/57510]	 Loss: 0.0341	 MaxEqual: 0.8841	 LR: 0.000391
+Train Epoch[0], Iter[49649/57510]	 Loss: 0.0424	 MaxEqual: 0.8596	 LR: 0.000390
+Train Epoch[0], Iter[49699/57510]	 Loss: 0.0363	 MaxEqual: 0.8826	 LR: 0.000389
+Train Epoch[0], Iter[49749/57510]	 Loss: 0.0339	 MaxEqual: 0.8938	 LR: 0.000388
+Train Epoch[0], Iter[49799/57510]	 Loss: 0.0356	 MaxEqual: 0.8831	 LR: 0.000388
+Train Epoch[0], Iter[49849/57510]	 Loss: 0.0378	 MaxEqual: 0.8777	 LR: 0.000387
+Train Epoch[0], Iter[49899/57510]	 Loss: 0.0379	 MaxEqual: 0.8787	 LR: 0.000386
+Train Epoch[0], Iter[49949/57510]	 Loss: 0.0342	 MaxEqual: 0.8855	 LR: 0.000385
+Train Epoch[0], Iter[49999/57510]	 Loss: 0.0362	 MaxEqual: 0.8782	 LR: 0.000384
+Train Epoch[0], Iter[50049/57510]	 Loss: 0.0336	 MaxEqual: 0.8924	 LR: 0.000383
+Train Epoch[0], Iter[50099/57510]	 Loss: 0.0338	 MaxEqual: 0.8831	 LR: 0.000383
+Train Epoch[0], Iter[50149/57510]	 Loss: 0.0343	 MaxEqual: 0.8880	 LR: 0.000382
+Train Epoch[0], Iter[50199/57510]	 Loss: 0.0424	 MaxEqual: 0.8625	 LR: 0.000381
+Train Epoch[0], Iter[50249/57510]	 Loss: 0.0378	 MaxEqual: 0.8782	 LR: 0.000380
+Train Epoch[0], Iter[50299/57510]	 Loss: 0.0377	 MaxEqual: 0.8777	 LR: 0.000379
+Train Epoch[0], Iter[50349/57510]	 Loss: 0.0420	 MaxEqual: 0.8586	 LR: 0.000378
+Train Epoch[0], Iter[50399/57510]	 Loss: 0.0336	 MaxEqual: 0.8885	 LR: 0.000378
+Train Epoch[0], Iter[50449/57510]	 Loss: 0.0343	 MaxEqual: 0.8870	 LR: 0.000377
+Train Epoch[0], Iter[50499/57510]	 Loss: 0.0371	 MaxEqual: 0.8792	 LR: 0.000376
+Train Epoch[0], Iter[50549/57510]	 Loss: 0.0366	 MaxEqual: 0.8782	 LR: 0.000375
+Train Epoch[0], Iter[50599/57510]	 Loss: 0.0369	 MaxEqual: 0.8811	 LR: 0.000374
+Train Epoch[0], Iter[50649/57510]	 Loss: 0.0403	 MaxEqual: 0.8674	 LR: 0.000373
+Train Epoch[0], Iter[50699/57510]	 Loss: 0.0358	 MaxEqual: 0.8865	 LR: 0.000373
+Train Epoch[0], Iter[50749/57510]	 Loss: 0.0377	 MaxEqual: 0.8733	 LR: 0.000372
+Train Epoch[0], Iter[50799/57510]	 Loss: 0.0377	 MaxEqual: 0.8772	 LR: 0.000371
+Train Epoch[0], Iter[50849/57510]	 Loss: 0.0343	 MaxEqual: 0.8889	 LR: 0.000370
+Train Epoch[0], Iter[50899/57510]	 Loss: 0.0422	 MaxEqual: 0.8620	 LR: 0.000369
+Train Epoch[0], Iter[50949/57510]	 Loss: 0.0324	 MaxEqual: 0.8914	 LR: 0.000368
+Train Epoch[0], Iter[50999/57510]	 Loss: 0.0382	 MaxEqual: 0.8694	 LR: 0.000368
+Train Epoch[0], Iter[51049/57510]	 Loss: 0.0343	 MaxEqual: 0.8850	 LR: 0.000367
+Train Epoch[0], Iter[51099/57510]	 Loss: 0.0358	 MaxEqual: 0.8831	 LR: 0.000366
+Train Epoch[0], Iter[51149/57510]	 Loss: 0.0411	 MaxEqual: 0.8640	 LR: 0.000365
+Train Epoch[0], Iter[51199/57510]	 Loss: 0.0404	 MaxEqual: 0.8704	 LR: 0.000364
+Train Epoch[0], Iter[51249/57510]	 Loss: 0.0416	 MaxEqual: 0.8625	 LR: 0.000364
+Train Epoch[0], Iter[51299/57510]	 Loss: 0.0367	 MaxEqual: 0.8772	 LR: 0.000363
+Train Epoch[0], Iter[51349/57510]	 Loss: 0.0354	 MaxEqual: 0.8850	 LR: 0.000362
+Train Epoch[0], Iter[51399/57510]	 Loss: 0.0388	 MaxEqual: 0.8748	 LR: 0.000361
+Train Epoch[0], Iter[51449/57510]	 Loss: 0.0430	 MaxEqual: 0.8699	 LR: 0.000360
+Train Epoch[0], Iter[51499/57510]	 Loss: 0.0377	 MaxEqual: 0.8801	 LR: 0.000360
+Train Epoch[0], Iter[51549/57510]	 Loss: 0.0382	 MaxEqual: 0.8689	 LR: 0.000359
+Train Epoch[0], Iter[51599/57510]	 Loss: 0.0400	 MaxEqual: 0.8699	 LR: 0.000358
+Train Epoch[0], Iter[51649/57510]	 Loss: 0.0420	 MaxEqual: 0.8664	 LR: 0.000357
+Train Epoch[0], Iter[51699/57510]	 Loss: 0.0405	 MaxEqual: 0.8796	 LR: 0.000356
+Train Epoch[0], Iter[51749/57510]	 Loss: 0.0327	 MaxEqual: 0.8875	 LR: 0.000355
+Train Epoch[0], Iter[51799/57510]	 Loss: 0.0318	 MaxEqual: 0.8933	 LR: 0.000355
+Train Epoch[0], Iter[51849/57510]	 Loss: 0.0390	 MaxEqual: 0.8699	 LR: 0.000354
+Train Epoch[0], Iter[51899/57510]	 Loss: 0.0353	 MaxEqual: 0.8836	 LR: 0.000353
+Train Epoch[0], Iter[51949/57510]	 Loss: 0.0332	 MaxEqual: 0.8914	 LR: 0.000352
+Train Epoch[0], Iter[51999/57510]	 Loss: 0.0340	 MaxEqual: 0.8889	 LR: 0.000351
+Train Epoch[0], Iter[52049/57510]	 Loss: 0.0418	 MaxEqual: 0.8635	 LR: 0.000351
+Train Epoch[0], Iter[52099/57510]	 Loss: 0.0376	 MaxEqual: 0.8772	 LR: 0.000350
+Train Epoch[0], Iter[52149/57510]	 Loss: 0.0332	 MaxEqual: 0.8909	 LR: 0.000349
+Train Epoch[0], Iter[52199/57510]	 Loss: 0.0379	 MaxEqual: 0.8733	 LR: 0.000348
+Train Epoch[0], Iter[52249/57510]	 Loss: 0.0371	 MaxEqual: 0.8772	 LR: 0.000347
+Train Epoch[0], Iter[52299/57510]	 Loss: 0.0381	 MaxEqual: 0.8792	 LR: 0.000347
+Train Epoch[0], Iter[52349/57510]	 Loss: 0.0324	 MaxEqual: 0.8914	 LR: 0.000346
+Train Epoch[0], Iter[52399/57510]	 Loss: 0.0371	 MaxEqual: 0.8821	 LR: 0.000345
+Train Epoch[0], Iter[52449/57510]	 Loss: 0.0450	 MaxEqual: 0.8532	 LR: 0.000344
+Train Epoch[0], Iter[52499/57510]	 Loss: 0.0362	 MaxEqual: 0.8801	 LR: 0.000344
+Train Epoch[0], Iter[52549/57510]	 Loss: 0.0328	 MaxEqual: 0.8924	 LR: 0.000343
+Train Epoch[0], Iter[52599/57510]	 Loss: 0.0329	 MaxEqual: 0.8924	 LR: 0.000342
+Train Epoch[0], Iter[52649/57510]	 Loss: 0.0364	 MaxEqual: 0.8777	 LR: 0.000341
+Train Epoch[0], Iter[52699/57510]	 Loss: 0.0337	 MaxEqual: 0.8880	 LR: 0.000340
+Train Epoch[0], Iter[52749/57510]	 Loss: 0.0340	 MaxEqual: 0.8875	 LR: 0.000340
+Train Epoch[0], Iter[52799/57510]	 Loss: 0.0335	 MaxEqual: 0.8860	 LR: 0.000339
+Train Epoch[0], Iter[52849/57510]	 Loss: 0.0377	 MaxEqual: 0.8777	 LR: 0.000338
+Train Epoch[0], Iter[52899/57510]	 Loss: 0.0327	 MaxEqual: 0.8933	 LR: 0.000337
+Train Epoch[0], Iter[52949/57510]	 Loss: 0.0362	 MaxEqual: 0.8762	 LR: 0.000336
+Train Epoch[0], Iter[52999/57510]	 Loss: 0.0334	 MaxEqual: 0.8875	 LR: 0.000336
+Train Epoch[0], Iter[53049/57510]	 Loss: 0.0428	 MaxEqual: 0.8562	 LR: 0.000335
+Train Epoch[0], Iter[53099/57510]	 Loss: 0.0401	 MaxEqual: 0.8684	 LR: 0.000334
+Train Epoch[0], Iter[53149/57510]	 Loss: 0.0384	 MaxEqual: 0.8752	 LR: 0.000333
+Train Epoch[0], Iter[53199/57510]	 Loss: 0.0367	 MaxEqual: 0.8792	 LR: 0.000332
+Train Epoch[0], Iter[53249/57510]	 Loss: 0.0327	 MaxEqual: 0.8943	 LR: 0.000332
+Train Epoch[0], Iter[53299/57510]	 Loss: 0.0368	 MaxEqual: 0.8787	 LR: 0.000331
+Train Epoch[0], Iter[53349/57510]	 Loss: 0.0365	 MaxEqual: 0.8831	 LR: 0.000330
+Train Epoch[0], Iter[53399/57510]	 Loss: 0.0337	 MaxEqual: 0.8875	 LR: 0.000329
+Train Epoch[0], Iter[53449/57510]	 Loss: 0.0369	 MaxEqual: 0.8782	 LR: 0.000328
+Train Epoch[0], Iter[53499/57510]	 Loss: 0.0346	 MaxEqual: 0.8841	 LR: 0.000328
+Train Epoch[0], Iter[53549/57510]	 Loss: 0.0473	 MaxEqual: 0.8493	 LR: 0.000327
+Train Epoch[0], Iter[53599/57510]	 Loss: 0.0414	 MaxEqual: 0.8601	 LR: 0.000326
+Train Epoch[0], Iter[53649/57510]	 Loss: 0.0338	 MaxEqual: 0.8919	 LR: 0.000325
+Train Epoch[0], Iter[53699/57510]	 Loss: 0.0368	 MaxEqual: 0.8826	 LR: 0.000325
+Train Epoch[0], Iter[53749/57510]	 Loss: 0.0344	 MaxEqual: 0.8899	 LR: 0.000324
+Train Epoch[0], Iter[53799/57510]	 Loss: 0.0387	 MaxEqual: 0.8767	 LR: 0.000323
+Train Epoch[0], Iter[53849/57510]	 Loss: 0.0425	 MaxEqual: 0.8615	 LR: 0.000322
+Train Epoch[0], Iter[53899/57510]	 Loss: 0.0330	 MaxEqual: 0.8899	 LR: 0.000322
+Train Epoch[0], Iter[53949/57510]	 Loss: 0.0372	 MaxEqual: 0.8767	 LR: 0.000321
+Train Epoch[0], Iter[53999/57510]	 Loss: 0.0386	 MaxEqual: 0.8718	 LR: 0.000320
+Train Epoch[0], Iter[54049/57510]	 Loss: 0.0385	 MaxEqual: 0.8713	 LR: 0.000319
+Train Epoch[0], Iter[54099/57510]	 Loss: 0.0320	 MaxEqual: 0.8958	 LR: 0.000318
+Train Epoch[0], Iter[54149/57510]	 Loss: 0.0386	 MaxEqual: 0.8752	 LR: 0.000318
+Train Epoch[0], Iter[54199/57510]	 Loss: 0.0400	 MaxEqual: 0.8655	 LR: 0.000317
+Train Epoch[0], Iter[54249/57510]	 Loss: 0.0338	 MaxEqual: 0.8885	 LR: 0.000316
+Train Epoch[0], Iter[54299/57510]	 Loss: 0.0333	 MaxEqual: 0.8909	 LR: 0.000315
+Train Epoch[0], Iter[54349/57510]	 Loss: 0.0346	 MaxEqual: 0.8831	 LR: 0.000315
+Train Epoch[0], Iter[54399/57510]	 Loss: 0.0364	 MaxEqual: 0.8875	 LR: 0.000314
+Train Epoch[0], Iter[54449/57510]	 Loss: 0.0334	 MaxEqual: 0.8865	 LR: 0.000313
+Train Epoch[0], Iter[54499/57510]	 Loss: 0.0344	 MaxEqual: 0.8860	 LR: 0.000312
+Train Epoch[0], Iter[54549/57510]	 Loss: 0.0340	 MaxEqual: 0.8894	 LR: 0.000312
+Train Epoch[0], Iter[54599/57510]	 Loss: 0.0373	 MaxEqual: 0.8811	 LR: 0.000311
+Train Epoch[0], Iter[54649/57510]	 Loss: 0.0446	 MaxEqual: 0.8488	 LR: 0.000310
+Train Epoch[0], Iter[54699/57510]	 Loss: 0.0337	 MaxEqual: 0.8870	 LR: 0.000309
+Train Epoch[0], Iter[54749/57510]	 Loss: 0.0397	 MaxEqual: 0.8694	 LR: 0.000309
+Train Epoch[0], Iter[54799/57510]	 Loss: 0.0386	 MaxEqual: 0.8752	 LR: 0.000308
+Train Epoch[0], Iter[54849/57510]	 Loss: 0.0333	 MaxEqual: 0.8875	 LR: 0.000307
+Train Epoch[0], Iter[54899/57510]	 Loss: 0.0377	 MaxEqual: 0.8767	 LR: 0.000306
+Train Epoch[0], Iter[54949/57510]	 Loss: 0.0357	 MaxEqual: 0.8836	 LR: 0.000305
+Train Epoch[0], Iter[54999/57510]	 Loss: 0.0363	 MaxEqual: 0.8816	 LR: 0.000305
+Train Epoch[0], Iter[55049/57510]	 Loss: 0.0375	 MaxEqual: 0.8752	 LR: 0.000304
+Train Epoch[0], Iter[55099/57510]	 Loss: 0.0341	 MaxEqual: 0.8865	 LR: 0.000303
+Train Epoch[0], Iter[55149/57510]	 Loss: 0.0330	 MaxEqual: 0.8894	 LR: 0.000303
+Train Epoch[0], Iter[55199/57510]	 Loss: 0.0385	 MaxEqual: 0.8718	 LR: 0.000302
+Train Epoch[0], Iter[55249/57510]	 Loss: 0.0375	 MaxEqual: 0.8757	 LR: 0.000301
+Train Epoch[0], Iter[55299/57510]	 Loss: 0.0382	 MaxEqual: 0.8757	 LR: 0.000300
+Train Epoch[0], Iter[55349/57510]	 Loss: 0.0362	 MaxEqual: 0.8762	 LR: 0.000300
+Train Epoch[0], Iter[55399/57510]	 Loss: 0.0330	 MaxEqual: 0.8889	 LR: 0.000299
+Train Epoch[0], Iter[55449/57510]	 Loss: 0.0336	 MaxEqual: 0.8870	 LR: 0.000298
+Train Epoch[0], Iter[55499/57510]	 Loss: 0.0386	 MaxEqual: 0.8752	 LR: 0.000297
+Train Epoch[0], Iter[55549/57510]	 Loss: 0.0335	 MaxEqual: 0.8870	 LR: 0.000297
+Train Epoch[0], Iter[55599/57510]	 Loss: 0.0385	 MaxEqual: 0.8738	 LR: 0.000296
+Train Epoch[0], Iter[55649/57510]	 Loss: 0.0409	 MaxEqual: 0.8606	 LR: 0.000295
+Train Epoch[0], Iter[55699/57510]	 Loss: 0.0333	 MaxEqual: 0.8889	 LR: 0.000294
+Train Epoch[0], Iter[55749/57510]	 Loss: 0.0379	 MaxEqual: 0.8801	 LR: 0.000294
+Train Epoch[0], Iter[55799/57510]	 Loss: 0.0341	 MaxEqual: 0.8826	 LR: 0.000293
+Train Epoch[0], Iter[55849/57510]	 Loss: 0.0343	 MaxEqual: 0.8899	 LR: 0.000292
+Train Epoch[0], Iter[55899/57510]	 Loss: 0.0336	 MaxEqual: 0.8885	 LR: 0.000291
+Train Epoch[0], Iter[55949/57510]	 Loss: 0.0336	 MaxEqual: 0.8855	 LR: 0.000291
+Train Epoch[0], Iter[55999/57510]	 Loss: 0.0380	 MaxEqual: 0.8772	 LR: 0.000290
+Train Epoch[0], Iter[56049/57510]	 Loss: 0.0384	 MaxEqual: 0.8748	 LR: 0.000289
+Train Epoch[0], Iter[56099/57510]	 Loss: 0.0321	 MaxEqual: 0.8904	 LR: 0.000289
+Train Epoch[0], Iter[56149/57510]	 Loss: 0.0368	 MaxEqual: 0.8738	 LR: 0.000288
+Train Epoch[0], Iter[56199/57510]	 Loss: 0.0358	 MaxEqual: 0.8865	 LR: 0.000287
+Train Epoch[0], Iter[56249/57510]	 Loss: 0.0368	 MaxEqual: 0.8723	 LR: 0.000286
+Train Epoch[0], Iter[56299/57510]	 Loss: 0.0380	 MaxEqual: 0.8752	 LR: 0.000286
+Train Epoch[0], Iter[56349/57510]	 Loss: 0.0381	 MaxEqual: 0.8762	 LR: 0.000285
+Train Epoch[0], Iter[56399/57510]	 Loss: 0.0336	 MaxEqual: 0.8899	 LR: 0.000284
+Train Epoch[0], Iter[56449/57510]	 Loss: 0.0369	 MaxEqual: 0.8767	 LR: 0.000283
+Train Epoch[0], Iter[56499/57510]	 Loss: 0.0383	 MaxEqual: 0.8762	 LR: 0.000283
+Train Epoch[0], Iter[56549/57510]	 Loss: 0.0335	 MaxEqual: 0.8894	 LR: 0.000282
+Train Epoch[0], Iter[56599/57510]	 Loss: 0.0417	 MaxEqual: 0.8630	 LR: 0.000281
+Train Epoch[0], Iter[56649/57510]	 Loss: 0.0338	 MaxEqual: 0.8889	 LR: 0.000281
+Train Epoch[0], Iter[56699/57510]	 Loss: 0.0369	 MaxEqual: 0.8782	 LR: 0.000280
+Train Epoch[0], Iter[56749/57510]	 Loss: 0.0344	 MaxEqual: 0.8875	 LR: 0.000279
+Train Epoch[0], Iter[56799/57510]	 Loss: 0.0396	 MaxEqual: 0.8689	 LR: 0.000278
+Train Epoch[0], Iter[56849/57510]	 Loss: 0.0359	 MaxEqual: 0.8796	 LR: 0.000278
+Train Epoch[0], Iter[56899/57510]	 Loss: 0.0328	 MaxEqual: 0.8919	 LR: 0.000277
+Train Epoch[0], Iter[56949/57510]	 Loss: 0.0385	 MaxEqual: 0.8748	 LR: 0.000276
+Train Epoch[0], Iter[56999/57510]	 Loss: 0.0375	 MaxEqual: 0.8767	 LR: 0.000276
+Train Epoch[0], Iter[57049/57510]	 Loss: 0.0405	 MaxEqual: 0.8650	 LR: 0.000275
+Train Epoch[0], Iter[57099/57510]	 Loss: 0.0334	 MaxEqual: 0.8889	 LR: 0.000274
+Train Epoch[0], Iter[57149/57510]	 Loss: 0.0330	 MaxEqual: 0.8889	 LR: 0.000273
+Train Epoch[0], Iter[57199/57510]	 Loss: 0.0339	 MaxEqual: 0.8855	 LR: 0.000273
+Train Epoch[0], Iter[57249/57510]	 Loss: 0.0339	 MaxEqual: 0.8880	 LR: 0.000272
+Train Epoch[0], Iter[57299/57510]	 Loss: 0.0336	 MaxEqual: 0.8894	 LR: 0.000271
+Train Epoch[0], Iter[57349/57510]	 Loss: 0.0336	 MaxEqual: 0.8855	 LR: 0.000271
+Train Epoch[0], Iter[57399/57510]	 Loss: 0.0333	 MaxEqual: 0.8909	 LR: 0.000270
+Train Epoch[0], Iter[57449/57510]	 Loss: 0.0323	 MaxEqual: 0.8899	 LR: 0.000269
+Train Epoch[0], Iter[57499/57510]	 Loss: 0.0400	 MaxEqual: 0.8664	 LR: 0.000269
+Epoch[0] finished. Loss: 0.751887; MaxEqual: 0.822458
+Epoch[0] finished. Loss: 0.751735; MaxEqual: 0.822457
+Epoch[1] started.
+Train Epoch[1], Iter[39/57510]	 Loss: 0.0444	 MaxEqual: 0.8620	 LR: 0.000268
+Train Epoch[1], Iter[89/57510]	 Loss: 0.0333	 MaxEqual: 0.8880	 LR: 0.000267
+Train Epoch[1], Iter[139/57510]	 Loss: 0.0333	 MaxEqual: 0.8948	 LR: 0.000266
+Train Epoch[1], Iter[189/57510]	 Loss: 0.0322	 MaxEqual: 0.9007	 LR: 0.000266
+Train Epoch[1], Iter[239/57510]	 Loss: 0.0396	 MaxEqual: 0.8694	 LR: 0.000265
+Train Epoch[1], Iter[289/57510]	 Loss: 0.0370	 MaxEqual: 0.8704	 LR: 0.000264
+Train Epoch[1], Iter[339/57510]	 Loss: 0.0382	 MaxEqual: 0.8694	 LR: 0.000264
+Train Epoch[1], Iter[389/57510]	 Loss: 0.0370	 MaxEqual: 0.8767	 LR: 0.000263
+Train Epoch[1], Iter[439/57510]	 Loss: 0.0415	 MaxEqual: 0.8611	 LR: 0.000262
+Train Epoch[1], Iter[489/57510]	 Loss: 0.0335	 MaxEqual: 0.8875	 LR: 0.000262
+Train Epoch[1], Iter[539/57510]	 Loss: 0.0426	 MaxEqual: 0.8557	 LR: 0.000261
+Train Epoch[1], Iter[589/57510]	 Loss: 0.0353	 MaxEqual: 0.8841	 LR: 0.000260
+Train Epoch[1], Iter[639/57510]	 Loss: 0.0344	 MaxEqual: 0.8889	 LR: 0.000260
+Train Epoch[1], Iter[689/57510]	 Loss: 0.0328	 MaxEqual: 0.8899	 LR: 0.000259
+Train Epoch[1], Iter[739/57510]	 Loss: 0.0341	 MaxEqual: 0.8899	 LR: 0.000258
+Train Epoch[1], Iter[789/57510]	 Loss: 0.0346	 MaxEqual: 0.8841	 LR: 0.000257
+Train Epoch[1], Iter[839/57510]	 Loss: 0.0335	 MaxEqual: 0.8904	 LR: 0.000257
+Train Epoch[1], Iter[889/57510]	 Loss: 0.0422	 MaxEqual: 0.8620	 LR: 0.000256
+Train Epoch[1], Iter[939/57510]	 Loss: 0.0370	 MaxEqual: 0.8836	 LR: 0.000256
+Train Epoch[1], Iter[989/57510]	 Loss: 0.0382	 MaxEqual: 0.8738	 LR: 0.000255
+Train Epoch[1], Iter[1039/57510]	 Loss: 0.0418	 MaxEqual: 0.8571	 LR: 0.000254
+Train Epoch[1], Iter[1089/57510]	 Loss: 0.0369	 MaxEqual: 0.8801	 LR: 0.000253
+Train Epoch[1], Iter[1139/57510]	 Loss: 0.0330	 MaxEqual: 0.8929	 LR: 0.000253
+Train Epoch[1], Iter[1189/57510]	 Loss: 0.0439	 MaxEqual: 0.8547	 LR: 0.000252
+Train Epoch[1], Iter[1239/57510]	 Loss: 0.0407	 MaxEqual: 0.8684	 LR: 0.000251
+Train Epoch[1], Iter[1289/57510]	 Loss: 0.0414	 MaxEqual: 0.8635	 LR: 0.000251
+Train Epoch[1], Iter[1339/57510]	 Loss: 0.0323	 MaxEqual: 0.8953	 LR: 0.000250
+Train Epoch[1], Iter[1389/57510]	 Loss: 0.0384	 MaxEqual: 0.8757	 LR: 0.000249
+Train Epoch[1], Iter[1439/57510]	 Loss: 0.0397	 MaxEqual: 0.8694	 LR: 0.000249
+Train Epoch[1], Iter[1489/57510]	 Loss: 0.0327	 MaxEqual: 0.8889	 LR: 0.000248
+Train Epoch[1], Iter[1539/57510]	 Loss: 0.0410	 MaxEqual: 0.8674	 LR: 0.000247
+Train Epoch[1], Iter[1589/57510]	 Loss: 0.0408	 MaxEqual: 0.8689	 LR: 0.000247
+Train Epoch[1], Iter[1639/57510]	 Loss: 0.0327	 MaxEqual: 0.8894	 LR: 0.000246
+Train Epoch[1], Iter[1689/57510]	 Loss: 0.0367	 MaxEqual: 0.8806	 LR: 0.000245
+Train Epoch[1], Iter[1739/57510]	 Loss: 0.0378	 MaxEqual: 0.8713	 LR: 0.000245
+Train Epoch[1], Iter[1789/57510]	 Loss: 0.0333	 MaxEqual: 0.8914	 LR: 0.000244
+Train Epoch[1], Iter[1839/57510]	 Loss: 0.0332	 MaxEqual: 0.8904	 LR: 0.000244
+Train Epoch[1], Iter[1889/57510]	 Loss: 0.0380	 MaxEqual: 0.8757	 LR: 0.000243
+Train Epoch[1], Iter[1939/57510]	 Loss: 0.0373	 MaxEqual: 0.8757	 LR: 0.000242
+Train Epoch[1], Iter[1989/57510]	 Loss: 0.0394	 MaxEqual: 0.8738	 LR: 0.000241
+Train Epoch[1], Iter[2039/57510]	 Loss: 0.0391	 MaxEqual: 0.8752	 LR: 0.000241
+Train Epoch[1], Iter[2089/57510]	 Loss: 0.0363	 MaxEqual: 0.8787	 LR: 0.000240
+Train Epoch[1], Iter[2139/57510]	 Loss: 0.0385	 MaxEqual: 0.8718	 LR: 0.000240
+Train Epoch[1], Iter[2189/57510]	 Loss: 0.0326	 MaxEqual: 0.8855	 LR: 0.000239
+Train Epoch[1], Iter[2239/57510]	 Loss: 0.0330	 MaxEqual: 0.8909	 LR: 0.000238
+Train Epoch[1], Iter[2289/57510]	 Loss: 0.0341	 MaxEqual: 0.8880	 LR: 0.000238
+Train Epoch[1], Iter[2339/57510]	 Loss: 0.0407	 MaxEqual: 0.8655	 LR: 0.000237
+Train Epoch[1], Iter[2389/57510]	 Loss: 0.0326	 MaxEqual: 0.8919	 LR: 0.000236
+Train Epoch[1], Iter[2439/57510]	 Loss: 0.0411	 MaxEqual: 0.8650	 LR: 0.000236
+Train Epoch[1], Iter[2489/57510]	 Loss: 0.0348	 MaxEqual: 0.8841	 LR: 0.000235
+Train Epoch[1], Iter[2539/57510]	 Loss: 0.0389	 MaxEqual: 0.8694	 LR: 0.000234
+Train Epoch[1], Iter[2589/57510]	 Loss: 0.0390	 MaxEqual: 0.8679	 LR: 0.000234
+Train Epoch[1], Iter[2639/57510]	 Loss: 0.0326	 MaxEqual: 0.8938	 LR: 0.000233
+Train Epoch[1], Iter[2689/57510]	 Loss: 0.0390	 MaxEqual: 0.8694	 LR: 0.000233
+Train Epoch[1], Iter[2739/57510]	 Loss: 0.0412	 MaxEqual: 0.8611	 LR: 0.000232
+Train Epoch[1], Iter[2789/57510]	 Loss: 0.0400	 MaxEqual: 0.8684	 LR: 0.000231
+Train Epoch[1], Iter[2839/57510]	 Loss: 0.0364	 MaxEqual: 0.8806	 LR: 0.000231
+Train Epoch[1], Iter[2889/57510]	 Loss: 0.0375	 MaxEqual: 0.8713	 LR: 0.000230
+Train Epoch[1], Iter[2939/57510]	 Loss: 0.0372	 MaxEqual: 0.8796	 LR: 0.000229
+Train Epoch[1], Iter[2989/57510]	 Loss: 0.0383	 MaxEqual: 0.8757	 LR: 0.000229
+Train Epoch[1], Iter[3039/57510]	 Loss: 0.0413	 MaxEqual: 0.8674	 LR: 0.000228
+Train Epoch[1], Iter[3089/57510]	 Loss: 0.0452	 MaxEqual: 0.8562	 LR: 0.000228
+Train Epoch[1], Iter[3139/57510]	 Loss: 0.0333	 MaxEqual: 0.8894	 LR: 0.000227
+Train Epoch[1], Iter[3189/57510]	 Loss: 0.0368	 MaxEqual: 0.8816	 LR: 0.000226
+Train Epoch[1], Iter[3239/57510]	 Loss: 0.0333	 MaxEqual: 0.8943	 LR: 0.000226
+Train Epoch[1], Iter[3289/57510]	 Loss: 0.0414	 MaxEqual: 0.8620	 LR: 0.000225
+Train Epoch[1], Iter[3339/57510]	 Loss: 0.0362	 MaxEqual: 0.8821	 LR: 0.000224
+Train Epoch[1], Iter[3389/57510]	 Loss: 0.0363	 MaxEqual: 0.8811	 LR: 0.000224
+Train Epoch[1], Iter[3439/57510]	 Loss: 0.0383	 MaxEqual: 0.8718	 LR: 0.000223
+Train Epoch[1], Iter[3489/57510]	 Loss: 0.0328	 MaxEqual: 0.8904	 LR: 0.000223
+Train Epoch[1], Iter[3539/57510]	 Loss: 0.0329	 MaxEqual: 0.8889	 LR: 0.000222
+Train Epoch[1], Iter[3589/57510]	 Loss: 0.0331	 MaxEqual: 0.8885	 LR: 0.000221
+Train Epoch[1], Iter[3639/57510]	 Loss: 0.0367	 MaxEqual: 0.8806	 LR: 0.000221
+Train Epoch[1], Iter[3689/57510]	 Loss: 0.0394	 MaxEqual: 0.8748	 LR: 0.000220
+Train Epoch[1], Iter[3739/57510]	 Loss: 0.0330	 MaxEqual: 0.8875	 LR: 0.000219
+Train Epoch[1], Iter[3789/57510]	 Loss: 0.0383	 MaxEqual: 0.8826	 LR: 0.000219
+Train Epoch[1], Iter[3839/57510]	 Loss: 0.0331	 MaxEqual: 0.8889	 LR: 0.000218
+Train Epoch[1], Iter[3889/57510]	 Loss: 0.0361	 MaxEqual: 0.8816	 LR: 0.000218
+Train Epoch[1], Iter[3939/57510]	 Loss: 0.0419	 MaxEqual: 0.8591	 LR: 0.000217
+Train Epoch[1], Iter[3989/57510]	 Loss: 0.0461	 MaxEqual: 0.8474	 LR: 0.000217
+Train Epoch[1], Iter[4039/57510]	 Loss: 0.0335	 MaxEqual: 0.8899	 LR: 0.000216
+Train Epoch[1], Iter[4089/57510]	 Loss: 0.0339	 MaxEqual: 0.8870	 LR: 0.000215
+Train Epoch[1], Iter[4139/57510]	 Loss: 0.0332	 MaxEqual: 0.8938	 LR: 0.000215
+Train Epoch[1], Iter[4189/57510]	 Loss: 0.0410	 MaxEqual: 0.8694	 LR: 0.000214
+Train Epoch[1], Iter[4239/57510]	 Loss: 0.0382	 MaxEqual: 0.8787	 LR: 0.000214
+Train Epoch[1], Iter[4289/57510]	 Loss: 0.0378	 MaxEqual: 0.8738	 LR: 0.000213
+Train Epoch[1], Iter[4339/57510]	 Loss: 0.0377	 MaxEqual: 0.8743	 LR: 0.000212
+Train Epoch[1], Iter[4389/57510]	 Loss: 0.0408	 MaxEqual: 0.8615	 LR: 0.000212
+Train Epoch[1], Iter[4439/57510]	 Loss: 0.0381	 MaxEqual: 0.8757	 LR: 0.000211
+Train Epoch[1], Iter[4489/57510]	 Loss: 0.0322	 MaxEqual: 0.8943	 LR: 0.000211
+Train Epoch[1], Iter[4539/57510]	 Loss: 0.0364	 MaxEqual: 0.8787	 LR: 0.000210
+Train Epoch[1], Iter[4589/57510]	 Loss: 0.0325	 MaxEqual: 0.8899	 LR: 0.000209
+Train Epoch[1], Iter[4639/57510]	 Loss: 0.0379	 MaxEqual: 0.8748	 LR: 0.000209
+Train Epoch[1], Iter[4689/57510]	 Loss: 0.0329	 MaxEqual: 0.8885	 LR: 0.000208
+Train Epoch[1], Iter[4739/57510]	 Loss: 0.0397	 MaxEqual: 0.8743	 LR: 0.000208
+Train Epoch[1], Iter[4789/57510]	 Loss: 0.0358	 MaxEqual: 0.8841	 LR: 0.000207
+Train Epoch[1], Iter[4839/57510]	 Loss: 0.0327	 MaxEqual: 0.8938	 LR: 0.000206
+Train Epoch[1], Iter[4889/57510]	 Loss: 0.0365	 MaxEqual: 0.8777	 LR: 0.000206
+Train Epoch[1], Iter[4939/57510]	 Loss: 0.0404	 MaxEqual: 0.8704	 LR: 0.000205
+Train Epoch[1], Iter[4989/57510]	 Loss: 0.0334	 MaxEqual: 0.8924	 LR: 0.000205
+Train Epoch[1], Iter[5039/57510]	 Loss: 0.0370	 MaxEqual: 0.8757	 LR: 0.000204
+Train Epoch[1], Iter[5089/57510]	 Loss: 0.0417	 MaxEqual: 0.8625	 LR: 0.000204
+Train Epoch[1], Iter[5139/57510]	 Loss: 0.0328	 MaxEqual: 0.8953	 LR: 0.000203
+Train Epoch[1], Iter[5189/57510]	 Loss: 0.0385	 MaxEqual: 0.8757	 LR: 0.000202
+Train Epoch[1], Iter[5239/57510]	 Loss: 0.0334	 MaxEqual: 0.8909	 LR: 0.000202
+Train Epoch[1], Iter[5289/57510]	 Loss: 0.0370	 MaxEqual: 0.8787	 LR: 0.000201
+Train Epoch[1], Iter[5339/57510]	 Loss: 0.0351	 MaxEqual: 0.8816	 LR: 0.000201
+Train Epoch[1], Iter[5389/57510]	 Loss: 0.0411	 MaxEqual: 0.8664	 LR: 0.000200
+Train Epoch[1], Iter[5439/57510]	 Loss: 0.0439	 MaxEqual: 0.8537	 LR: 0.000200
+Train Epoch[1], Iter[5489/57510]	 Loss: 0.0332	 MaxEqual: 0.8885	 LR: 0.000199
+Train Epoch[1], Iter[5539/57510]	 Loss: 0.0342	 MaxEqual: 0.8841	 LR: 0.000198
+Train Epoch[1], Iter[5589/57510]	 Loss: 0.0385	 MaxEqual: 0.8752	 LR: 0.000198
+Train Epoch[1], Iter[5639/57510]	 Loss: 0.0367	 MaxEqual: 0.8782	 LR: 0.000197
+Train Epoch[1], Iter[5689/57510]	 Loss: 0.0365	 MaxEqual: 0.8782	 LR: 0.000197
+Train Epoch[1], Iter[5739/57510]	 Loss: 0.0339	 MaxEqual: 0.8870	 LR: 0.000196
+Train Epoch[1], Iter[5789/57510]	 Loss: 0.0385	 MaxEqual: 0.8699	 LR: 0.000196
+Train Epoch[1], Iter[5839/57510]	 Loss: 0.0372	 MaxEqual: 0.8748	 LR: 0.000195
+Train Epoch[1], Iter[5889/57510]	 Loss: 0.0405	 MaxEqual: 0.8650	 LR: 0.000195
+Train Epoch[1], Iter[5939/57510]	 Loss: 0.0414	 MaxEqual: 0.8601	 LR: 0.000194
+Train Epoch[1], Iter[5989/57510]	 Loss: 0.0343	 MaxEqual: 0.8870	 LR: 0.000194
+Train Epoch[1], Iter[6039/57510]	 Loss: 0.0435	 MaxEqual: 0.8562	 LR: 0.000193
+Train Epoch[1], Iter[6089/57510]	 Loss: 0.0339	 MaxEqual: 0.8855	 LR: 0.000192
+Train Epoch[1], Iter[6139/57510]	 Loss: 0.0333	 MaxEqual: 0.8919	 LR: 0.000192
+Train Epoch[1], Iter[6189/57510]	 Loss: 0.0335	 MaxEqual: 0.8889	 LR: 0.000191
+Train Epoch[1], Iter[6239/57510]	 Loss: 0.0395	 MaxEqual: 0.8733	 LR: 0.000191
+Train Epoch[1], Iter[6289/57510]	 Loss: 0.0363	 MaxEqual: 0.8806	 LR: 0.000190
+Train Epoch[1], Iter[6339/57510]	 Loss: 0.0383	 MaxEqual: 0.8723	 LR: 0.000190
+Train Epoch[1], Iter[6389/57510]	 Loss: 0.0381	 MaxEqual: 0.8748	 LR: 0.000189
+Train Epoch[1], Iter[6439/57510]	 Loss: 0.0398	 MaxEqual: 0.8748	 LR: 0.000189
+Train Epoch[1], Iter[6489/57510]	 Loss: 0.0386	 MaxEqual: 0.8743	 LR: 0.000188
+Train Epoch[1], Iter[6539/57510]	 Loss: 0.0334	 MaxEqual: 0.8899	 LR: 0.000188
+Train Epoch[1], Iter[6589/57510]	 Loss: 0.0325	 MaxEqual: 0.8909	 LR: 0.000187
+Train Epoch[1], Iter[6639/57510]	 Loss: 0.0372	 MaxEqual: 0.8752	 LR: 0.000187
+Train Epoch[1], Iter[6689/57510]	 Loss: 0.0345	 MaxEqual: 0.8875	 LR: 0.000186
+Train Epoch[1], Iter[6739/57510]	 Loss: 0.0333	 MaxEqual: 0.8904	 LR: 0.000185
+Train Epoch[1], Iter[6789/57510]	 Loss: 0.0329	 MaxEqual: 0.8880	 LR: 0.000185
+Train Epoch[1], Iter[6839/57510]	 Loss: 0.0421	 MaxEqual: 0.8601	 LR: 0.000184
+Train Epoch[1], Iter[6889/57510]	 Loss: 0.0381	 MaxEqual: 0.8796	 LR: 0.000184
+Train Epoch[1], Iter[6939/57510]	 Loss: 0.0368	 MaxEqual: 0.8782	 LR: 0.000183
+Train Epoch[1], Iter[6989/57510]	 Loss: 0.0337	 MaxEqual: 0.8919	 LR: 0.000183
+Train Epoch[1], Iter[7039/57510]	 Loss: 0.0361	 MaxEqual: 0.8806	 LR: 0.000182
+Train Epoch[1], Iter[7089/57510]	 Loss: 0.0372	 MaxEqual: 0.8821	 LR: 0.000182
+Train Epoch[1], Iter[7139/57510]	 Loss: 0.0397	 MaxEqual: 0.8655	 LR: 0.000181
+Train Epoch[1], Iter[7189/57510]	 Loss: 0.0334	 MaxEqual: 0.8894	 LR: 0.000181
+Train Epoch[1], Iter[7239/57510]	 Loss: 0.0328	 MaxEqual: 0.8909	 LR: 0.000180
+Train Epoch[1], Iter[7289/57510]	 Loss: 0.0399	 MaxEqual: 0.8733	 LR: 0.000180
+Train Epoch[1], Iter[7339/57510]	 Loss: 0.0331	 MaxEqual: 0.8889	 LR: 0.000179
+Train Epoch[1], Iter[7389/57510]	 Loss: 0.0329	 MaxEqual: 0.8885	 LR: 0.000179
+Train Epoch[1], Iter[7439/57510]	 Loss: 0.0369	 MaxEqual: 0.8767	 LR: 0.000178
+Train Epoch[1], Iter[7489/57510]	 Loss: 0.0336	 MaxEqual: 0.8850	 LR: 0.000178
+Train Epoch[1], Iter[7539/57510]	 Loss: 0.0408	 MaxEqual: 0.8640	 LR: 0.000177
+Train Epoch[1], Iter[7589/57510]	 Loss: 0.0402	 MaxEqual: 0.8650	 LR: 0.000177
+Train Epoch[1], Iter[7639/57510]	 Loss: 0.0391	 MaxEqual: 0.8718	 LR: 0.000176
+Train Epoch[1], Iter[7689/57510]	 Loss: 0.0377	 MaxEqual: 0.8767	 LR: 0.000176
+Train Epoch[1], Iter[7739/57510]	 Loss: 0.0374	 MaxEqual: 0.8767	 LR: 0.000175
+Train Epoch[1], Iter[7789/57510]	 Loss: 0.0348	 MaxEqual: 0.8899	 LR: 0.000175
+Train Epoch[1], Iter[7839/57510]	 Loss: 0.0369	 MaxEqual: 0.8777	 LR: 0.000174
+Train Epoch[1], Iter[7889/57510]	 Loss: 0.0364	 MaxEqual: 0.8777	 LR: 0.000174
+Train Epoch[1], Iter[7939/57510]	 Loss: 0.0381	 MaxEqual: 0.8718	 LR: 0.000173
+Train Epoch[1], Iter[7989/57510]	 Loss: 0.0319	 MaxEqual: 0.8914	 LR: 0.000173
+Train Epoch[1], Iter[8039/57510]	 Loss: 0.0335	 MaxEqual: 0.8826	 LR: 0.000172
+Train Epoch[1], Iter[8089/57510]	 Loss: 0.0397	 MaxEqual: 0.8708	 LR: 0.000172
+Train Epoch[1], Iter[8139/57510]	 Loss: 0.0324	 MaxEqual: 0.8963	 LR: 0.000171
+Train Epoch[1], Iter[8189/57510]	 Loss: 0.0376	 MaxEqual: 0.8816	 LR: 0.000171
+Train Epoch[1], Iter[8239/57510]	 Loss: 0.0321	 MaxEqual: 0.8958	 LR: 0.000170
+Train Epoch[1], Iter[8289/57510]	 Loss: 0.0450	 MaxEqual: 0.8547	 LR: 0.000170
+Train Epoch[1], Iter[8339/57510]	 Loss: 0.0362	 MaxEqual: 0.8811	 LR: 0.000169
+Train Epoch[1], Iter[8389/57510]	 Loss: 0.0417	 MaxEqual: 0.8601	 LR: 0.000169
+Train Epoch[1], Iter[8439/57510]	 Loss: 0.0330	 MaxEqual: 0.8860	 LR: 0.000169
+Train Epoch[1], Iter[8489/57510]	 Loss: 0.0336	 MaxEqual: 0.8894	 LR: 0.000168
+Train Epoch[1], Iter[8539/57510]	 Loss: 0.0381	 MaxEqual: 0.8757	 LR: 0.000168
+Train Epoch[1], Iter[8589/57510]	 Loss: 0.0366	 MaxEqual: 0.8792	 LR: 0.000167
+Train Epoch[1], Iter[8639/57510]	 Loss: 0.0409	 MaxEqual: 0.8655	 LR: 0.000167
+Train Epoch[1], Iter[8689/57510]	 Loss: 0.0368	 MaxEqual: 0.8762	 LR: 0.000166
+Train Epoch[1], Iter[8739/57510]	 Loss: 0.0368	 MaxEqual: 0.8777	 LR: 0.000166
+Train Epoch[1], Iter[8789/57510]	 Loss: 0.0339	 MaxEqual: 0.8909	 LR: 0.000165
+Train Epoch[1], Iter[8839/57510]	 Loss: 0.0387	 MaxEqual: 0.8694	 LR: 0.000165
+Train Epoch[1], Iter[8889/57510]	 Loss: 0.0328	 MaxEqual: 0.8914	 LR: 0.000164
+Train Epoch[1], Iter[8939/57510]	 Loss: 0.0365	 MaxEqual: 0.8826	 LR: 0.000164
+Train Epoch[1], Iter[8989/57510]	 Loss: 0.0349	 MaxEqual: 0.8855	 LR: 0.000163
+Train Epoch[1], Iter[9039/57510]	 Loss: 0.0385	 MaxEqual: 0.8718	 LR: 0.000163
+Train Epoch[1], Iter[9089/57510]	 Loss: 0.0328	 MaxEqual: 0.8914	 LR: 0.000163
+Train Epoch[1], Iter[9139/57510]	 Loss: 0.0374	 MaxEqual: 0.8772	 LR: 0.000162
+Train Epoch[1], Iter[9189/57510]	 Loss: 0.0336	 MaxEqual: 0.8875	 LR: 0.000162
+Train Epoch[1], Iter[9239/57510]	 Loss: 0.0368	 MaxEqual: 0.8826	 LR: 0.000161
+Train Epoch[1], Iter[9289/57510]	 Loss: 0.0335	 MaxEqual: 0.8904	 LR: 0.000161
+Train Epoch[1], Iter[9339/57510]	 Loss: 0.0323	 MaxEqual: 0.8953	 LR: 0.000160
+Train Epoch[1], Iter[9389/57510]	 Loss: 0.0373	 MaxEqual: 0.8777	 LR: 0.000160
+Train Epoch[1], Iter[9439/57510]	 Loss: 0.0408	 MaxEqual: 0.8655	 LR: 0.000159
+Train Epoch[1], Iter[9489/57510]	 Loss: 0.0446	 MaxEqual: 0.8532	 LR: 0.000159
+Train Epoch[1], Iter[9539/57510]	 Loss: 0.0419	 MaxEqual: 0.8576	 LR: 0.000158
+Train Epoch[1], Iter[9589/57510]	 Loss: 0.0341	 MaxEqual: 0.8899	 LR: 0.000158
+Train Epoch[1], Iter[9639/57510]	 Loss: 0.0397	 MaxEqual: 0.8615	 LR: 0.000158
+Train Epoch[1], Iter[9689/57510]	 Loss: 0.0376	 MaxEqual: 0.8801	 LR: 0.000157
+Train Epoch[1], Iter[9739/57510]	 Loss: 0.0394	 MaxEqual: 0.8718	 LR: 0.000157
+Train Epoch[1], Iter[9789/57510]	 Loss: 0.0333	 MaxEqual: 0.8904	 LR: 0.000156
+Train Epoch[1], Iter[9839/57510]	 Loss: 0.0332	 MaxEqual: 0.8850	 LR: 0.000156
+Train Epoch[1], Iter[9889/57510]	 Loss: 0.0368	 MaxEqual: 0.8782	 LR: 0.000155
+Train Epoch[1], Iter[9939/57510]	 Loss: 0.0338	 MaxEqual: 0.8880	 LR: 0.000155
+Train Epoch[1], Iter[9989/57510]	 Loss: 0.0356	 MaxEqual: 0.8821	 LR: 0.000155
+Train Epoch[1], Iter[10039/57510]	 Loss: 0.0406	 MaxEqual: 0.8601	 LR: 0.000154
+Train Epoch[1], Iter[10089/57510]	 Loss: 0.0329	 MaxEqual: 0.8885	 LR: 0.000154
+Train Epoch[1], Iter[10139/57510]	 Loss: 0.0324	 MaxEqual: 0.8914	 LR: 0.000153
+Train Epoch[1], Iter[10189/57510]	 Loss: 0.0327	 MaxEqual: 0.8889	 LR: 0.000153
+Train Epoch[1], Iter[10239/57510]	 Loss: 0.0326	 MaxEqual: 0.8933	 LR: 0.000152
+Train Epoch[1], Iter[10289/57510]	 Loss: 0.0384	 MaxEqual: 0.8767	 LR: 0.000152
+Train Epoch[1], Iter[10339/57510]	 Loss: 0.0384	 MaxEqual: 0.8777	 LR: 0.000152
+Train Epoch[1], Iter[10389/57510]	 Loss: 0.0370	 MaxEqual: 0.8738	 LR: 0.000151
+Train Epoch[1], Iter[10439/57510]	 Loss: 0.0368	 MaxEqual: 0.8772	 LR: 0.000151
+Train Epoch[1], Iter[10489/57510]	 Loss: 0.0381	 MaxEqual: 0.8777	 LR: 0.000150
+Train Epoch[1], Iter[10539/57510]	 Loss: 0.0371	 MaxEqual: 0.8777	 LR: 0.000150
+Train Epoch[1], Iter[10589/57510]	 Loss: 0.0321	 MaxEqual: 0.8889	 LR: 0.000150
+Train Epoch[1], Iter[10639/57510]	 Loss: 0.0347	 MaxEqual: 0.8801	 LR: 0.000149
+Train Epoch[1], Iter[10689/57510]	 Loss: 0.0368	 MaxEqual: 0.8821	 LR: 0.000149
+Train Epoch[1], Iter[10739/57510]	 Loss: 0.0328	 MaxEqual: 0.8909	 LR: 0.000148
+Train Epoch[1], Iter[10789/57510]	 Loss: 0.0375	 MaxEqual: 0.8748	 LR: 0.000148
+Train Epoch[1], Iter[10839/57510]	 Loss: 0.0334	 MaxEqual: 0.8904	 LR: 0.000148
+Train Epoch[1], Iter[10889/57510]	 Loss: 0.0373	 MaxEqual: 0.8762	 LR: 0.000147
+Train Epoch[1], Iter[10939/57510]	 Loss: 0.0358	 MaxEqual: 0.8806	 LR: 0.000147
+Train Epoch[1], Iter[10989/57510]	 Loss: 0.0368	 MaxEqual: 0.8787	 LR: 0.000146
+Train Epoch[1], Iter[11039/57510]	 Loss: 0.0454	 MaxEqual: 0.8503	 LR: 0.000146
+Train Epoch[1], Iter[11089/57510]	 Loss: 0.0340	 MaxEqual: 0.8889	 LR: 0.000146
+Train Epoch[1], Iter[11139/57510]	 Loss: 0.0328	 MaxEqual: 0.8919	 LR: 0.000145
+Train Epoch[1], Iter[11189/57510]	 Loss: 0.0375	 MaxEqual: 0.8806	 LR: 0.000145
+Train Epoch[1], Iter[11239/57510]	 Loss: 0.0346	 MaxEqual: 0.8880	 LR: 0.000144
+Train Epoch[1], Iter[11289/57510]	 Loss: 0.0339	 MaxEqual: 0.8889	 LR: 0.000144
+Train Epoch[1], Iter[11339/57510]	 Loss: 0.0370	 MaxEqual: 0.8796	 LR: 0.000144
+Train Epoch[1], Iter[11389/57510]	 Loss: 0.0358	 MaxEqual: 0.8787	 LR: 0.000143
+Train Epoch[1], Iter[11439/57510]	 Loss: 0.0364	 MaxEqual: 0.8821	 LR: 0.000143
+Train Epoch[1], Iter[11489/57510]	 Loss: 0.0346	 MaxEqual: 0.8816	 LR: 0.000142
+Train Epoch[1], Iter[11539/57510]	 Loss: 0.0427	 MaxEqual: 0.8596	 LR: 0.000142
+Train Epoch[1], Iter[11589/57510]	 Loss: 0.0383	 MaxEqual: 0.8772	 LR: 0.000142
+Train Epoch[1], Iter[11639/57510]	 Loss: 0.0379	 MaxEqual: 0.8782	 LR: 0.000141
+Train Epoch[1], Iter[11689/57510]	 Loss: 0.0366	 MaxEqual: 0.8801	 LR: 0.000141
+Train Epoch[1], Iter[11739/57510]	 Loss: 0.0420	 MaxEqual: 0.8601	 LR: 0.000141
+Train Epoch[1], Iter[11789/57510]	 Loss: 0.0332	 MaxEqual: 0.8919	 LR: 0.000140
+Train Epoch[1], Iter[11839/57510]	 Loss: 0.0374	 MaxEqual: 0.8738	 LR: 0.000140
+Train Epoch[1], Iter[11889/57510]	 Loss: 0.0369	 MaxEqual: 0.8762	 LR: 0.000139
+Train Epoch[1], Iter[11939/57510]	 Loss: 0.0329	 MaxEqual: 0.8904	 LR: 0.000139
+Train Epoch[1], Iter[11989/57510]	 Loss: 0.0373	 MaxEqual: 0.8718	 LR: 0.000139
+Train Epoch[1], Iter[12039/57510]	 Loss: 0.0383	 MaxEqual: 0.8694	 LR: 0.000138
+Train Epoch[1], Iter[12089/57510]	 Loss: 0.0369	 MaxEqual: 0.8792	 LR: 0.000138
+Train Epoch[1], Iter[12139/57510]	 Loss: 0.0381	 MaxEqual: 0.8811	 LR: 0.000138
+Train Epoch[1], Iter[12189/57510]	 Loss: 0.0337	 MaxEqual: 0.8875	 LR: 0.000137
+Train Epoch[1], Iter[12239/57510]	 Loss: 0.0328	 MaxEqual: 0.8904	 LR: 0.000137
+Train Epoch[1], Iter[12289/57510]	 Loss: 0.0325	 MaxEqual: 0.8909	 LR: 0.000137
+Train Epoch[1], Iter[12339/57510]	 Loss: 0.0377	 MaxEqual: 0.8733	 LR: 0.000136
+Train Epoch[1], Iter[12389/57510]	 Loss: 0.0367	 MaxEqual: 0.8777	 LR: 0.000136
+Train Epoch[1], Iter[12439/57510]	 Loss: 0.0437	 MaxEqual: 0.8567	 LR: 0.000135
+Train Epoch[1], Iter[12489/57510]	 Loss: 0.0332	 MaxEqual: 0.8899	 LR: 0.000135
+Train Epoch[1], Iter[12539/57510]	 Loss: 0.0362	 MaxEqual: 0.8821	 LR: 0.000135
+Train Epoch[1], Iter[12589/57510]	 Loss: 0.0377	 MaxEqual: 0.8733	 LR: 0.000134
+Train Epoch[1], Iter[12639/57510]	 Loss: 0.0429	 MaxEqual: 0.8562	 LR: 0.000134
+Train Epoch[1], Iter[12689/57510]	 Loss: 0.0359	 MaxEqual: 0.8792	 LR: 0.000134
+Train Epoch[1], Iter[12739/57510]	 Loss: 0.0336	 MaxEqual: 0.8875	 LR: 0.000133
+Train Epoch[1], Iter[12789/57510]	 Loss: 0.0382	 MaxEqual: 0.8743	 LR: 0.000133
+Train Epoch[1], Iter[12839/57510]	 Loss: 0.0339	 MaxEqual: 0.8889	 LR: 0.000133
+Train Epoch[1], Iter[12889/57510]	 Loss: 0.0321	 MaxEqual: 0.8904	 LR: 0.000132
+Train Epoch[1], Iter[12939/57510]	 Loss: 0.0331	 MaxEqual: 0.8880	 LR: 0.000132
+Train Epoch[1], Iter[12989/57510]	 Loss: 0.0359	 MaxEqual: 0.8762	 LR: 0.000132
+Train Epoch[1], Iter[13039/57510]	 Loss: 0.0344	 MaxEqual: 0.8850	 LR: 0.000131
+Train Epoch[1], Iter[13089/57510]	 Loss: 0.0334	 MaxEqual: 0.8924	 LR: 0.000131
+Train Epoch[1], Iter[13139/57510]	 Loss: 0.0330	 MaxEqual: 0.8894	 LR: 0.000131
+Train Epoch[1], Iter[13189/57510]	 Loss: 0.0335	 MaxEqual: 0.8841	 LR: 0.000130
+Train Epoch[1], Iter[13239/57510]	 Loss: 0.0366	 MaxEqual: 0.8782	 LR: 0.000130
+Train Epoch[1], Iter[13289/57510]	 Loss: 0.0385	 MaxEqual: 0.8757	 LR: 0.000130
+Train Epoch[1], Iter[13339/57510]	 Loss: 0.0337	 MaxEqual: 0.8880	 LR: 0.000129
+Train Epoch[1], Iter[13389/57510]	 Loss: 0.0329	 MaxEqual: 0.8885	 LR: 0.000129
+Train Epoch[1], Iter[13439/57510]	 Loss: 0.0327	 MaxEqual: 0.8904	 LR: 0.000129
+Train Epoch[1], Iter[13489/57510]	 Loss: 0.0357	 MaxEqual: 0.8831	 LR: 0.000129
+Train Epoch[1], Iter[13539/57510]	 Loss: 0.0356	 MaxEqual: 0.8826	 LR: 0.000128
+Train Epoch[1], Iter[13589/57510]	 Loss: 0.0404	 MaxEqual: 0.8635	 LR: 0.000128
+Train Epoch[1], Iter[13639/57510]	 Loss: 0.0365	 MaxEqual: 0.8748	 LR: 0.000128
+Train Epoch[1], Iter[13689/57510]	 Loss: 0.0324	 MaxEqual: 0.8929	 LR: 0.000127
+Train Epoch[1], Iter[13739/57510]	 Loss: 0.0394	 MaxEqual: 0.8728	 LR: 0.000127
+Train Epoch[1], Iter[13789/57510]	 Loss: 0.0342	 MaxEqual: 0.8850	 LR: 0.000127
+Train Epoch[1], Iter[13839/57510]	 Loss: 0.0331	 MaxEqual: 0.8850	 LR: 0.000126
+Train Epoch[1], Iter[13889/57510]	 Loss: 0.0369	 MaxEqual: 0.8752	 LR: 0.000126
+Train Epoch[1], Iter[13939/57510]	 Loss: 0.0323	 MaxEqual: 0.8948	 LR: 0.000126
+Train Epoch[1], Iter[13989/57510]	 Loss: 0.0384	 MaxEqual: 0.8748	 LR: 0.000125
+Train Epoch[1], Iter[14039/57510]	 Loss: 0.0372	 MaxEqual: 0.8743	 LR: 0.000125
+Train Epoch[1], Iter[14089/57510]	 Loss: 0.0371	 MaxEqual: 0.8787	 LR: 0.000125
+Train Epoch[1], Iter[14139/57510]	 Loss: 0.0448	 MaxEqual: 0.8581	 LR: 0.000125
+Train Epoch[1], Iter[14189/57510]	 Loss: 0.0405	 MaxEqual: 0.8635	 LR: 0.000124
+Train Epoch[1], Iter[14239/57510]	 Loss: 0.0374	 MaxEqual: 0.8792	 LR: 0.000124
+Train Epoch[1], Iter[14289/57510]	 Loss: 0.0407	 MaxEqual: 0.8704	 LR: 0.000124
+Train Epoch[1], Iter[14339/57510]	 Loss: 0.0369	 MaxEqual: 0.8801	 LR: 0.000123
+Train Epoch[1], Iter[14389/57510]	 Loss: 0.0329	 MaxEqual: 0.8924	 LR: 0.000123
+Train Epoch[1], Iter[14439/57510]	 Loss: 0.0330	 MaxEqual: 0.8943	 LR: 0.000123
+Train Epoch[1], Iter[14489/57510]	 Loss: 0.0334	 MaxEqual: 0.8865	 LR: 0.000123
+Train Epoch[1], Iter[14539/57510]	 Loss: 0.0337	 MaxEqual: 0.8821	 LR: 0.000122
+Train Epoch[1], Iter[14589/57510]	 Loss: 0.0323	 MaxEqual: 0.8914	 LR: 0.000122
+Train Epoch[1], Iter[14639/57510]	 Loss: 0.0338	 MaxEqual: 0.8899	 LR: 0.000122
+Train Epoch[1], Iter[14689/57510]	 Loss: 0.0411	 MaxEqual: 0.8650	 LR: 0.000122
+Train Epoch[1], Iter[14739/57510]	 Loss: 0.0386	 MaxEqual: 0.8708	 LR: 0.000121
+Train Epoch[1], Iter[14789/57510]	 Loss: 0.0335	 MaxEqual: 0.8865	 LR: 0.000121
+Train Epoch[1], Iter[14839/57510]	 Loss: 0.0330	 MaxEqual: 0.8865	 LR: 0.000121
+Train Epoch[1], Iter[14889/57510]	 Loss: 0.0382	 MaxEqual: 0.8728	 LR: 0.000120
+Train Epoch[1], Iter[14939/57510]	 Loss: 0.0374	 MaxEqual: 0.8728	 LR: 0.000120
+Train Epoch[1], Iter[14989/57510]	 Loss: 0.0358	 MaxEqual: 0.8821	 LR: 0.000120
+Train Epoch[1], Iter[15039/57510]	 Loss: 0.0359	 MaxEqual: 0.8792	 LR: 0.000120
+Train Epoch[1], Iter[15089/57510]	 Loss: 0.0330	 MaxEqual: 0.8929	 LR: 0.000119
+Train Epoch[1], Iter[15139/57510]	 Loss: 0.0338	 MaxEqual: 0.8880	 LR: 0.000119
+Train Epoch[1], Iter[15189/57510]	 Loss: 0.0343	 MaxEqual: 0.8865	 LR: 0.000119
+Train Epoch[1], Iter[15239/57510]	 Loss: 0.0367	 MaxEqual: 0.8806	 LR: 0.000119
+Train Epoch[1], Iter[15289/57510]	 Loss: 0.0383	 MaxEqual: 0.8748	 LR: 0.000118
+Train Epoch[1], Iter[15339/57510]	 Loss: 0.0379	 MaxEqual: 0.8767	 LR: 0.000118
+Train Epoch[1], Iter[15389/57510]	 Loss: 0.0379	 MaxEqual: 0.8782	 LR: 0.000118
+Train Epoch[1], Iter[15439/57510]	 Loss: 0.0401	 MaxEqual: 0.8669	 LR: 0.000118
+Train Epoch[1], Iter[15489/57510]	 Loss: 0.0370	 MaxEqual: 0.8796	 LR: 0.000117
+Train Epoch[1], Iter[15539/57510]	 Loss: 0.0331	 MaxEqual: 0.8909	 LR: 0.000117
+Train Epoch[1], Iter[15589/57510]	 Loss: 0.0339	 MaxEqual: 0.8850	 LR: 0.000117
+Train Epoch[1], Iter[15639/57510]	 Loss: 0.0385	 MaxEqual: 0.8782	 LR: 0.000117
+Train Epoch[1], Iter[15689/57510]	 Loss: 0.0330	 MaxEqual: 0.8870	 LR: 0.000116
+Train Epoch[1], Iter[15739/57510]	 Loss: 0.0375	 MaxEqual: 0.8777	 LR: 0.000116
+Train Epoch[1], Iter[15789/57510]	 Loss: 0.0364	 MaxEqual: 0.8816	 LR: 0.000116
+Train Epoch[1], Iter[15839/57510]	 Loss: 0.0382	 MaxEqual: 0.8777	 LR: 0.000116
+Train Epoch[1], Iter[15889/57510]	 Loss: 0.0377	 MaxEqual: 0.8762	 LR: 0.000115
+Train Epoch[1], Iter[15939/57510]	 Loss: 0.0418	 MaxEqual: 0.8684	 LR: 0.000115
+Train Epoch[1], Iter[15989/57510]	 Loss: 0.0364	 MaxEqual: 0.8748	 LR: 0.000115
+Train Epoch[1], Iter[16039/57510]	 Loss: 0.0384	 MaxEqual: 0.8796	 LR: 0.000115
+Train Epoch[1], Iter[16089/57510]	 Loss: 0.0365	 MaxEqual: 0.8811	 LR: 0.000115
+Train Epoch[1], Iter[16139/57510]	 Loss: 0.0372	 MaxEqual: 0.8782	 LR: 0.000114
+Train Epoch[1], Iter[16189/57510]	 Loss: 0.0356	 MaxEqual: 0.8811	 LR: 0.000114
+Train Epoch[1], Iter[16239/57510]	 Loss: 0.0383	 MaxEqual: 0.8752	 LR: 0.000114
+Train Epoch[1], Iter[16289/57510]	 Loss: 0.0329	 MaxEqual: 0.8919	 LR: 0.000114
+Train Epoch[1], Iter[16339/57510]	 Loss: 0.0409	 MaxEqual: 0.8635	 LR: 0.000113
+Train Epoch[1], Iter[16389/57510]	 Loss: 0.0349	 MaxEqual: 0.8816	 LR: 0.000113
+Train Epoch[1], Iter[16439/57510]	 Loss: 0.0341	 MaxEqual: 0.8885	 LR: 0.000113
+Train Epoch[1], Iter[16489/57510]	 Loss: 0.0315	 MaxEqual: 0.8938	 LR: 0.000113
+Train Epoch[1], Iter[16539/57510]	 Loss: 0.0383	 MaxEqual: 0.8723	 LR: 0.000113
+Train Epoch[1], Iter[16589/57510]	 Loss: 0.0329	 MaxEqual: 0.8919	 LR: 0.000112
+Train Epoch[1], Iter[16639/57510]	 Loss: 0.0360	 MaxEqual: 0.8811	 LR: 0.000112
+Train Epoch[1], Iter[16689/57510]	 Loss: 0.0363	 MaxEqual: 0.8801	 LR: 0.000112
+Train Epoch[1], Iter[16739/57510]	 Loss: 0.0366	 MaxEqual: 0.8762	 LR: 0.000112
+Train Epoch[1], Iter[16789/57510]	 Loss: 0.0405	 MaxEqual: 0.8679	 LR: 0.000112
+Train Epoch[1], Iter[16839/57510]	 Loss: 0.0379	 MaxEqual: 0.8831	 LR: 0.000111
+Train Epoch[1], Iter[16889/57510]	 Loss: 0.0335	 MaxEqual: 0.8894	 LR: 0.000111
+Train Epoch[1], Iter[16939/57510]	 Loss: 0.0370	 MaxEqual: 0.8841	 LR: 0.000111
+Train Epoch[1], Iter[16989/57510]	 Loss: 0.0340	 MaxEqual: 0.8909	 LR: 0.000111
+Train Epoch[1], Iter[17039/57510]	 Loss: 0.0432	 MaxEqual: 0.8547	 LR: 0.000111
+Train Epoch[1], Iter[17089/57510]	 Loss: 0.0343	 MaxEqual: 0.8850	 LR: 0.000110
