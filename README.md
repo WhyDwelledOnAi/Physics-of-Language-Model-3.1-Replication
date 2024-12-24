@@ -6,4 +6,4 @@ I am trying to reproduce this paper, but the results are not as good as expected
 
 The environment requirement: pytorch and accelerate only. 
 
-to run the code: first run generate_data.py and then bash run.sh.
+to run the code: first python generate_data.py and then bash run.sh.
