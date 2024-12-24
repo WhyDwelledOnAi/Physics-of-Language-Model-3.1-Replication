@@ -7,3 +7,5 @@ I am trying to reproduce this paper, but the results are not as good as expected
 The environment requirement: pytorch and accelerate only. 
 
 to run the code: first python generate_data.py and then bash run.sh.
+
+Due to GitHub's file size limitations, I have not uploaded larger-scale data or trained models, and I may organize them on HuggingFace in the future.
